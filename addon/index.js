@@ -1,1 +1,1 @@
-export {default, PropTypes} from './mixins/prop-types'
+export {default, helpers, PropTypes} from './mixins/prop-types'
