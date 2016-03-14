@@ -12,7 +12,7 @@
     "start": "ember server",
     "test": "npm run lint && ember test"
   },
-  "repository": "",
+  "repository": "git@github.com:ciena-blueplanet/ember-prop-types.git",
   "engines": {
     "node": ">= 5.0.0"
   },
