@@ -44,6 +44,16 @@ const validators = {
     return valid
   },
 
+  null: function (ctx, name, value, def, logErrors) {
+    const valid = value === null
+
+    if (!valid && logErrors) {
+      Ember.Logger.warn(`Expected property ${name} to be null`)
+    }
+
+    return valid
+  },
+
   number: function (ctx, name, value, def, logErrors) {
     const valid = _.isNumber(value)
 
