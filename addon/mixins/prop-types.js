@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import Ember from 'ember'
 import PropTypes, {validators} from '../utils/prop-types'
+import config from 'ember-get-config'
 
 const helpers = {
   /* eslint-disable complexity */
@@ -26,12 +27,6 @@ const helpers = {
   /* eslint-enable complexity */
 
   validatePropTypes (ctx) {
-    const owner = Ember.getOwner(ctx)
-
-    // FIXME: figure out how to do below without accessing __container__ directly
-    const config = owner ? owner.__container__.lookupFactory('config:environment') : null
-
-    // If we are in production environment then do not perform property validation
     if (!config || config.environment === 'production') {
       return
     }
