@@ -44,9 +44,9 @@ export default Ember.Component.extend({
 })
 ```
 
-If this mixin is being used in a class other than Component, it will still need to be mixed into the class:
+If this mixin is being used in a class other than Component, it will need to be mixed into the class:
 
-```
+```js
 import Ember from 'ember'
 import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
