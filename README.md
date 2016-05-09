@@ -44,6 +44,31 @@ export default Ember.Component.extend({
 })
 ```
 
+If this mixin is being used in a class other than Component, it will still need to be mixed into the class:
+
+```
+import Ember from 'ember'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+
+export default Ember.ClassName.extend(PropTypeMixin, {
+  propTypes: {
+    foo: PropTypes.string,
+    bar: PropTypes.number.isRequired,
+    baz: PropTypes.oneOf([
+      PropTypes.bool,
+      PropTypes.string
+    ])
+  },
+
+  getDefaultProps () {
+    return {
+      foo: 'This is going to be highly profitable'
+    }
+  }
+})
+```
+
+
 #### Property Validation
 
 The idea of *propTypes* comes from the world of React and is implemented to have an almost identical API in the Ember world. Below is a list of possible *propTypes* to validate against.
