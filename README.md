@@ -24,9 +24,9 @@ Below is an example of a component that uses the property mixin provided by this
 
 ```js
 import Ember from 'ember'
-import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+import {PropTypes} from 'ember-prop-types'
 
-export default Ember.Component.extend(PropTypeMixin, {
+export default Ember.Component.extend({
   propTypes: {
     foo: PropTypes.string,
     bar: PropTypes.number.isRequired,
