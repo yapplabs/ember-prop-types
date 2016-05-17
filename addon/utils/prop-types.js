@@ -139,6 +139,28 @@ validators.instanceOf = function (ctx, name, value, def, logErrors) {
   return valid
 }
 
+validators.shape = function (ctx, name, value, def, logErrors) {
+  const typeDefs = def.typeDefs
+  if (!_.isPlainObject(typeDefs)) {
+    Ember.logger.warn(
+      'PropTypes.shape() requires a plain object to be be passed in as an argument'
+    )
+    return false
+  }
+
+  const valid = _.every(Object.keys(typeDefs), (key) => {
+    const typeDef = typeDefs[key]
+    const objectValue = Ember.get(value, key)
+    return validators[typeDef.type](ctx, key, objectValue, typeDef, false)
+  })
+
+  if (!valid && logErrors) {
+    Ember.Logger.warn(`Property ${name} does not match the given shape`)
+  }
+
+  return valid
+}
+
 PropTypes.oneOf = function (typeDefs) {
   const type = generateType('oneOf')
   type.isRequired.typeDefs = type.typeDefs = typeDefs
@@ -148,6 +170,12 @@ PropTypes.oneOf = function (typeDefs) {
 PropTypes.instanceOf = function (typeDef) {
   const type = generateType('instanceOf')
   type.isRequired.typeDef = type.typeDef = typeDef
+  return type
+}
+
+PropTypes.shape = function (typeDefs) {
+  const type = generateType('shape')
+  type.isRequired.typeDefs = type.typeDefs = typeDefs
   return type
 }
 

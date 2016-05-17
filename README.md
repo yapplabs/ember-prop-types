@@ -77,12 +77,13 @@ The idea of *propTypes* comes from the world of React and is implemented to have
 * bool
 * EmberObject
 * func
+* instanceOf
 * null
 * number
 * object
 * oneOf
+* shape
 * string
-* instanceOf
 
 #### Default Property Values
 
