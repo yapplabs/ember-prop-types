@@ -128,9 +128,26 @@ validators.oneOf = function (ctx, name, value, def) {
   return valid
 }
 
+validators.instanceOf = function (ctx, name, value, def, logErrors) {
+  const type = def.typeDef
+  const valid = value instanceof type
+
+  if (!valid && logErrors) {
+    Ember.Logger.warn(`Expected property ${name} to be an instance of ${type}`)
+  }
+
+  return valid
+}
+
 PropTypes.oneOf = function (typeDefs) {
   const type = generateType('oneOf')
   type.isRequired.typeDefs = type.typeDefs = typeDefs
+  return type
+}
+
+PropTypes.instanceOf = function (typeDef) {
+  const type = generateType('instanceOf')
+  type.isRequired.typeDef = type.typeDef = typeDef
   return type
 }
 

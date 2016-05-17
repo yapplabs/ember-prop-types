@@ -82,6 +82,7 @@ The idea of *propTypes* comes from the world of React and is implemented to have
 * object
 * oneOf
 * string
+* instanceOf
 
 #### Default Property Values
 
