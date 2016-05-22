@@ -100,12 +100,12 @@ Object.keys(validators).forEach((key) => {
   PropTypes[key] = generateType(key)
 })
 
-validators.oneOf = function (ctx, name, value, def) {
+validators.oneOfType = function (ctx, name, value, def) {
   let valid = false
 
   if (!_.isArray(def.typeDefs)) {
     Ember.Logger.warn(
-      'PropTypes.oneOf() requires an array of types to be passed in as an argument'
+      'PropTypes.oneOfType() requires an array of types to be passed in as an argument'
     )
 
     return valid
@@ -123,6 +123,25 @@ validators.oneOf = function (ctx, name, value, def) {
   if (!valid) {
     const types = def.typeDefs.map((typeDef) => typeDef.type)
     Ember.Logger.warn(`Property ${name} does not match expected types: ${types.join(', ')}`)
+  }
+
+  return valid
+}
+
+validators.oneOf = function (ctx, name, value, def, logErrors) {
+  const valueOptions = def.valueOptions
+
+  if (!_.isArray(valueOptions)) {
+    Ember.Logger.warn(
+      'PropTypes.oneOf() requires an array of values to be passed in as an argument'
+    )
+    return false
+  }
+
+  const valid = _.some(valueOptions, (option) => option === value)
+
+  if (!valid && logErrors) {
+    Ember.Logger.warn(`Property ${name} is not one of ${valueOptions.join(', ')}`)
   }
 
   return valid
@@ -161,9 +180,15 @@ validators.shape = function (ctx, name, value, def, logErrors) {
   return valid
 }
 
-PropTypes.oneOf = function (typeDefs) {
-  const type = generateType('oneOf')
+PropTypes.oneOfType = function (typeDefs) {
+  const type = generateType('oneOfType')
   type.isRequired.typeDefs = type.typeDefs = typeDefs
+  return type
+}
+
+PropTypes.oneOf = function (valueOptions) {
+  const type = generateType('oneOf')
+  type.isRequired.valueOptions = type.valueOptions = valueOptions
   return type
 }
 
