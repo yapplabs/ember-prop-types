@@ -30,7 +30,7 @@ export default Ember.Component.extend({
   propTypes: {
     foo: PropTypes.string,
     bar: PropTypes.number.isRequired,
-    baz: PropTypes.oneOf([
+    baz: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.string
     ])
@@ -54,7 +54,7 @@ export default Ember.ClassName.extend(PropTypeMixin, {
   propTypes: {
     foo: PropTypes.string,
     bar: PropTypes.number.isRequired,
-    baz: PropTypes.oneOf([
+    baz: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.string
     ])
@@ -82,6 +82,7 @@ The idea of *propTypes* comes from the world of React and is implemented to have
 * number
 * object
 * oneOf
+* oneOfType
 * shape
 * string
 
