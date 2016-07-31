@@ -8,23 +8,25 @@ describe('prop-types', function () {
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-
-    sandbox.stub(Ember, 'getOwner').returns({
-      __container__: {
-        lookupFactory () {
-          return {
-            environment: 'tests'
-          }
-        }
-      }
-    })
   })
 
   afterEach(function () {
     sandbox.restore()
   })
 
-  describe('propTypes not defined', function () {
+  describe('propTypes not defined on Ember.Object', function () {
+    beforeEach(function () {
+      sandbox.spy(helpers, 'validateProperty')
+      const Object = Ember.Object.extend(PropTypesMixin, {})
+      Object.create()
+    })
+
+    it('does not call validateProperty', function () {
+      expect(helpers.validateProperty.called).to.be.false
+    })
+  })
+
+  describe('propTypes not defined on Ember.Component', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
       const Component = Ember.Component.extend(PropTypesMixin, {})
@@ -36,7 +38,21 @@ describe('prop-types', function () {
     })
   })
 
-  describe('propTypes defined but empty', function () {
+  describe('propTypes defined but empty on Ember.Object', function () {
+    beforeEach(function () {
+      sandbox.spy(helpers, 'validateProperty')
+      const Object = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {}
+      })
+      Object.create()
+    })
+
+    it('does not call validateProperty', function () {
+      expect(helpers.validateProperty.called).to.be.false
+    })
+  })
+
+  describe('propTypes defined but empty on Ember.Component', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
       const Component = Ember.Component.extend(PropTypesMixin, {
@@ -50,7 +66,28 @@ describe('prop-types', function () {
     })
   })
 
-  describe('propTypes defined but unknown type', function () {
+  describe('propTypes defined but unknown type on Ember.Object', function () {
+    beforeEach(function () {
+      sandbox.spy(Ember.Logger, 'warn')
+      sandbox.spy(helpers, 'validateProperty')
+      const Object = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          foo: PropTypes.doesNotExist
+        }
+      })
+      Object.create()
+    })
+
+    it('does not call validateProperty', function () {
+      expect(helpers.validateProperty.called).to.be.false
+    })
+
+    it('logs warning message', function () {
+      expect(Ember.Logger.warn.called).to.be.true
+    })
+  })
+
+  describe('propTypes defined but unknown type on Ember.Component', function () {
     beforeEach(function () {
       sandbox.spy(Ember.Logger, 'warn')
       sandbox.spy(helpers, 'validateProperty')
@@ -71,7 +108,24 @@ describe('prop-types', function () {
     })
   })
 
-  describe('propTypes defined with validations present', function () {
+  describe('propTypes defined with validations present on Ember.Object', function () {
+    beforeEach(function () {
+      sandbox.spy(helpers, 'validateProperty')
+      const Object = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          foo: PropTypes.string,
+          bar: PropTypes.number
+        }
+      })
+      Object.create()
+    })
+
+    it('calls validateProperty for each propType', function () {
+      expect(helpers.validateProperty.called).to.be.true
+    })
+  })
+
+  describe('propTypes defined with validations present on Ember.Component', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
       const Component = Ember.Component.extend(PropTypesMixin, {

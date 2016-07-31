@@ -24,13 +24,13 @@ Below is an example of a component that uses the property mixin provided by this
 
 ```js
 import Ember from 'ember'
-import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+import {PropTypes} from 'ember-prop-types'
 
-export default Ember.Component.extend(PropTypeMixin, {
+export default Ember.Component.extend({
   propTypes: {
     foo: PropTypes.string,
     bar: PropTypes.number.isRequired,
-    baz: PropTypes.oneOf([
+    baz: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.string
     ])
@@ -44,6 +44,31 @@ export default Ember.Component.extend(PropTypeMixin, {
 })
 ```
 
+If this mixin is being used in a class other than Component, it will need to be mixed into the class:
+
+```js
+import Ember from 'ember'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+
+export default Ember.ClassName.extend(PropTypeMixin, {
+  propTypes: {
+    foo: PropTypes.string,
+    bar: PropTypes.number.isRequired,
+    baz: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string
+    ])
+  },
+
+  getDefaultProps () {
+    return {
+      foo: 'This is going to be highly profitable'
+    }
+  }
+})
+```
+
+
 #### Property Validation
 
 The idea of *propTypes* comes from the world of React and is implemented to have an almost identical API in the Ember world. Below is a list of possible *propTypes* to validate against.
@@ -52,10 +77,13 @@ The idea of *propTypes* comes from the world of React and is implemented to have
 * bool
 * EmberObject
 * func
+* instanceOf
 * null
 * number
 * object
 * oneOf
+* oneOfType
+* shape
 * string
 
 #### Default Property Values
