@@ -1,3 +1,7 @@
+# 2.1.0
+
+* **Changed** from `ember-lodash` to `ember-lodash-shim`.
+
 # 2.0.1
 
 * Updated dependencies to the latest versions.
