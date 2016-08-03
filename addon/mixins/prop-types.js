@@ -1,5 +1,7 @@
-import _ from 'lodash'
 import Ember from 'ember'
+const {
+  typeOf
+} = Ember
 import PropTypes, {validators} from '../utils/prop-types'
 import config from 'ember-get-config'
 
@@ -37,7 +39,9 @@ const helpers = {
       return
     }
 
-    _.forIn(propTypes, (def, name) => {
+    Object.keys(propTypes).forEach(name => {
+      const def = propTypes[name]
+
       if (def === undefined) {
         Ember.Logger.warn(`propType for ${name} is unknown`)
         return
@@ -52,12 +56,19 @@ export default Ember.Mixin.create({
   init () {
     helpers.validatePropTypes(this)
 
-    if (_.isFunction(this.getDefaultProps)) {
+    if (typeOf(this.getDefaultProps) === 'function') {
       const presentPropKeys = Object.keys(this)
       const defaultProps = this.getDefaultProps()
-      const needsSetProps = _.omit(defaultProps, presentPropKeys)
 
-      this.setProperties(needsSetProps)
+      const needsDefaultProp = Object.assign({}, ...(Object.keys(defaultProps).forEach((key) => {
+        if (!presentPropKeys.hasOwnProperty(key)) {
+          return {
+            [key]: defaultProps[key]
+          }
+        }
+      })))
+
+      this.setProperties(needsDefaultProp)
     }
 
     this._super()

@@ -1,11 +1,13 @@
-import _ from 'lodash'
 import Ember from 'ember'
+const {
+  typeOf
+} = Ember
 
 const PropTypes = {}
 
 const validators = {
   EmberObject: function (ctx, name, value, def, logErrors) {
-    const valid = Ember.Object.prototype.isPrototypeOf(value)
+    const valid = typeOf(value) === ('instance' || 'class')
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be an Ember.Object`)
@@ -15,7 +17,7 @@ const validators = {
   },
 
   array: function (ctx, name, value, def, logErrors) {
-    const valid = _.isArray(value)
+    const valid = typeOf(value) === 'array'
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be an array`)
@@ -25,7 +27,7 @@ const validators = {
   },
 
   bool: function (ctx, name, value, def, logErrors) {
-    const valid = _.isBoolean(value)
+    const valid = typeOf(value) === 'boolean'
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be a boolean`)
@@ -35,7 +37,7 @@ const validators = {
   },
 
   func: function (ctx, name, value, def, logErrors) {
-    const valid = _.isFunction(value)
+    const valid = typeOf(value) === 'function'
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be a function`)
@@ -55,7 +57,7 @@ const validators = {
   },
 
   number: function (ctx, name, value, def, logErrors) {
-    const valid = _.isNumber(value)
+    const valid = typeOf(value) === 'number'
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be a number`)
@@ -65,7 +67,7 @@ const validators = {
   },
 
   object: function (ctx, name, value, def, logErrors) {
-    const valid = _.isPlainObject(value)
+    const valid = typeOf(value) === 'object'
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be an object`)
@@ -75,7 +77,7 @@ const validators = {
   },
 
   string: function (ctx, name, value, def, logErrors) {
-    const valid = _.isString(value)
+    const valid = typeOf(value) === 'string'
 
     if (!valid && logErrors) {
       Ember.Logger.warn(`Expected property ${name} to be a string`)
@@ -103,7 +105,7 @@ Object.keys(validators).forEach((key) => {
 validators.oneOfType = function (ctx, name, value, def) {
   let valid = false
 
-  if (!_.isArray(def.typeDefs)) {
+  if (typeOf(def.typeDefs) !== 'array') {
     Ember.Logger.warn(
       'PropTypes.oneOfType() requires an array of types to be passed in as an argument'
     )
@@ -131,14 +133,14 @@ validators.oneOfType = function (ctx, name, value, def) {
 validators.oneOf = function (ctx, name, value, def, logErrors) {
   const valueOptions = def.valueOptions
 
-  if (!_.isArray(valueOptions)) {
+  if (typeOf(valueOptions) !== 'array') {
     Ember.Logger.warn(
       'PropTypes.oneOf() requires an array of values to be passed in as an argument'
     )
     return false
   }
 
-  const valid = _.some(valueOptions, (option) => option === value)
+  const valid = valueOptions.some((option) => option === value)
 
   if (!valid && logErrors) {
     Ember.Logger.warn(`Property ${name} is not one of ${valueOptions.join(', ')}`)
@@ -160,14 +162,14 @@ validators.instanceOf = function (ctx, name, value, def, logErrors) {
 
 validators.shape = function (ctx, name, value, def, logErrors) {
   const typeDefs = def.typeDefs
-  if (!_.isPlainObject(typeDefs)) {
+  if (typeOf(typeDefs) !== 'object') {
     Ember.logger.warn(
       'PropTypes.shape() requires a plain object to be be passed in as an argument'
     )
     return false
   }
 
-  const valid = _.every(Object.keys(typeDefs), (key) => {
+  const valid = Object.keys(typeDefs).every((key) => {
     const typeDef = typeDefs[key]
     const objectValue = Ember.get(value, key)
     return validators[typeDef.type](ctx, key, objectValue, typeDef, false)
