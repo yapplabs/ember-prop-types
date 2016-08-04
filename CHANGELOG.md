@@ -1,3 +1,8 @@
+# 2.2.0
+
+- Removed lodash as a dependency to avoid lodash as a downstream requirement
+- Replaced lodash functions with equivalent Ember/ES6/custom functions
+
 # 2.1.0
 
 * **Changed** from `ember-lodash` to `ember-lodash-shim`.
