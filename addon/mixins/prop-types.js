@@ -1,6 +1,5 @@
 import Ember from 'ember'
 const {
-  assign,
   typeOf
 } = Ember
 import PropTypes, {validators} from '../utils/prop-types'
