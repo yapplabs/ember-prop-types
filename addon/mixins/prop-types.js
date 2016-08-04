@@ -1,5 +1,6 @@
 import Ember from 'ember'
 const {
+  assign,
   typeOf
 } = Ember
 import PropTypes, {validators} from '../utils/prop-types'
@@ -60,13 +61,12 @@ export default Ember.Mixin.create({
       const presentPropKeys = Object.keys(this)
       const defaultProps = this.getDefaultProps()
 
-      const needsDefaultProp = Object.assign({}, ...(Object.keys(defaultProps).forEach((key) => {
+      let needsDefaultProp = {}
+      Object.keys(defaultProps).forEach((key) => {
         if (!presentPropKeys.hasOwnProperty(key)) {
-          return {
-            [key]: defaultProps[key]
-          }
+          needsDefaultProp[key] = defaultProps[key]
         }
-      })))
+      })
 
       this.setProperties(needsDefaultProp)
     }
