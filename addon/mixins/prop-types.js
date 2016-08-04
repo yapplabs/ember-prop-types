@@ -57,18 +57,14 @@ export default Ember.Mixin.create({
     helpers.validatePropTypes(this)
 
     if (typeOf(this.getDefaultProps) === 'function') {
-      const presentPropKeys = Object.keys(this)
       const defaultProps = this.getDefaultProps()
 
-      const needsDefaultProp = Object.assign({}, ...(Object.keys(defaultProps).forEach((key) => {
-        if (!presentPropKeys.hasOwnProperty(key)) {
-          return {
-            [key]: defaultProps[key]
-          }
-        }
-      })))
+      Object.keys(this)
+        .forEach((key) => {
+          delete defaultProps[key]
+        })
 
-      this.setProperties(needsDefaultProp)
+      this.setProperties(defaultProps)
     }
 
     this._super()
