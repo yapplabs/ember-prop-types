@@ -1,3 +1,8 @@
+# 2.2.1
+
+- Finishes the removal of lodash as a dependency
+- Removed Object.assign to fix cases where browsers don't support the latest ES6 syntax
+
 # 2.2.0
 
 - Removed lodash as a dependency to avoid lodash as a downstream requirement
