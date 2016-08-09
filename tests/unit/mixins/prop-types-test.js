@@ -1,7 +1,6 @@
-const expect = chai.expect
-
-import {afterEach, beforeEach, describe, it} from 'mocha'
+import {expect} from 'chai'
 import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
+import {afterEach, beforeEach, describe, it} from 'mocha'
 
 describe('prop-types', function () {
   let sandbox
