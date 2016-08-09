@@ -1,3 +1,7 @@
+# 2.2.2
+
+* **Added** a bunch of tests to help prevent future regressions and verify addon does what it advertises.
+
 # 2.2.1
 
 - Finishes the removal of lodash as a dependency
