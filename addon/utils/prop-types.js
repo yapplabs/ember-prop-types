@@ -163,7 +163,7 @@ validators.instanceOf = function (ctx, name, value, def, logErrors) {
 validators.shape = function (ctx, name, value, def, logErrors) {
   const typeDefs = def.typeDefs
   if (typeOf(typeDefs) !== 'object') {
-    Ember.logger.warn(
+    Ember.Logger.warn(
       'PropTypes.shape() requires a plain object to be be passed in as an argument'
     )
     return false
