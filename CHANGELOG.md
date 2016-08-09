@@ -1,3 +1,7 @@
+# 2.2.3
+
+* **Added** tests for `shape` prop-type and commented out tests that exercise issue #24.
+
 # 2.2.2
 
 * **Added** a bunch of tests to help prevent future regressions and verify addon does what it advertises.
