@@ -154,7 +154,8 @@ validators.instanceOf = function (ctx, name, value, def, logErrors) {
   const valid = value instanceof type
 
   if (!valid && logErrors) {
-    Ember.Logger.warn(`Expected property ${name} to be an instance of ${type}`)
+    const name = type.toString().match(/function (\w*)/)[1]
+    Ember.Logger.warn(`Expected property ${name} to be an instance of ${name}`)
   }
 
   return valid
