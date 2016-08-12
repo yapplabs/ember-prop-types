@@ -1,3 +1,7 @@
+# 2.2.4
+
+* **Added** tests for `instanceOf` prop-type.
+
 # 2.2.3
 
 * **Added** tests for `shape` prop-type and commented out tests that exercise issue #24.
