@@ -1,3 +1,7 @@
+# 2.2.8
+
+* Split source code up into separate modules as a first step in refactoring and improving implementation.
+
 # 2.2.7
 
 * **Added** tests for `oneOf` prop-type.
