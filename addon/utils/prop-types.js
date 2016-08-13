@@ -143,7 +143,7 @@ validators.oneOf = function (ctx, name, value, def, logErrors) {
   const valid = valueOptions.some((option) => option === value)
 
   if (!valid && logErrors) {
-    Ember.Logger.warn(`Property ${name} is not one of ${valueOptions.join(', ')}`)
+    Ember.Logger.warn(`Property ${name} is not one of: ${valueOptions.join(', ')}`)
   }
 
   return valid
