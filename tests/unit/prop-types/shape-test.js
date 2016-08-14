@@ -226,11 +226,9 @@ describe('PropTypes.shape', function () {
         expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
       })
 
-      /* FIXME: Issue #24
       it('does not log warning', function () {
         expect(Logger.warn.callCount).to.equal(0)
       })
-      */
     })
 
     describe('when initialized with incorrect shape value', function () {
@@ -252,7 +250,7 @@ describe('PropTypes.shape', function () {
         expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
       })
 
-      it('does not log warning', function () {
+      it('logs warning', function () {
         expect(Logger.warn.callCount).to.equal(1)
         expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
       })
@@ -532,11 +530,9 @@ describe('PropTypes.shape', function () {
         expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
       })
 
-      /* FIXME: Issue #24
       it('does not log warning', function () {
         expect(Logger.warn.callCount).to.equal(0)
       })
-      */
     })
 
     describe('when initialized with incorrect shape value', function () {
