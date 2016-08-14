@@ -5,6 +5,7 @@ import any from './any'
 import array from './array'
 import arrayOf from './array-of'
 import bool from './bool'
+import element from './element'
 import emberObject from './ember-object'
 import func from './func'
 import instanceOf from './instance-of'
@@ -21,6 +22,7 @@ const validators = {
   any,
   array,
   bool,
+  element,
   EmberObject: emberObject,
   func,
   instanceOf,
