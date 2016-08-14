@@ -1,3 +1,7 @@
+# 2.3.0
+
+* **Added** `arrayOf` prop-type.
+
 # 2.2.8
 
 * Split source code up into separate modules as a first step in refactoring and improving implementation.
