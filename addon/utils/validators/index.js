@@ -1,6 +1,7 @@
 import Ember from 'ember'
 const {assign} = Ember
 
+import any from './any'
 import array from './array'
 import arrayOf from './array-of'
 import bool from './bool'
@@ -16,6 +17,7 @@ import shape from './shape'
 import string from './string'
 
 const validators = {
+  any,
   array,
   bool,
   EmberObject: emberObject,
