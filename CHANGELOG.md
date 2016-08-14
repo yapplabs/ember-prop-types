@@ -1,3 +1,8 @@
+# 2.5.1
+
+* **Addedd** missing prop-types to README.
+* **Upgraded** `ember-get-config` to latest version.
+
 # 2.5.0
 
 * **Added** `element` prop-type.
