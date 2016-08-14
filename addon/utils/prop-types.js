@@ -22,7 +22,8 @@ export function generateType (key) {
   'null',
   'number',
   'object',
-  'string'
+  'string',
+  'symbol'
 ]
   .forEach((key) => {
     PropTypes[key] = generateType(key)
