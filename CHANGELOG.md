@@ -1,3 +1,7 @@
+# 2.5.0
+
+* **Added** `element` prop-type.
+
 # 2.4.2
 
 * **Added** `symbol` prop-type.
