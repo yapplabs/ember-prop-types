@@ -15,6 +15,7 @@ import oneOf from './one-of'
 import oneOfType from './one-of-type'
 import shape from './shape'
 import string from './string'
+import symbol from './symbol'
 
 const validators = {
   any,
@@ -27,7 +28,8 @@ const validators = {
   number,
   object,
   oneOf,
-  string
+  string,
+  symbol
 }
 
 assign(validators, {

@@ -6,16 +6,16 @@ import {afterEach, beforeEach, describe, it} from 'mocha'
 
 const requiredDef = {
   required: true,
-  type: 'number'
+  type: 'symbol'
 }
 
 const notRequiredDef = {
   isRequired: requiredDef,
   required: false,
-  type: 'number'
+  type: 'symbol'
 }
 
-describe('PropTypes.number', function () {
+describe('PropTypes.symbol', function () {
   let sandbox
 
   beforeEach(function () {
@@ -35,16 +35,16 @@ describe('PropTypes.number', function () {
     beforeEach(function () {
       Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
-          bar: PropTypes.number.isRequired
+          bar: PropTypes.symbol.isRequired
         }
       })
     })
 
-    describe('when initialized with number value', function () {
+    describe('when initialized with symbol value', function () {
       let instance
 
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        instance = Foo.create({bar: Symbol()})
       })
 
       it('validates prop-types for instance', function () {
@@ -77,7 +77,7 @@ describe('PropTypes.number', function () {
 
       it('logs warning', function () {
         expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be a number'])
+        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be a symbol'])
       })
     })
 
@@ -109,16 +109,16 @@ describe('PropTypes.number', function () {
     beforeEach(function () {
       Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
-          bar: PropTypes.number
+          bar: PropTypes.symbol
         }
       })
     })
 
-    describe('when initialized with number value', function () {
+    describe('when initialized with symbol value', function () {
       let instance
 
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        instance = Foo.create({bar: Symbol()})
       })
 
       it('validates prop-types for instance', function () {
@@ -151,7 +151,7 @@ describe('PropTypes.number', function () {
 
       it('logs warning', function () {
         expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be a number'])
+        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be a symbol'])
       })
     })
 
