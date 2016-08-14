@@ -27,6 +27,12 @@ export function generateType (key) {
     PropTypes[key] = generateType(key)
   })
 
+PropTypes.arrayOf = function (typeDef) {
+  const type = generateType('arrayOf')
+  type.isRequired.typeDef = type.typeDef = typeDef
+  return type
+}
+
 PropTypes.oneOfType = function (typeDefs) {
   const type = generateType('oneOfType')
   type.isRequired.typeDefs = type.typeDefs = typeDefs

@@ -2,6 +2,7 @@ import Ember from 'ember'
 const {assign} = Ember
 
 import array from './array'
+import arrayOf from './array-of'
 import bool from './bool'
 import emberObject from './ember-object'
 import func from './func'
@@ -28,6 +29,7 @@ const validators = {
 }
 
 assign(validators, {
+  arrayOf: arrayOf.bind(this, validators),
   oneOfType: oneOfType.bind(this, validators),
   shape: shape.bind(this, validators)
 })
