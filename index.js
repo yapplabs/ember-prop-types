@@ -12,6 +12,8 @@ module.exports = {
       this.options.babel.optional.push('es6.spec.symbols')
     }
 
+    this.options.babel.includePolyfill = true
+
     this._super.init && this._super.init.apply(this, arguments)
   }
 }
