@@ -73,8 +73,11 @@ export default Ember.ClassName.extend(PropTypeMixin, {
 
 The idea of *propTypes* comes from the world of React and is implemented to have an almost identical API in the Ember world. Below is a list of possible *propTypes* to validate against.
 
+* any
 * array
+* arrayOf
 * bool
+* element
 * EmberObject
 * func
 * instanceOf
@@ -85,6 +88,7 @@ The idea of *propTypes* comes from the world of React and is implemented to have
 * oneOfType
 * shape
 * string
+* symbol
 
 #### Default Property Values
 
