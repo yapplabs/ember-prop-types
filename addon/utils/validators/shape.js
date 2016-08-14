@@ -10,10 +10,24 @@ export default function (validators, ctx, name, value, def, logErrors) {
     return false
   }
 
-  const valid = Object.keys(typeDefs).every((key) => {
+  if (typeOf(value) !== 'object') {
+    Logger.warn(`Property ${name} does not match the given shape`)
+    return false
+  }
+
+  let valid = Object.keys(typeDefs).every((key) => {
     const typeDef = typeDefs[key]
+
+    if (!typeDef.required && value[key] === undefined) {
+      return true
+    }
+
     const objectValue = Ember.get(value, key)
     return validators[typeDef.type](ctx, key, objectValue, typeDef, false)
+  })
+
+  valid = valid && Object.keys(value).every((key) => {
+    return key in typeDefs
   })
 
   if (!valid && logErrors) {
