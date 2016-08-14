@@ -1,3 +1,7 @@
+# 2.3.1
+
+* **Fixed** `shape` prop-type to not error when non-required props in shape are not present.
+
 # 2.3.0
 
 * **Added** `arrayOf` prop-type.
