@@ -1,6 +1,6 @@
 import Ember from 'ember'
-const {assign} = Ember
 
+const assign = Ember.assign || Object.assign || Ember.merge
 import any from './any'
 import array from './array'
 import arrayOf from './array-of'
