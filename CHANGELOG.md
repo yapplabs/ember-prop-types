@@ -1,3 +1,7 @@
+# 2.5.2
+
+* **Fixed** issue when `Ember.assign` does not exist to fallback on `Object.assign` then `Ember.merge`.
+
 # 2.5.1
 
 * **Addedd** missing prop-types to README.
