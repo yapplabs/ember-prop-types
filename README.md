@@ -1,4 +1,5 @@
 
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-green.svg "Ember 1.12.2+"
 [ci-img]: https://img.shields.io/travis/ciena-blueplanet/ember-prop-types.svg "Travis CI Build Status"
 [ci-url]: https://travis-ci.org/ciena-blueplanet/ember-prop-types
 [cov-img]: https://img.shields.io/coveralls/ciena-blueplanet/ember-prop-types.svg "Coveralls Code Coverage"
@@ -6,7 +7,7 @@
 [npm-img]: https://img.shields.io/npm/v/ember-prop-types.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-prop-types
 
-# ember-prop-types <br /> [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+# ember-prop-types <br /> [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url] ![Ember][ember-img]
 
 This addon provides React-like property management for components.
 
