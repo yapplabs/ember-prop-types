@@ -1,3 +1,7 @@
+# 2.5.6
+
+* **Updated** Travis configuration to test addon against older versions of Ember.
+
 # 2.5.5
 
 * Only import polyfill for CI and not for consuming apps. Apps that want Symbol can pay as they go.
