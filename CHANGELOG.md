@@ -1,3 +1,7 @@
+# 2.5.5
+
+* Only import polyfill for CI and not for consuming apps. Apps that want Symbol can pay as they go.
+
 # 2.5.4
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
