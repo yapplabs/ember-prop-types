@@ -1,3 +1,7 @@
+# 2.5.9
+
+* Updated CI configuration to not run npm scripts on install.
+
 # 2.5.8
 
 * Cleaned up README to pass default config for remark-lint and better organized badges.
