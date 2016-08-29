@@ -1,6 +1,6 @@
 # 2.5.10
 
-* **Addedd** `npm-install-security-check` as a dependency to make consumers more security conscious.
+* **Added** `npm-install-security-check` as a dependency to make consumers more security conscious.
 
 # 2.5.9
 
@@ -24,10 +24,12 @@
 * Only import polyfill for CI and not for consuming apps. Apps that want Symbol can pay as they go.
 
 # 2.5.4
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
 # 2.5.3
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
@@ -49,10 +51,12 @@ Use a `# CHANGELOG` section in your Pull Request description to auto-populate th
 * **Added** `symbol` prop-type.
 
 # 2.4.1
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
 # 2.4.0
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
@@ -73,10 +77,12 @@ Use a `# CHANGELOG` section in your Pull Request description to auto-populate th
 * **Added** tests for `oneOf` prop-type.
 
 # 2.2.6
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
 # 2.2.5
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
@@ -111,14 +117,16 @@ Use a `# CHANGELOG` section in your Pull Request description to auto-populate th
 * Updated dependencies to the latest versions.
 
 # 2.0.0
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
 # 1.5.0
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
 
 # 1.4.0
+
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
-
