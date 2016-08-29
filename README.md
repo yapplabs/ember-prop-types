@@ -1,5 +1,7 @@
 # ember-prop-types
 
+This addon provides React-like property management for components.
+
 ###### Dependencies
 
 ![Ember][ember-img]
@@ -13,8 +15,6 @@
 ###### Security
 
 [![bitHound][bithound-img]][bithound-url]
-
-This addon provides React-like property management for components.
 
 ## Installation
 
