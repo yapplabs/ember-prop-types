@@ -2,13 +2,13 @@
 
 ###### Dependencies
 
+![Ember][ember-img]
 [![NPM][npm-img]][npm-url]
 
 ###### Health
 
 [![Travis][ci-img]][ci-url]
 [![Coveralls][cov-img]][cov-url]
-![Ember][ember-img]
 
 ###### Security
 
@@ -112,7 +112,7 @@ task and so *getDefaultProps* was also implemented (thanks to the React team for
 [bithound-img]: https://www.bithound.io/github/ciena-blueplanet/ember-prop-types/badges/score.svg "bitHound"
 [bithound-url]: https://www.bithound.io/github/ciena-blueplanet/ember-prop-types
 
-[ember-img]: https://img.shields.io/badge/ember-1.12.2+-green.svg "Ember 1.12.2+"
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-orange.svg "Ember 1.12.2+"
 
 [ci-img]: https://img.shields.io/travis/ciena-blueplanet/ember-prop-types.svg "Travis CI Build Status"
 [ci-url]: https://travis-ci.org/ciena-blueplanet/ember-prop-types
