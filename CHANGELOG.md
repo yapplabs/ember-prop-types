@@ -1,3 +1,7 @@
+# 2.5.7
+
+* Addressed the following security vulnerability: https://nodesecurity.io/advisories/118.
+
 # 2.5.6
 
 * **Updated** Travis configuration to test addon against older versions of Ember.
