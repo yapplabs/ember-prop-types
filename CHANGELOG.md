@@ -1,3 +1,7 @@
+# 2.5.11
+
+* **Added** pull request template.
+
 # 2.5.10
 
 * **Added** `npm-install-security-check` as a dependency to make consumers more security conscious.
