@@ -1,3 +1,8 @@
+# 2.5.8
+
+* Cleaned up README to pass default config for remark-lint and better organized badges.
+* Updated dev dependencies.
+
 # 2.5.7
 
 * Addressed the following security vulnerability: https://nodesecurity.io/advisories/118.
