@@ -1,3 +1,7 @@
+# 2.5.10
+
+* **Addedd** `npm-install-security-check` as a dependency to make consumers more security conscious.
+
 # 2.5.9
 
 * Updated CI configuration to not run npm scripts on install.
