@@ -34,13 +34,13 @@ const helpers = {
     }
 
     const propTypesArray = [].concat(ctx.get('propTypes'))
-    propTypesArray.forEach((property) => {
-      if (!property) {
+    propTypesArray.forEach((propType) => {
+      if (!propType) {
         return
       }
 
-      Object.keys(property).forEach(name => {
-        const def = property[name]
+      Object.keys(propType).forEach(name => {
+        const def = propType[name]
 
         if (def === undefined) {
           Ember.Logger.warn(`propType for ${name} is unknown`)
