@@ -33,8 +33,8 @@ const helpers = {
       return
     }
 
-    const propTypes = [].concat(ctx.get('propTypes'))
-    propTypes.forEach((property) => {
+    const propTypesArray = [].concat(ctx.get('propTypes'))
+    propTypesArray.forEach((property) => {
       if (!property) {
         return
       }
