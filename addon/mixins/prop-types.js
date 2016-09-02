@@ -33,41 +33,47 @@ const helpers = {
       return
     }
 
-    const propTypes = ctx.get('propTypes')
-
-    if (!propTypes) {
-      return
-    }
-
-    Object.keys(propTypes).forEach(name => {
-      const def = propTypes[name]
-
-      if (def === undefined) {
-        Ember.Logger.warn(`propType for ${name} is unknown`)
+    const propTypes = [].concat(ctx.get('propTypes'))
+    propTypes.forEach((p) => {
+      if (!p) {
         return
       }
 
-      helpers.validateProperty(ctx, name, def)
+      Object.keys(p).forEach(name => {
+        const def = p[name]
+
+        if (def === undefined) {
+          Ember.Logger.warn(`propType for ${name} is unknown`)
+          return
+        }
+
+        helpers.validateProperty(ctx, name, def)
+      })
     })
   }
 }
 
 export default Ember.Mixin.create({
+  concatenatedProperties: ['propTypes', 'getDefaultProps'],
+
   init () {
     helpers.validatePropTypes(this)
 
-    if (typeOf(this.getDefaultProps) === 'function') {
-      const defaultProps = this.getDefaultProps()
+    const keys = Object.keys(this)
+    const defaults = [].concat(this.get('getDefaultProps'))
+    defaults.forEach((f) => {
+      if (typeOf(f) !== 'function') {
+        return
+      }
 
-      Object.keys(this)
-        .forEach((key) => {
-          delete defaultProps[key]
-        })
+      const defaultProps = f.apply(this)
+      keys.forEach((key) => {
+        delete defaultProps[key]
+      })
 
       this.setProperties(defaultProps)
-    }
-
-    this._super()
+    })
+    this._super(...arguments)
   }
 })
 
