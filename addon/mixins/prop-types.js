@@ -34,13 +34,13 @@ const helpers = {
     }
 
     const propTypes = [].concat(ctx.get('propTypes'))
-    propTypes.forEach((p) => {
-      if (!p) {
+    propTypes.forEach((property) => {
+      if (!property) {
         return
       }
 
-      Object.keys(p).forEach(name => {
-        const def = p[name]
+      Object.keys(property).forEach(name => {
+        const def = property[name]
 
         if (def === undefined) {
           Ember.Logger.warn(`propType for ${name} is unknown`)
@@ -61,12 +61,12 @@ export default Ember.Mixin.create({
 
     const keys = Object.keys(this)
     const defaults = [].concat(this.get('getDefaultProps'))
-    defaults.forEach((f) => {
-      if (typeOf(f) !== 'function') {
+    defaults.forEach((propsFunction) => {
+      if (typeOf(propsFunction) !== 'function') {
         return
       }
 
-      const defaultProps = f.apply(this)
+      const defaultProps = propsFunction.apply(this)
       keys.forEach((key) => {
         delete defaultProps[key]
       })
