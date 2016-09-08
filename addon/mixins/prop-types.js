@@ -56,11 +56,16 @@ const helpers = {
 export default Ember.Mixin.create({
   concatenatedProperties: ['propTypes', 'getDefaultProps'],
 
+  getDefaultProps () {
+    // Maintain compatibility with 2.5.x users calling this._super
+    return {}
+  },
+
   init () {
     helpers.validatePropTypes(this)
 
     const keys = Object.keys(this)
-    const defaults = [].concat(this.get('getDefaultProps'))
+    const defaults = this.get('getDefaultProps')
     defaults.forEach((propsFunction) => {
       if (typeOf(propsFunction) !== 'function') {
         return
