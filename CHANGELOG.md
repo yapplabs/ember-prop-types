@@ -1,3 +1,7 @@
+# 3.0.0
+
+* Support cases where components and mixins both use this mixin.
+
 # 2.5.11
 
 * **Added** pull request template.
