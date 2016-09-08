@@ -57,7 +57,7 @@ export default Ember.Mixin.create({
   concatenatedProperties: ['propTypes', 'getDefaultProps'],
 
   getDefaultProps () {
-    // Maintain compatibility with 2.5.x users calling this._super
+    // Maintain compatibility for 2.x users calling this._super
     return {}
   },
 
