@@ -1,23 +1,22 @@
-@import 'node_modules/ember-frost-core/addon/styles/addon';
-
 body {
+  font-family: Roboto, Arial, sans-serif;
   margin: 0 20px;
 }
 
 dl {
-  color: $frost-color-night-1;
+  color: #637582;
   display: inline-block;
-  font-size: $frost-font-m;
+  font-size: 18px;
+}
 
-  &:before {
-    content: '– '
-  }
+dl:before {
+  content: '– ';
 }
 
 dt {
-  color: $frost-color-blue-1;
+  color: #009EEF;
   display: inline-block;
-  font-size: $frost-font-l;
+  font-size: 23px;
 }
 
 h1, h2 {
@@ -25,15 +24,15 @@ h1, h2 {
 }
 
 pre {
-  background-color: $frost-color-night-2;
-  color: $frost-color-lgrey-1;
+  background-color: #33424F;
+  color: #E8E8EF;
   margin: 0;
   overflow-x: auto;
   padding: 0 20px;
 }
 
 section {
-  background-color: $frost-color-lgrey-4;
+  background-color: #F8F9F9;
   flex: 1 0 auto;
   margin: 10px;
   max-width: 100%;
