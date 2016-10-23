@@ -17,6 +17,15 @@
     "node": ">= 5.0.0"
   },
   "author": "Matthew Dahl (https://github.com/sandersky)",
+  "contributors": [
+    "(https://github.com/sdesros)",
+    "Michael Carroll (https://github.com/juwara0)",
+    "Phil Nachum (https://github.com/pnachum)",
+    "Steven Glanzer (https://github.com/sglanzer)",
+    "Eric White (https://github.com/EWhite613)",
+    "Ian Storz (https://github.com/ianstarz)",
+    "Justin Bowes (https://github.com/justinbowes)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
@@ -36,6 +45,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-load-initializers": "^0.5.0",
+    "ember-prism": "0.0.8",
     "ember-resolver": "^2.0.3",
     "ember-sinon": "0.5.1",
     "eslint": "^3.4.0",
