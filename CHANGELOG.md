@@ -1,3 +1,7 @@
+# 3.0.1
+
+* **Added** dummy app for better documentation.
+
 # 3.0.0
 
 * Support cases where components and mixins both use this mixin.
