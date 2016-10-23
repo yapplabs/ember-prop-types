@@ -1,0 +1,47 @@
+@import 'node_modules/ember-frost-core/addon/styles/addon';
+
+body {
+  margin: 0 20px;
+}
+
+dl {
+  color: $frost-color-night-1;
+  display: inline-block;
+  font-size: $frost-font-m;
+
+  &:before {
+    content: '– '
+  }
+}
+
+dt {
+  color: $frost-color-blue-1;
+  display: inline-block;
+  font-size: $frost-font-l;
+}
+
+h1, h2 {
+  font-weight: lighter;
+}
+
+pre {
+  background-color: $frost-color-night-2;
+  color: $frost-color-lgrey-1;
+  margin: 0;
+  overflow-x: auto;
+  padding: 0 20px;
+}
+
+section {
+  background-color: $frost-color-lgrey-4;
+  flex: 1 0 auto;
+  margin: 10px;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px 10px -10px;
+}

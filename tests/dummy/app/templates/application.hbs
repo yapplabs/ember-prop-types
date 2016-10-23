@@ -1,3 +1,23 @@
-<h2 id="title">Welcome to Ember</h2>
+<h1>ember-prop-types</h1>
 
-{{outlet}}
+<h2>Validators</h2>
+
+<div class="flex">
+  {{#each model.validators as |validator|}}
+    <section>
+      <dt>{{validator.name}}</dt>
+      <dl>{{validator.description}}</dl>
+      <pre>{{validator.example}}</pre>
+    </section>
+  {{/each}}
+</div>
+
+<h2>Default Values</h2>
+
+<div class="flex">
+  <section>
+    <dt>getDefaultProps()</dt>
+    <dl>Method to get default property values.</dl>
+    <pre>{{model.defaultsExample}}</pre>
+  </section>
+</div>
