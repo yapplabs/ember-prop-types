@@ -1,4 +1,20 @@
-<h1>ember-prop-types</h1>
+<div class="flex header">
+  <h1>ember-prop-types</h1>
+  <a href="https://github.com/ciena-blueplanet/ember-prop-types/blob/master/LICENSE.md">
+    <img alt="MIT License" src="mit.png" />
+  </a>
+  <a href="https://github.com/ciena-blueplanet/ember-prop-types">
+    <img alt="Github" src="octocat.png" />
+  </a>
+</div>
+
+<p>
+  This project aims to improve the developer experience of property management within Ember
+  apps and addons by implementing the entire React proptype API with a few additional
+  validators. By using <em>ember-prop-types</em> a developer is informed when a property
+  being fed to a component is not of the expected type, as well as allows a developer to group
+  all default property values under a single method.
+</p>
 
 <h2>Validators</h2>
 
@@ -7,7 +23,7 @@
     <section>
       <dt>{{validator.name}}</dt>
       <dl>{{validator.description}}</dl>
-      <pre>{{validator.example}}</pre>
+      {{#code-block language="javascript"}}{{validator.example}}{{/code-block}}
     </section>
   {{/each}}
 </div>
@@ -18,6 +34,23 @@
   <section>
     <dt>getDefaultProps()</dt>
     <dl>Method to get default property values.</dl>
-    <pre>{{model.defaultsExample}}</pre>
+    {{#code-block language="javascript"}}{{model.defaultsExample}}{{/code-block}}
   </section>
+</div>
+
+<h2>Contributors</h2>
+
+<div class="contributors flex">
+  {{#each model.contributors as |contributor|}}
+    <a
+      href={{concat 'https://github.com/' contributor.username}}
+    >
+      <img
+        alt={{contributor.username}}
+        src={{concat 'https://avatars3.githubusercontent.com/u/' contributor.id}}
+      />
+      <br/>
+      {{contributor.name}}
+    </a>
+  {{/each}}
 </div>

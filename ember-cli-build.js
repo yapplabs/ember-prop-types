@@ -9,6 +9,10 @@ module.exports = function (defaults) {
     },
     'ember-cli-mocha': {
       useLintTree: false
+    },
+    'ember-prism': {
+      components: ['javascript'],
+      theme: 'okaidia'
     }
   })
 

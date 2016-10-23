@@ -1,5 +1,6 @@
 import Ember from 'ember'
 const {Route} = Ember
+import contributors from '../fixtures/contributors'
 import validators from '../fixtures/validators'
 
 const defaultsExample = `
@@ -26,6 +27,7 @@ export default Component.extend(PropTypeMixin, {
 export default Route.extend({
   model () {
     return {
+      contributors,
       defaultsExample,
       validators
     }
