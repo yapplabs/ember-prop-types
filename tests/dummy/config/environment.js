@@ -5,6 +5,9 @@ module.exports = function (environment) {
     EmberENV: {
       FEATURES: {}
     },
+    googleFonts: [
+      'Roboto:300'
+    ],
     environment: environment,
     locationType: 'auto',
     modulePrefix: 'dummy'
