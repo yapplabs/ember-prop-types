@@ -1,3 +1,8 @@
+# 3.0.2
+
+* Improved demo by adding license, link to Github repository, contributors, syntax highlighting, and a brief summary.
+
+
 # 3.0.1
 
 * **Added** dummy app for better documentation.
