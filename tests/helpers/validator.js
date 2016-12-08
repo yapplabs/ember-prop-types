@@ -18,9 +18,9 @@ import {helpers} from 'ember-prop-types/mixins/prop-types'
  * @param {Object} ctx.def - the propType definition
  * @param {Object} ctx.instance - the object instance that has the mixin
  * @param {String} ctx.propertyName - the object instance that has the mixin
- * @param {String} [warningMessage] - if present, expect Logger.warn to be called with it, else expect no warnings
+ * @param {String[]} [warningMessages] - if present, expect Logger.warn to be called with them, else expect no warnings
  */
-export function itValidatesTheProperty (ctx, warningMessage) {
+export function itValidatesTheProperty (ctx, ...warningMessages) {
   let def, instance, propertyName
 
   beforeEach(function () {
@@ -37,10 +37,12 @@ export function itValidatesTheProperty (ctx, warningMessage) {
     expect(helpers.validateProperty).to.have.been.calledWith(instance, propertyName, def)
   })
 
-  if (warningMessage) {
-    it('should log a warning', function () {
-      expect(Logger.warn).to.have.callCount(1)
-      expect(Logger.warn).to.have.been.calledWith(`[${instance.toString()}]: ${warningMessage}`)
+  if (warningMessages.length > 0) {
+    it('should log warning(s)', function () {
+      expect(Logger.warn).to.have.callCount(warningMessages.length)
+      warningMessages.forEach((msg) => {
+        expect(Logger.warn).to.have.been.calledWith(`[${instance.toString()}]: ${msg}`)
+      })
     })
   } else {
     it('should not log warning', function () {

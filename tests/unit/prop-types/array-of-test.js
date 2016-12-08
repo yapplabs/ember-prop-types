@@ -30,6 +30,43 @@ const notRequiredDef = {
   typeDef: stringTypeDef
 }
 
+const shapeTypeDefs = {
+  fizz: {
+    isRequired: { required: true, type: 'string' },
+    required: false,
+    type: 'string'
+  },
+  bang: {
+    isRequired: { required: true, type: 'number' },
+    required: false,
+    type: 'number'
+  }
+}
+
+const shapeTypeDef = {
+  isRequired: {
+    required: true,
+    type: 'shape',
+    typeDefs: shapeTypeDefs
+  },
+  required: false,
+  type: 'shape',
+  typeDefs: shapeTypeDefs
+}
+
+const requiredShapeDef = {
+  required: true,
+  type: 'arrayOf',
+  typeDef: shapeTypeDef
+}
+
+const notRequiredShapeDef = {
+  isRequired: requiredShapeDef,
+  required: false,
+  type: 'arrayOf',
+  typeDef: shapeTypeDef
+}
+
 describe('Unit / validator / PropTypes.arrayOf', function () {
   const ctx = {propertyName: 'bar'}
   let sandbox, Foo
@@ -119,6 +156,100 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
         })
 
         itValidatesTheProperty(ctx, 'Expected property bar to be an array of type string')
+      })
+
+      describe('when initialized without value', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create()
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+    })
+  })
+
+  describe('when an array of a complex type (shape)', function () {
+    describe('when required', function () {
+      beforeEach(function () {
+        ctx.def = requiredShapeDef
+        Foo = Ember.Object.extend(PropTypesMixin, {
+          propTypes: {
+            bar: PropTypes.arrayOf(PropTypes.shape({
+              fizz: PropTypes.string,
+              bang: PropTypes.number
+            })).isRequired
+          }
+        })
+      })
+
+      describe('when initialized with array of valid shapes', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [{fizz: 'alpha', bang: 1}, {fizz: 'bravo', bang: 2}]})
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when initialized with array of invalid shapes', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [{foo: 'alpha'}, {bar: 2}]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type shape')
+      })
+
+      describe('when initialized with a some valid some invalid shapes', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [{fizz: 'alpha', bang: 1}, {foo: 'bar'}]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type shape')
+      })
+
+      describe('when initialized without value', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create()
+        })
+
+        itValidatesTheProperty(ctx, 'Missing required property bar')
+      })
+    })
+
+    describe('when not required', function () {
+      beforeEach(function () {
+        ctx.def = notRequiredShapeDef
+        Foo = Ember.Object.extend(PropTypesMixin, {
+          propTypes: {
+            bar: PropTypes.arrayOf(PropTypes.shape({
+              fizz: PropTypes.string,
+              bang: PropTypes.number
+            }))
+          }
+        })
+      })
+
+      describe('when initialized with array of valid shapes', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [{fizz: 'alpha', bang: 1}, {fizz: 'bravo', bang: 2}]})
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when initialized with array of invalid shapes', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [{foo: 'alpha'}, {bar: 2}]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type shape')
+      })
+
+      describe('when initialized with a some valid some invalid shapes', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [{fizz: 'alpha', bang: 1}, {foo: 'bar'}]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type shape')
       })
 
       describe('when initialized without value', function () {
