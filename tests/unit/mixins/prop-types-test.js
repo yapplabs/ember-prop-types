@@ -1,8 +1,15 @@
+/**
+ * Unit test for the PropTypesMixin
+ */
 import {expect} from 'chai'
-import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
+import Ember from 'ember'
+const {Component, Logger, Mixin} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
+import sinon from 'sinon'
 
-describe('prop-types', function () {
+import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
+
+describe('Unit / Mixins / prop-types', function () {
   let sandbox
 
   beforeEach(function () {
@@ -16,111 +23,114 @@ describe('prop-types', function () {
   describe('propTypes not defined on Ember.Object', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Object = Ember.Object.extend(PropTypesMixin, {})
-      Object.create()
+      const MyObject = Ember.Object.extend(PropTypesMixin, {})
+      MyObject.create()
     })
 
     it('does not call validateProperty', function () {
-      expect(helpers.validateProperty.called).to.be.false
+      expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
 
   describe('propTypes not defined on Ember.Component', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Component = Ember.Component.extend(PropTypesMixin, {})
-      Component.create()
+      const MyComponent = Component.extend(PropTypesMixin, {})
+      MyComponent.create()
     })
 
     it('does not call validateProperty', function () {
-      expect(helpers.validateProperty.called).to.be.false
+      expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
 
   describe('propTypes defined but empty on Ember.Object', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Object = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = Ember.Object.extend(PropTypesMixin, {
         propTypes: {}
       })
-      Object.create()
+      MyObject.create()
     })
 
     it('does not call validateProperty', function () {
-      expect(helpers.validateProperty.called).to.be.false
+      expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
 
   describe('propTypes defined but empty on Ember.Component', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Component = Ember.Component.extend(PropTypesMixin, {
+      const MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {}
       })
-      Component.create()
+      MyComponent.create()
     })
 
     it('does not call validateProperty', function () {
-      expect(helpers.validateProperty.called).to.be.false
+      expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
 
   describe('propTypes defined but unknown type on Ember.Object', function () {
     beforeEach(function () {
-      sandbox.spy(Ember.Logger, 'warn')
+      sandbox.spy(Logger, 'warn')
       sandbox.spy(helpers, 'validateProperty')
-      const Object = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.doesNotExist
         }
       })
-      Object.create()
+      MyObject.create()
     })
 
     it('does not call validateProperty', function () {
-      expect(helpers.validateProperty.called).to.be.false
+      expect(helpers.validateProperty).to.have.callCount(0)
     })
 
     it('logs warning message', function () {
-      expect(Ember.Logger.warn.called).to.be.true
+      expect(Logger.warn).to.have.callCount(1)
     })
   })
 
   describe('propTypes defined but unknown type on Ember.Component', function () {
     beforeEach(function () {
-      sandbox.spy(Ember.Logger, 'warn')
+      sandbox.spy(Logger, 'warn')
       sandbox.spy(helpers, 'validateProperty')
-      const Component = Ember.Component.extend(PropTypesMixin, {
+      const MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.doesNotExist
         }
       })
-      Component.create()
+      MyComponent.create()
     })
 
     it('does not call validateProperty', function () {
-      expect(helpers.validateProperty.called).to.be.false
+      expect(helpers.validateProperty).to.have.callCount(0)
     })
 
     it('logs warning message', function () {
-      expect(Ember.Logger.warn.called).to.be.true
+      expect(Logger.warn).to.have.callCount(1)
     })
   })
 
   describe('propTypes defined with validations present on Ember.Object', function () {
+    let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Object = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
         }
       })
-      Object.create()
+      instance = MyObject.create()
     })
 
-    it('calls validateProperty for each propType', function () {
-      expect(helpers.validateProperty.called).to.be.true
+    ;['foo', 'bar'].forEach((prop) => {
+      it(`should call validateProperty() for ${prop}`, function () {
+        expect(helpers.validateProperty).to.have.been.calledWith(instance, prop)
+      })
     })
   })
 
@@ -128,7 +138,7 @@ describe('prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Component = Ember.Component.extend(PropTypesMixin, {
+      const MyComponent = Component.extend(PropTypesMixin, {
         getDefaultProps () {
           return {
             foo: '!foo',
@@ -136,10 +146,10 @@ describe('prop-types', function () {
           }
         }
       })
-      instance = Component.create()
+      instance = MyComponent.create()
     })
 
-    it('calls validateProperty for each propType', function () {
+    it('should set defaults for each property', function () {
       expect(instance.get('foo')).to.equal('!foo')
       expect(instance.get('bar')).to.equal(647)
     })
@@ -149,27 +159,26 @@ describe('prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Mixin = Ember.Mixin.create(PropTypesMixin, {
+      const MyMixin = Mixin.create(PropTypesMixin, {
         propTypes: {
           baz: PropTypes.string,
           quux: PropTypes.number
         }
       })
 
-      const Component = Ember.Component.extend(PropTypesMixin, Mixin, {
+      const MyComponent = Component.extend(PropTypesMixin, MyMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
         }
       })
-      instance = Component.create()
+      instance = MyComponent.create()
     })
 
-    it('calls validateProperty for each propType', function () {
-      expect(helpers.validateProperty.calledWith(instance, 'foo')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'bar')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'baz')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'quux')).to.be.true
+    ;['foo', 'bar', 'baz', 'quux'].forEach((prop) => {
+      it(`should call validateProperty() for ${prop}`, function () {
+        expect(helpers.validateProperty).to.have.been.calledWith(instance, prop)
+      })
     })
   })
 
@@ -177,7 +186,7 @@ describe('prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Object = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = Ember.Object.extend(PropTypesMixin, {
         getDefaultProps () {
           return {
             foo: '!foo',
@@ -185,10 +194,10 @@ describe('prop-types', function () {
           }
         }
       })
-      instance = Object.create()
+      instance = MyObject.create()
     })
 
-    it('has defaults for each property', function () {
+    it('should set defaults for each property', function () {
       expect(instance.get('foo')).to.equal('!foo')
       expect(instance.get('bar')).to.equal(647)
     })
@@ -198,7 +207,7 @@ describe('prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Component = Ember.Component.extend(PropTypesMixin, {
+      const MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
@@ -210,15 +219,16 @@ describe('prop-types', function () {
           }
         }
       })
-      instance = Component.create()
+      instance = MyComponent.create()
     })
 
-    it('calls validateProperty for each property', function () {
-      expect(helpers.validateProperty.calledWith(instance, 'foo')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'bar')).to.be.true
+    ;['foo', 'bar'].forEach((prop) => {
+      it(`should call validateProperty() for ${prop}`, function () {
+        expect(helpers.validateProperty).to.have.been.calledWith(instance, prop)
+      })
     })
 
-    it('has defaults for each property', function () {
+    it('should set defaults for each property', function () {
       expect(instance.get('foo')).to.equal('!foo')
       expect(instance.get('bar')).to.equal(647)
     })
@@ -243,12 +253,13 @@ describe('prop-types', function () {
       instance = Object.create()
     })
 
-    it('calls validateProperty for each property', function () {
-      expect(helpers.validateProperty.calledWith(instance, 'foo')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'bar')).to.be.true
+    ;['foo', 'bar'].forEach((prop) => {
+      it(`should call validateProperty() for ${prop}`, function () {
+        expect(helpers.validateProperty).to.have.been.calledWith(instance, prop)
+      })
     })
 
-    it('has defaults for each property', function () {
+    it('should set defaults for each property', function () {
       expect(instance.get('foo')).to.equal('!foo')
       expect(instance.get('bar')).to.equal(647)
     })
@@ -258,7 +269,7 @@ describe('prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Component = Ember.Component.extend(PropTypesMixin, {
+      const MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
@@ -270,17 +281,18 @@ describe('prop-types', function () {
           }
         }
       })
-      instance = Component.create()
+      instance = MyComponent.create()
     })
 
-    it('calls validateProperty for each property', function () {
+    ;['foo', 'bar'].forEach((prop) => {
+      it(`should call validateProperty() for ${prop}`, function () {
+        expect(helpers.validateProperty).to.have.been.calledWith(instance, prop)
+      })
+    })
+
+    it('should set defaults for each property', function () {
       expect(instance.get('foo')).to.equal('!foo')
       expect(instance.get('bar')).to.equal(647)
-    })
-
-    it('has defaults for each property', function () {
-      expect(helpers.validateProperty.calledWith(instance, 'foo')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'bar')).to.be.true
     })
   })
 
@@ -288,7 +300,7 @@ describe('prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Mixin = Ember.Mixin.create(PropTypesMixin, {
+      const MyMixin = Mixin.create(PropTypesMixin, {
         propTypes: {
           baz: PropTypes.string,
           quux: PropTypes.number
@@ -302,7 +314,7 @@ describe('prop-types', function () {
         }
       })
 
-      const Component = Ember.Component.extend(PropTypesMixin, Mixin, {
+      const MyComponent = Component.extend(PropTypesMixin, MyMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
@@ -314,17 +326,16 @@ describe('prop-types', function () {
           }
         }
       })
-      instance = Component.create()
+      instance = MyComponent.create()
     })
 
-    it('calls validateProperty for each propType', function () {
-      expect(helpers.validateProperty.calledWith(instance, 'foo')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'bar')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'baz')).to.be.true
-      expect(helpers.validateProperty.calledWith(instance, 'quux')).to.be.true
+    ;['foo', 'bar', 'baz', 'quux'].forEach((prop) => {
+      it(`should call validateProperty() for ${prop}`, function () {
+        expect(helpers.validateProperty).to.have.been.calledWith(instance, prop)
+      })
     })
 
-    it('has default values for each property', function () {
+    it('should set defaults for each property', function () {
       expect(instance.get('foo')).to.equal('!foo')
       expect(instance.get('bar')).to.equal(647)
       expect(instance.get('baz')).to.equal('!baz')

@@ -1,8 +1,12 @@
-import {expect} from 'chai'
+/**
+ * Unit test for the PropTypes.arrayOf validator
+ */
 import Ember from 'ember'
-const {Logger} = Ember
-import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
-import {afterEach, beforeEach, describe, it} from 'mocha'
+import {afterEach, beforeEach, describe} from 'mocha'
+import sinon from 'sinon'
+
+import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const stringTypeDef = {
   isRequired: {
@@ -26,205 +30,103 @@ const notRequiredDef = {
   typeDef: stringTypeDef
 }
 
-describe('PropTypes.arrayOf', function () {
-  let sandbox
+describe('Unit / validator / PropTypes.arrayOf', function () {
+  const ctx = {propertyName: 'bar'}
+  let sandbox, Foo
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    sandbox.spy(helpers, 'validateProperty')
-    sandbox.spy(helpers, 'validatePropTypes')
-    sandbox.stub(Logger, 'warn')
+    spyOnValidateMethods(sandbox)
   })
 
   afterEach(function () {
     sandbox.restore()
   })
 
-  describe('when required', function () {
-    let Foo
-
-    beforeEach(function () {
-      Foo = Ember.Object.extend(PropTypesMixin, {
-        propTypes: {
-          bar: PropTypes.arrayOf(PropTypes.string).isRequired
-        }
-      })
-    })
-
-    describe('when initialized with array of strings', function () {
-      let instance
-
+  describe('when an array of a simple type (string)', function () {
+    describe('when required', function () {
       beforeEach(function () {
-        instance = Foo.create({bar: ['alpha', 'bravo']})
+        ctx.def = requiredDef
+        Foo = Ember.Object.extend(PropTypesMixin, {
+          propTypes: {
+            bar: PropTypes.arrayOf(PropTypes.string).isRequired
+          }
+        })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
+      describe('when initialized with array of strings', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: ['alpha', 'bravo']})
+        })
+
+        itValidatesTheProperty(ctx)
       })
 
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
+      describe('when initialized with array of booleans', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [true, false]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type string')
       })
 
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
+      describe('when initialized with a heterogenous array', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: ['alpha', false]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type string')
+      })
+
+      describe('when initialized without value', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create()
+        })
+
+        itValidatesTheProperty(ctx, 'Missing required property bar')
       })
     })
 
-    describe('when initialized with array of booleans', function () {
-      let instance
-
+    describe('when not required', function () {
       beforeEach(function () {
-        instance = Foo.create({bar: [true, false]})
+        ctx.def = notRequiredDef
+        Foo = Ember.Object.extend(PropTypesMixin, {
+          propTypes: {
+            bar: PropTypes.arrayOf(PropTypes.string)
+          }
+        })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
+      describe('when initialized with array of strings', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: ['alpha', 'bravo']})
+        })
+
+        itValidatesTheProperty(ctx)
       })
 
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
+      describe('when initialized with array of booleans', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: [true, false]})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type string')
       })
 
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be an array of type string'])
-      })
-    })
+      describe('when initialized with a heterogenous array', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create({bar: ['alpha', false]})
+        })
 
-    describe('when initialized with a heterogenous array', function () {
-      let instance
-
-      beforeEach(function () {
-        instance = Foo.create({bar: ['alpha', false]})
+        itValidatesTheProperty(ctx, 'Expected property bar to be an array of type string')
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
+      describe('when initialized without value', function () {
+        beforeEach(function () {
+          ctx.instance = Foo.create()
+        })
 
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be an array of type string'])
-      })
-    })
-
-    describe('when initialized without value', function () {
-      let instance
-
-      beforeEach(function () {
-        instance = Foo.create()
-      })
-
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Missing required property bar'])
-      })
-    })
-  })
-
-  describe('when not required', function () {
-    let Foo
-
-    beforeEach(function () {
-      Foo = Ember.Object.extend(PropTypesMixin, {
-        propTypes: {
-          bar: PropTypes.arrayOf(PropTypes.string)
-        }
-      })
-    })
-
-    describe('when initialized with array of strings', function () {
-      let instance
-
-      beforeEach(function () {
-        instance = Foo.create({bar: ['alpha', 'bravo']})
-      })
-
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
-    })
-
-    describe('when initialized with array of booleans', function () {
-      let instance
-
-      beforeEach(function () {
-        instance = Foo.create({bar: [true, false]})
-      })
-
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be an array of type string'])
-      })
-    })
-
-    describe('when initialized with a heterogenous array', function () {
-      let instance
-
-      beforeEach(function () {
-        instance = Foo.create({bar: ['alpha', false]})
-      })
-
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be an array of type string'])
-      })
-    })
-
-    describe('when initialized without value', function () {
-      let instance
-
-      beforeEach(function () {
-        instance = Foo.create()
-      })
-
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
+        itValidatesTheProperty(ctx)
       })
     })
   })

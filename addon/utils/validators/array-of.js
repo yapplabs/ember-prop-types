@@ -1,5 +1,7 @@
-import Ember from 'ember'
-const {Logger} = Ember
+/**
+ * The PropTypes.arrayOf validator
+ */
+import * as logger from '../logger'
 const {isArray} = Array
 
 export default function (validators, ctx, name, value, def, logErrors) {
@@ -10,7 +12,7 @@ export default function (validators, ctx, name, value, def, logErrors) {
   })
 
   if (!valid && logErrors) {
-    Logger.warn(`Expected property ${name} to be an array of type ${type}`)
+    logger.warn(ctx, `Expected property ${name} to be an array of type ${type}`)
   }
 
   return valid

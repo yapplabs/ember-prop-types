@@ -1,17 +1,20 @@
-import {expect} from 'chai'
+/**
+ * Unit test for the PropTypes.shape validator
+ */
 import Ember from 'ember'
-const {Logger} = Ember
-import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
-import {afterEach, beforeEach, describe, it} from 'mocha'
+import {afterEach, beforeEach, describe} from 'mocha'
+import sinon from 'sinon'
 
-describe('PropTypes.shape', function () {
-  let sandbox
+import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
+
+describe('Unit / validator / PropTypes.shape', function () {
+  const ctx = {propertyName: 'bar'}
+  let sandbox, Foo
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    sandbox.spy(helpers, 'validateProperty')
-    sandbox.spy(helpers, 'validatePropTypes')
-    sandbox.stub(Logger, 'warn')
+    spyOnValidateMethods(sandbox)
   })
 
   afterEach(function () {
@@ -19,10 +22,8 @@ describe('PropTypes.shape', function () {
   })
 
   describe('when required and sub-property required', function () {
-    let def, Foo
-
     beforeEach(function () {
-      def = {
+      ctx.def = {
         required: true,
         type: 'shape',
         typeDefs: {
@@ -43,125 +44,59 @@ describe('PropTypes.shape', function () {
     })
 
     describe('when initialized with correct shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             baz: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with shape missing sub-property', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {}
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized with incorrect shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             spam: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized with number value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Missing required property bar'])
-      })
+      itValidatesTheProperty(ctx, 'Missing required property bar')
     })
   })
 
   describe('when required and sub-property not required', function () {
-    let def, Foo
-
     beforeEach(function () {
-      def = {
+      ctx.def = {
         required: true,
         type: 'shape',
         typeDefs: {
@@ -186,124 +121,59 @@ describe('PropTypes.shape', function () {
     })
 
     describe('when initialized with correct shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             baz: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with shape missing sub-property', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {}
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with incorrect shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             spam: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized with number value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Missing required property bar'])
-      })
+      itValidatesTheProperty(ctx, 'Missing required property bar')
     })
   })
 
   describe('when not required and sub-property is required', function () {
-    let def, Foo
-
     beforeEach(function () {
-      def = {
+      ctx.def = {
         isRequired: {
           required: true,
           type: 'shape',
@@ -334,124 +204,59 @@ describe('PropTypes.shape', function () {
     })
 
     describe('when initialized with correct shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             baz: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with shape missing sub-property', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {}
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized with incorrect shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             spam: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized with number value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
   })
 
   describe('when not required and sub-property is not required', function () {
-    let def, Foo
-
     beforeEach(function () {
-      def = {
+      ctx.def = {
         isRequired: {
           required: true,
           type: 'shape',
@@ -490,115 +295,53 @@ describe('PropTypes.shape', function () {
     })
 
     describe('when initialized with correct shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             baz: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with shape missing sub-property', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {}
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with incorrect shape value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({
+        ctx.instance = Foo.create({
           bar: {
             spam: 'test'
           }
         })
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized with number value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match the given shape'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', def])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
   })
 })

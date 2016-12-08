@@ -1,8 +1,9 @@
+/**
+ * The PropTypesMixin definition
+ */
 import Ember from 'ember'
-const {
-  typeOf
-} = Ember
-import PropTypes, {validators} from '../utils/prop-types'
+const {typeOf} = Ember
+import PropTypes, {logger, validators} from '../utils/prop-types'
 import config from 'ember-get-config'
 
 const helpers = {
@@ -15,7 +16,7 @@ const helpers = {
         return
       }
 
-      Ember.Logger.warn(`Missing required property ${name}`)
+      logger.warn(ctx, `Missing required property ${name}`)
 
       return
     }
@@ -23,7 +24,7 @@ const helpers = {
     if (def.type in validators) {
       validators[def.type](ctx, name, value, def, true)
     } else {
-      Ember.Logger.warn(`Unknown propType ${def.type}`)
+      logger.warn(ctx, `Unknown propType ${def.type}`)
     }
   },
   /* eslint-enable complexity */
@@ -43,7 +44,7 @@ const helpers = {
         const def = propType[name]
 
         if (def === undefined) {
-          Ember.Logger.warn(`propType for ${name} is unknown`)
+          logger.warn(ctx, `propType for ${name} is unknown`)
           return
         }
 

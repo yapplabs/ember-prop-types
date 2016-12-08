@@ -1,8 +1,12 @@
-import {expect} from 'chai'
+/**
+ * Unit test for the PropTypes.oneOfType validator
+ */
 import Ember from 'ember'
-const {Logger} = Ember
-import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
-import {afterEach, beforeEach, describe, it} from 'mocha'
+import {afterEach, beforeEach, describe} from 'mocha'
+import sinon from 'sinon'
+
+import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const numberTypeDef = {
   isRequired: {
@@ -35,14 +39,13 @@ const notRequiredDef = {
   typeDefs: [numberTypeDef, stringTypeDef]
 }
 
-describe('PropTypes.oneOfType', function () {
-  let sandbox
+describe('Unit / validator / PropTypes.oneOfType', function () {
+  const ctx = {propertyName: 'bar'}
+  let sandbox, Foo
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    sandbox.spy(helpers, 'validateProperty')
-    sandbox.spy(helpers, 'validatePropTypes')
-    sandbox.stub(Logger, 'warn')
+    spyOnValidateMethods(sandbox)
   })
 
   afterEach(function () {
@@ -50,9 +53,8 @@ describe('PropTypes.oneOfType', function () {
   })
 
   describe('when required', function () {
-    let Foo
-
     beforeEach(function () {
+      ctx.def = requiredDef
       Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType([
@@ -64,85 +66,35 @@ describe('PropTypes.oneOfType', function () {
     })
 
     describe('when initialized with number instance', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with string instance', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 'test'})
+        ctx.instance = Foo.create({bar: 'test'})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with boolean instance', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: true})
+        ctx.instance = Foo.create({bar: true})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match expected types: number, string'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match expected types: number, string')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Missing required property bar'])
-      })
+      itValidatesTheProperty(ctx, 'Missing required property bar')
     })
   })
 
@@ -150,6 +102,7 @@ describe('PropTypes.oneOfType', function () {
     let Foo
 
     beforeEach(function () {
+      ctx.def = notRequiredDef
       Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType([
@@ -161,84 +114,35 @@ describe('PropTypes.oneOfType', function () {
     })
 
     describe('when initialized with number instance', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with string instance', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 'test'})
+        ctx.instance = Foo.create({bar: 'test'})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with boolean instance', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: true})
+        ctx.instance = Foo.create({bar: true})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Property bar does not match expected types: number, string'])
-      })
+      itValidatesTheProperty(ctx, 'Property bar does not match expected types: number, string')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
   })
 })
