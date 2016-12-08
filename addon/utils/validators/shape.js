@@ -22,16 +22,27 @@ export default function (validators, ctx, name, value, def, logErrors) {
   let valid = Object.keys(typeDefs).every((key) => {
     const typeDef = typeDefs[key]
 
-    if (!typeDef.required && value[key] === undefined) {
-      return true
+    const objectValue = Ember.get(value, key)
+    if (objectValue === undefined) {
+      if (!typeDef.required) {
+        return true
+      } else {
+        if (logErrors) {
+          logger.warn(ctx, `Property ${name} is missing required property ${key}`)
+        }
+        return false
+      }
     }
 
-    const objectValue = Ember.get(value, key)
-    return validators[typeDef.type](ctx, key, objectValue, typeDef, false)
+    return validators[typeDef.type](ctx, `${name}.${key}`, objectValue, typeDef, logErrors)
   })
 
   valid = valid && Object.keys(value).every((key) => {
-    return key in typeDefs
+    const keyIsKnown = (key in typeDefs)
+    if (!keyIsKnown && logErrors) {
+      logger.warn(ctx, `Property ${name} has an unknown key: ${key}`)
+    }
+    return keyIsKnown
   })
 
   if (!valid && logErrors) {

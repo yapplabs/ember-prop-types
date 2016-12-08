@@ -7,8 +7,8 @@ const {isArray} = Array
 export default function (validators, ctx, name, value, def, logErrors) {
   const typeDef = def.typeDef
 
-  const valid = isArray(value) && value.every((item) => {
-    return validators[typeDef.type](ctx, name, item, typeDef, false)
+  const valid = isArray(value) && value.every((item, index) => {
+    return validators[typeDef.type](ctx, `${name}[${index}]`, item, typeDef, logErrors)
   })
 
   if (!valid && logErrors) {
