@@ -1,3 +1,10 @@
+# 3.1.0
+
+* **Fixed** https://github.com/ciena-blueplanet/ember-prop-types/issues/76
+* **Refactored** tests
+* **Updated** test tools
+
+
 # 3.0.2
 
 * Improved demo by adding license, link to Github repository, contributors, syntax highlighting, and a brief summary.
