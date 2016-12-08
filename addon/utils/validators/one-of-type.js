@@ -1,13 +1,17 @@
+/**
+ * The PropTypes.oneOfType validator
+ */
+
 import Ember from 'ember'
-const {Logger, typeOf} = Ember
+const {typeOf} = Ember
+
+import * as logger from '../logger'
 
 export default function (validators, ctx, name, value, def) {
   let valid = false
 
   if (typeOf(def.typeDefs) !== 'array') {
-    Logger.warn(
-      'PropTypes.oneOfType() requires an array of types to be passed in as an argument'
-    )
+    logger.warn(ctx, 'PropTypes.oneOfType() requires an array of types to be passed in as an argument')
 
     return valid
   }
@@ -23,7 +27,7 @@ export default function (validators, ctx, name, value, def) {
 
   if (!valid) {
     const types = def.typeDefs.map((typeDef) => typeDef.type)
-    Logger.warn(`Property ${name} does not match expected types: ${types.join(', ')}`)
+    logger.warn(ctx, `Property ${name} does not match expected types: ${types.join(', ')}`)
   }
 
   return valid

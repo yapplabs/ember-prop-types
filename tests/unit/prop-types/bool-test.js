@@ -1,8 +1,12 @@
-import {expect} from 'chai'
+/**
+ * Unit test for the PropTypes.bool validator
+ */
 import Ember from 'ember'
-const {Logger} = Ember
-import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
-import {afterEach, beforeEach, describe, it} from 'mocha'
+import {afterEach, beforeEach, describe} from 'mocha'
+import sinon from 'sinon'
+
+import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const requiredDef = {
   required: true,
@@ -15,14 +19,13 @@ const notRequiredDef = {
   type: 'bool'
 }
 
-describe('PropTypes.bool', function () {
-  let sandbox
+describe('Unit / validator / PropTypes.bool', function () {
+  const ctx = {propertyName: 'bar'}
+  let sandbox, Foo
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
-    sandbox.spy(helpers, 'validateProperty')
-    sandbox.spy(helpers, 'validatePropTypes')
-    sandbox.stub(Logger, 'warn')
+    spyOnValidateMethods(sandbox)
   })
 
   afterEach(function () {
@@ -30,9 +33,8 @@ describe('PropTypes.bool', function () {
   })
 
   describe('when required', function () {
-    let Foo
-
     beforeEach(function () {
+      ctx.def = requiredDef
       Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.bool.isRequired
@@ -41,72 +43,33 @@ describe('PropTypes.bool', function () {
     })
 
     describe('when initialized with boolean value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: true})
+        ctx.instance = Foo.create({bar: true})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with number value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be a boolean'])
-      })
+      itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', requiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Missing required property bar'])
-      })
+      itValidatesTheProperty(ctx, 'Missing required property bar')
     })
   })
 
   describe('when not required', function () {
-    let Foo
-
     beforeEach(function () {
+      ctx.def = notRequiredDef
       Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.bool
@@ -115,64 +78,27 @@ describe('PropTypes.bool', function () {
     })
 
     describe('when initialized with boolean value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: true})
+        ctx.instance = Foo.create({bar: true})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
 
     describe('when initialized with number value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create({bar: 1})
+        ctx.instance = Foo.create({bar: 1})
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('logs warning', function () {
-        expect(Logger.warn.callCount).to.equal(1)
-        expect(Logger.warn.lastCall.args).to.eql(['Expected property bar to be a boolean'])
-      })
+      itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
     })
 
     describe('when initialized without value', function () {
-      let instance
-
       beforeEach(function () {
-        instance = Foo.create()
+        ctx.instance = Foo.create()
       })
 
-      it('validates prop-types for instance', function () {
-        expect(helpers.validatePropTypes.lastCall.args).to.eql([instance])
-      })
-
-      it('validates property "bar"', function () {
-        expect(helpers.validateProperty.lastCall.args).to.eql([instance, 'bar', notRequiredDef])
-      })
-
-      it('does not log warning', function () {
-        expect(Logger.warn.callCount).to.equal(0)
-      })
+      itValidatesTheProperty(ctx)
     })
   })
 })

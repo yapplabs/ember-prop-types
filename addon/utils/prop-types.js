@@ -1,3 +1,4 @@
+import * as logger from './logger'
 import validators from './validators'
 
 const PropTypes = {}
@@ -62,3 +63,4 @@ PropTypes.shape = function (typeDefs) {
 
 export default PropTypes
 export {validators}
+export {logger}

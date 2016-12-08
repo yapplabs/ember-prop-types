@@ -17,7 +17,11 @@ module.exports = function (defaults) {
   })
 
   if (app.env === 'test') {
-    app.import('bower_components/sinonjs/sinon.js')
+    ;[
+      'bower_components/sinon-chai/lib/sinon-chai.js'
+    ].forEach((path) => {
+      app.import(path, {type: 'test'})
+    })
   }
 
   return app.toTree()

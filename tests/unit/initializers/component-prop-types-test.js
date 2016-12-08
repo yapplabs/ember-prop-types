@@ -1,39 +1,35 @@
-/* jshint expr:true */
-import { expect } from 'chai'
-import {
-  describe,
-  it,
-  beforeEach
-} from 'mocha'
+/**
+ * Unit test for the component-prop-types initializer
+ */
+import {expect} from 'chai'
 import Ember from 'ember'
-import { initialize } from 'ember-prop-types/initializers/component-prop-types'
+const {Application, Component, run} = Ember
+import {beforeEach, describe, it} from 'mocha'
+
+import {initialize} from 'ember-prop-types/initializers/component-prop-types'
 import PropTypesMixin from 'ember-prop-types/mixins/prop-types'
 
-describe('ComponentPropTypesInitializer', function () {
+describe('Unit / Initializers / component-prop-types', function () {
   let container, application
 
   beforeEach(function () {
-    Ember.run(function () {
-      application = Ember.Application.create()
+    run(() => {
+      application = Application.create()
       container = application.__container__
       application.deferReadiness()
     })
+
+    initialize(container, application)
   })
 
-  // Replace this with your real tests.
-  it('works', function () {
-    initialize(container, application)
+  describe('when a new component is created', function () {
+    let component
+    beforeEach(function () {
+      component = Component.create()
+    })
 
-    // you would normally confirm the results of the initializer here
-    expect(true).to.be.ok
-  })
-
-  it('has the expected Mixins', function () {
-    initialize(container, application)
-    const newComponent = Ember.Component.create()
-    expect(
-      PropTypesMixin.detect(newComponent),
-      'PropTypesMixin Mixin is present'
-    ).to.be.true
+    it('should have the PropTypesMixin', function () {
+      expect(PropTypesMixin.detect(component)).to.equal(true)
+    })
   })
 })

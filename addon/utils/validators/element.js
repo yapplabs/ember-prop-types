@@ -1,13 +1,16 @@
+/**
+ * The PropTypes.element validator
+ */
+
 /* global Element */
 
-import Ember from 'ember'
-const {Logger} = Ember
+import * as logger from '../logger'
 
 export default function (ctx, name, value, def, logErrors) {
   const valid = value instanceof Element
 
   if (!valid && logErrors) {
-    Logger.warn(`Expected property ${name} to be an element`)
+    logger.warn(ctx, `Expected property ${name} to be an element`)
   }
 
   return valid
