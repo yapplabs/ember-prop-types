@@ -1,3 +1,9 @@
+# 3.1.1
+
+* **Fixed** a bug in the `PropTypes.arrayOf` validator when used in conjunction with the `PropTypes.shape` validator. 
+
+
+
 # 3.1.0
 
 * **Fixed** https://github.com/ciena-blueplanet/ember-prop-types/issues/76
