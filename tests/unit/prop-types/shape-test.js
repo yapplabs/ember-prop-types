@@ -62,19 +62,44 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(
+        ctx,
+        'Property bar is missing required property baz',
+        'Property bar does not match the given shape'
+      )
     })
 
     describe('when initialized with incorrect shape value', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({
           bar: {
-            spam: 'test'
+            baz: 1
           }
         })
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(
+        ctx,
+        'Expected property bar.baz to be a string',
+        'Property bar does not match the given shape'
+      )
+    })
+
+    describe('when initialized with an extra property in shape', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          bar: {
+            baz: 'test',
+            spam: 'is yummy'
+          }
+        })
+      })
+
+      itValidatesTheProperty(
+        ctx,
+        'Property bar has an unknown key: spam',
+        'Property bar does not match the given shape'
+      )
     })
 
     describe('when initialized with number value', function () {
@@ -146,12 +171,32 @@ describe('Unit / validator / PropTypes.shape', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({
           bar: {
+            baz: 1
+          }
+        })
+      })
+
+      itValidatesTheProperty(
+        ctx,
+        'Expected property bar.baz to be a string',
+        'Property bar does not match the given shape'
+      )
+    })
+
+    describe('when initialized with an extra property in the shape', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          bar: {
             spam: 'test'
           }
         })
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(
+        ctx,
+        'Property bar has an unknown key: spam',
+        'Property bar does not match the given shape'
+      )
     })
 
     describe('when initialized with number value', function () {
@@ -222,19 +267,44 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(
+        ctx,
+        'Property bar is missing required property baz',
+        'Property bar does not match the given shape'
+      )
     })
 
     describe('when initialized with incorrect shape value', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({
           bar: {
-            spam: 'test'
+            baz: 1
           }
         })
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(
+        ctx,
+        'Expected property bar.baz to be a string',
+        'Property bar does not match the given shape'
+      )
+    })
+
+    describe('when initialized with an extra property in the shape', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          bar: {
+            baz: 'test',
+            spam: 'is yummy'
+          }
+        })
+      })
+
+      itValidatesTheProperty(
+        ctx,
+        'Property bar has an unknown key: spam',
+        'Property bar does not match the given shape'
+      )
     })
 
     describe('when initialized with number value', function () {
@@ -320,12 +390,33 @@ describe('Unit / validator / PropTypes.shape', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({
           bar: {
-            spam: 'test'
+            baz: 1
           }
         })
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(
+        ctx,
+        'Expected property bar.baz to be a string',
+        'Property bar does not match the given shape'
+      )
+    })
+
+    describe('when initialized with an extra property in the shape', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          bar: {
+            baz: 'test',
+            spam: 'is yummy'
+          }
+        })
+      })
+
+      itValidatesTheProperty(
+        ctx,
+        'Property bar has an unknown key: spam',
+        'Property bar does not match the given shape'
+      )
     })
 
     describe('when initialized with number value', function () {
