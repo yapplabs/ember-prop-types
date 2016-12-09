@@ -1,3 +1,7 @@
+# 3.2.0
+
+* **Added** more detailed messaging for sub-property validations when using `PropTypes.arrayOf` or `PropTypes.shape`
+
 # 3.1.1
 
 * **Fixed** a bug in the `PropTypes.arrayOf` validator when used in conjunction with the `PropTypes.shape` validator. 
