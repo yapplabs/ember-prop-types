@@ -342,4 +342,28 @@ describe('Unit / Mixins / prop-types', function () {
       expect(instance.get('quux')).to.equal('!quux')
     })
   })
+
+  describe('applies defaults when user set value is undefined', function () {
+    let instance
+
+    beforeEach(function () {
+      sandbox.spy(helpers, 'validateProperty')
+
+      const MyObject = Ember.Object.extend(PropTypesMixin, {
+        getDefaultProps () {
+          return {
+            foo: 'bar'
+          }
+        }
+      })
+
+      instance = MyObject.create({
+        foo: undefined
+      })
+    })
+
+    it('should set defaults for each property', function () {
+      expect(instance.get('foo')).to.equal('bar')
+    })
+  })
 })
