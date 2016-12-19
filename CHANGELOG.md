@@ -1,3 +1,8 @@
+# 3.2.1
+
+* **Fixed** bug where defaults weren't being applied when consumer passes in `undefined` for a property with defaults.
+
+
 # 3.2.0
 
 * **Added** more detailed messaging for sub-property validations when using `PropTypes.arrayOf` or `PropTypes.shape`
