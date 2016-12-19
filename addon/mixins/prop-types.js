@@ -74,7 +74,9 @@ export default Ember.Mixin.create({
 
       const defaultProps = propsFunction.apply(this)
       keys.forEach((key) => {
-        delete defaultProps[key]
+        if (this.get(key) !== undefined) {
+          delete defaultProps[key]
+        }
       })
 
       this.setProperties(defaultProps)
