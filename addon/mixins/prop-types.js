@@ -2,9 +2,10 @@
  * The PropTypesMixin definition
  */
 import Ember from 'ember'
-const {typeOf} = Ember
-import PropTypes, {logger, validators} from '../utils/prop-types'
+const {Mixin, getWithDefault, typeOf} = Ember
 import config from 'ember-get-config'
+
+import PropTypes, {logger, validators} from '../utils/prop-types'
 
 const helpers = {
   /* eslint-disable complexity */
@@ -48,13 +49,19 @@ const helpers = {
           return
         }
 
+        if (getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)) {
+          ctx.addObserver(name, ctx, function () {
+            helpers.validateProperty(this, name, def)
+          })
+        }
+
         helpers.validateProperty(ctx, name, def)
       })
     })
   }
 }
 
-export default Ember.Mixin.create({
+export default Mixin.create({
   concatenatedProperties: ['propTypes', 'getDefaultProps'],
 
   getDefaultProps () {
