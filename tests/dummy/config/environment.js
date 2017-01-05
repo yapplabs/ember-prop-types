@@ -10,7 +10,11 @@ module.exports = function (environment) {
     ],
     environment: environment,
     locationType: 'auto',
-    modulePrefix: 'dummy'
+    modulePrefix: 'dummy',
+
+    'ember-prop-types': {
+      validateOnUpdate: true
+    }
   }
 
   switch (environment) {
