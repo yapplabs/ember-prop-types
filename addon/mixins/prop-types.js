@@ -49,6 +49,10 @@ const helpers = {
           return
         }
 
+        ctx.addObserver(name, ctx, function () {
+          helpers.validateProperty(this, name, def)
+        })
+
         helpers.validateProperty(ctx, name, def)
       })
     })
