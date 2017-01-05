@@ -2,6 +2,7 @@
  * Unit test for the PropTypes.bool validator
  */
 import Ember from 'ember'
+const {Logger} = Ember
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -48,6 +49,60 @@ describe('Unit / validator / PropTypes.bool', function () {
       })
 
       itValidatesTheProperty(ctx)
+
+      describe('when updated with array value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', [])
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with boolean value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', false)
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when updated with null value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', null)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with number value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 2)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with object value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', {})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with string value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 'baz')
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
     })
 
     describe('when initialized with number value', function () {
@@ -56,6 +111,60 @@ describe('Unit / validator / PropTypes.bool', function () {
       })
 
       itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+
+      describe('when updated with array value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', [])
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with boolean value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', false)
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when updated with null value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', null)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with number value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 2)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with object value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', {})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with string value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 'baz')
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
     })
 
     describe('when initialized without value', function () {
@@ -64,6 +173,60 @@ describe('Unit / validator / PropTypes.bool', function () {
       })
 
       itValidatesTheProperty(ctx, 'Missing required property bar')
+
+      describe('when updated with array value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', [])
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with boolean value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', false)
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when updated with null value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', null)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with number value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 2)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with object value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', {})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with string value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 'baz')
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
     })
   })
 
@@ -83,6 +246,60 @@ describe('Unit / validator / PropTypes.bool', function () {
       })
 
       itValidatesTheProperty(ctx)
+
+      describe('when updated with array value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', [])
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with boolean value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', false)
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when updated with null value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', null)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with number value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 2)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with object value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', {})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with string value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 'baz')
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
     })
 
     describe('when initialized with number value', function () {
@@ -91,6 +308,60 @@ describe('Unit / validator / PropTypes.bool', function () {
       })
 
       itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+
+      describe('when updated with array value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', [])
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with boolean value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', false)
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when updated with null value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', null)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with number value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 2)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with object value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', {})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with string value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 'baz')
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
     })
 
     describe('when initialized without value', function () {
@@ -99,6 +370,60 @@ describe('Unit / validator / PropTypes.bool', function () {
       })
 
       itValidatesTheProperty(ctx)
+
+      describe('when updated with array value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', [])
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with boolean value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', false)
+        })
+
+        itValidatesTheProperty(ctx)
+      })
+
+      describe('when updated with null value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', null)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with number value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 2)
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with object value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', {})
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
+
+      describe('when updated with string value', function () {
+        beforeEach(function () {
+          Logger.warn.reset()
+          ctx.instance.set('bar', 'baz')
+        })
+
+        itValidatesTheProperty(ctx, 'Expected property bar to be a boolean')
+      })
     })
   })
 })
