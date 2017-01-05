@@ -32,12 +32,12 @@ const notRequiredDef = {
 
 const shapeTypeDefs = {
   fizz: {
-    isRequired: { required: true, type: 'string' },
+    isRequired: {required: true, type: 'string'},
     required: false,
     type: 'string'
   },
   bang: {
-    isRequired: { required: true, type: 'number' },
+    isRequired: {required: true, type: 'number'},
     required: false,
     type: 'number'
   }

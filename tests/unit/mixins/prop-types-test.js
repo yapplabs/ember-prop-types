@@ -7,7 +7,7 @@ const {Component, Logger, Mixin} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import PropTypesMixin, {helpers, PropTypes} from 'ember-prop-types/mixins/prop-types'
+import PropTypesMixin, {PropTypes, helpers} from 'ember-prop-types/mixins/prop-types'
 
 describe('Unit / Mixins / prop-types', function () {
   let sandbox

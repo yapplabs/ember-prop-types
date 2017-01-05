@@ -3,7 +3,7 @@
  */
 
 import Ember from 'ember'
-const {typeOf} = Ember
+const {get, typeOf} = Ember
 
 import * as logger from '../logger'
 
@@ -22,7 +22,7 @@ export default function (validators, ctx, name, value, def, logErrors) {
   let valid = Object.keys(typeDefs).every((key) => {
     const typeDef = typeDefs[key]
 
-    const objectValue = Ember.get(value, key)
+    const objectValue = get(value, key)
     if (objectValue === undefined) {
       if (!typeDef.required) {
         return true

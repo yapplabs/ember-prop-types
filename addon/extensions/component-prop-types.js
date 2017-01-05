@@ -1,9 +1,7 @@
 import Ember from 'ember'
-import PropTypeMixin from '../mixins/prop-types'
+const {Component} = Ember
 
-const {
-  Component
-} = Ember
+import PropTypeMixin from '../mixins/prop-types'
 
 /**
  * @module

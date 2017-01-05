@@ -1,6 +1,5 @@
-import Ember from 'ember'
+import Ember from 'ember' // eslint-disable-line
 
-const assign = Ember.assign || Object.assign || Ember.merge
 import any from './any'
 import array from './array'
 import arrayOf from './array-of'
@@ -17,6 +16,8 @@ import oneOfType from './one-of-type'
 import shape from './shape'
 import string from './string'
 import symbol from './symbol'
+
+const assign = Object.assign || Ember.assign || Ember.merge // eslint-disable-line
 
 const validators = {
   any,
