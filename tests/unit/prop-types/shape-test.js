@@ -52,7 +52,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with shape missing sub-property', function () {
@@ -64,6 +64,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Property bar is missing required property baz',
         'Property bar does not match the given shape'
       )
@@ -80,6 +81,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Expected property bar.baz to be a string',
         'Property bar does not match the given shape'
       )
@@ -97,6 +99,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Property bar has an unknown key: spam',
         'Property bar does not match the given shape'
       )
@@ -107,7 +110,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create({bar: 1})
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(ctx, false, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
@@ -115,7 +118,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx, 'Missing required property bar')
+      itValidatesTheProperty(ctx, false, 'Missing required property bar')
     })
   })
 
@@ -154,7 +157,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with shape missing sub-property', function () {
@@ -164,7 +167,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with incorrect shape value', function () {
@@ -178,6 +181,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Expected property bar.baz to be a string',
         'Property bar does not match the given shape'
       )
@@ -194,6 +198,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Property bar has an unknown key: spam',
         'Property bar does not match the given shape'
       )
@@ -204,7 +209,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create({bar: 1})
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(ctx, false, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
@@ -212,7 +217,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx, 'Missing required property bar')
+      itValidatesTheProperty(ctx, false, 'Missing required property bar')
     })
   })
 
@@ -257,7 +262,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with shape missing sub-property', function () {
@@ -269,6 +274,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Property bar is missing required property baz',
         'Property bar does not match the given shape'
       )
@@ -285,6 +291,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Expected property bar.baz to be a string',
         'Property bar does not match the given shape'
       )
@@ -302,6 +309,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Property bar has an unknown key: spam',
         'Property bar does not match the given shape'
       )
@@ -312,7 +320,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create({bar: 1})
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(ctx, false, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
@@ -320,7 +328,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
   })
 
@@ -373,7 +381,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with shape missing sub-property', function () {
@@ -383,7 +391,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         })
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with incorrect shape value', function () {
@@ -397,6 +405,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Expected property bar.baz to be a string',
         'Property bar does not match the given shape'
       )
@@ -414,6 +423,7 @@ describe('Unit / validator / PropTypes.shape', function () {
 
       itValidatesTheProperty(
         ctx,
+        false,
         'Property bar has an unknown key: spam',
         'Property bar does not match the given shape'
       )
@@ -424,7 +434,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create({bar: 1})
       })
 
-      itValidatesTheProperty(ctx, 'Property bar does not match the given shape')
+      itValidatesTheProperty(ctx, false, 'Property bar does not match the given shape')
     })
 
     describe('when initialized without value', function () {
@@ -432,7 +442,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
   })
 })

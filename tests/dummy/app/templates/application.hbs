@@ -16,6 +16,20 @@
   all default property values under a single method.
 </p>
 
+<p>
+  Out-of-box <em>ember-prop-types</em> informs users of validation errors by logging warnings to the console.
+  Alternativeley you can configure <em>ember-prop-types</em> to throw errors instead with the following in
+  <em>config/environment.js</em>:
+  {{#code-block language="javascript"}}{{model.errorConfig}}{{/code-block}}
+</p>
+
+<p>
+  Out-of-box <em>ember-prop-types</em> will only run validation checks when objects are intialized, not on property
+  updates. If you'd like to also run validation on property updates you can enable it with the following in
+  <em>config/environment.js</em>:
+  {{#code-block language="javascript"}}{{model.updateConfig}}{{/code-block}}
+</p>
+
 <h2>Validators</h2>
 
 <div class="flex">

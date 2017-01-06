@@ -25,11 +25,25 @@ export default Component.extend(PropTypeMixin, {
 
 `
 
+const errorConfig = `
+'ember-prop-types': {
+  throwErrors: true
+}
+`
+
+const updateConfig = `
+'ember-prop-types': {
+  validateOnUpdate: true
+}
+`
+
 export default Route.extend({
   model () {
     return {
       contributors,
       defaultsExample,
+      errorConfig,
+      updateConfig,
       validators
     }
   }

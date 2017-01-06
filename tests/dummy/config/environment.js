@@ -13,6 +13,7 @@ module.exports = function (environment) {
     modulePrefix: 'dummy',
 
     'ember-prop-types': {
+      throwErrors: false,
       validateOnUpdate: true
     }
   }

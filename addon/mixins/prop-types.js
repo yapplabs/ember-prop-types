@@ -7,7 +7,16 @@ import config from 'ember-get-config'
 
 import PropTypes, {logger, validators} from '../utils/prop-types'
 
-const helpers = {
+export const settings = {
+  throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
+  validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
+}
+
+export const helpers = {
+  handleError (ctx, message) {
+    logger.warn(ctx, message, settings.throwErrors)
+  },
+
   /* eslint-disable complexity */
   validateProperty (ctx, name, def) {
     const value = ctx.get(name)
@@ -17,15 +26,15 @@ const helpers = {
         return
       }
 
-      logger.warn(ctx, `Missing required property ${name}`)
+      helpers.handleError(ctx, `Missing required property ${name}`)
 
       return
     }
 
     if (def.type in validators) {
-      validators[def.type](ctx, name, value, def, true)
+      validators[def.type](ctx, name, value, def, true, settings.throwErrors)
     } else {
-      logger.warn(ctx, `Unknown propType ${def.type}`)
+      helpers.handleError(ctx, `Unknown propType ${def.type}`)
     }
   },
   /* eslint-enable complexity */
@@ -45,11 +54,11 @@ const helpers = {
         const def = propType[name]
 
         if (def === undefined) {
-          logger.warn(ctx, `propType for ${name} is unknown`)
+          helpers.handleError(ctx, `propType for ${name} is unknown`)
           return
         }
 
-        if (getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)) {
+        if (settings.validateOnUpdate) {
           ctx.addObserver(name, ctx, function () {
             helpers.validateProperty(this, name, def)
           })
@@ -92,4 +101,4 @@ export default Mixin.create({
   }
 })
 
-export {helpers, PropTypes}
+export {PropTypes}
