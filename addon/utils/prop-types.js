@@ -1,4 +1,4 @@
-import * as logger from './logger'
+import logger from './logger'
 import validators from './validators'
 
 const PropTypes = {}

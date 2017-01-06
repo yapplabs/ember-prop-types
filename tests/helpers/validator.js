@@ -4,22 +4,35 @@
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
-import config from 'ember-get-config'
-import {beforeEach, describe, it} from 'mocha'
+import {after, before, beforeEach, describe, it} from 'mocha'
+import sinon from 'sinon'
 
 import {helpers} from 'ember-prop-types/mixins/prop-types'
+import logger from 'ember-prop-types/utils/logger'
 
 export function itValidatesOnUpdate (ctx, type, warningMessage) {
-  describe('when throwErrors not set', function () {
-    beforeEach(function () {
-      config['ember-prop-types'] = {
-        validateOnUpdate: true
-      }
+  describe('when throwErrors set to false', function () {
+    let getSettingsStub
 
-      Logger.warn.reset()
+    before(function () {
+      getSettingsStub = sinon.stub(helpers, 'getSettings', () => {
+        return {
+          throwErrors: false,
+          validateOnUpdate: true
+        }
+      })
     })
 
-    describe('with array value', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+      logger.throwError.reset()
+    })
+
+    after(function () {
+      getSettingsStub.restore()
+    })
+
+    describe('updated with array value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', [])
       })
@@ -31,7 +44,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with boolean value', function () {
+    describe('updated with boolean value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', false)
       })
@@ -43,7 +56,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with element value', function () {
+    describe('updated with element value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', document.createElement('span'))
       })
@@ -55,7 +68,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with function value', function () {
+    describe('updated with function value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', () => {})
       })
@@ -67,7 +80,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with null value', function () {
+    describe('updated with null value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', null)
       })
@@ -79,7 +92,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with number value', function () {
+    describe('updated with number value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', 2)
       })
@@ -91,7 +104,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with object value', function () {
+    describe('updated with object value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', {})
       })
@@ -103,7 +116,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with string value', function () {
+    describe('updated with string value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', 'spam')
       })
@@ -115,7 +128,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
       }
     })
 
-    describe('with symbol value', function () {
+    describe('updated with symbol value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', Symbol())
       })
@@ -128,121 +141,132 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
     })
   })
 
-  describe('when throwErrors set to false', function () {
-    beforeEach(function () {
-      config['ember-prop-types'] = {
-        throwErrors: false,
-        validateOnUpdate: true
-      }
+  describe('when throwErrors set to true', function () {
+    let getSettingsStub
 
-      Logger.warn.reset()
+    before(function () {
+      getSettingsStub = sinon.stub(helpers, 'getSettings', () => {
+        return {
+          throwErrors: true,
+          validateOnUpdate: true
+        }
+      })
     })
 
-    describe('with array value', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+      logger.throwError.reset()
+    })
+
+    after(function () {
+      getSettingsStub.restore()
+    })
+
+    describe('updated with array value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', [])
       })
 
       if (type === 'array') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with boolean value', function () {
+    describe('updated with boolean value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', false)
       })
 
       if (type === 'bool') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with element value', function () {
+    describe('updated with element value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', document.createElement('span'))
       })
 
       if (['element', 'object'].indexOf(type) !== -1) {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with function value', function () {
+    describe('updated with function value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', () => {})
       })
 
       if (type === 'func') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with null value', function () {
+    describe('updated with null value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', null)
       })
 
       if (type === 'null') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with number value', function () {
+    describe('updated with number value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', 2)
       })
 
       if (type === 'number') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with object value', function () {
+    describe('updated with object value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', {})
       })
 
       if (type === 'object') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with string value', function () {
+    describe('updated with string value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', 'spam')
       })
 
       if (type === 'string') {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
 
-    describe('with symbol value', function () {
+    describe('updated with symbol value', function () {
       beforeEach(function () {
         ctx.instance.set('bar', Symbol())
       })
 
       if (['object', 'symbol'].indexOf(type) !== -1) {
-        itValidatesTheProperty(ctx, false)
+        itValidatesTheProperty(ctx, true)
       } else {
-        itValidatesTheProperty(ctx, false, warningMessage)
+        itValidatesTheProperty(ctx, true, warningMessage)
       }
     })
   })
@@ -279,6 +303,19 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
   })
 
   if (throwErrors) {
+    if (warningMessages.length > 0) {
+      it('should throw errors', function () {
+        expect(logger.throwError).to.have.callCount(warningMessages.length)
+        warningMessages.forEach((msg) => {
+          expect(logger.throwError).to.have.been.calledWith(msg)
+        })
+      })
+    } else {
+      it('should not throw errors', function () {
+        expect(logger.throwError).to.have.callCount(0)
+      })
+    }
+
     it('should not log warning', function () {
       expect(Logger.warn).to.have.callCount(0)
     })
@@ -295,6 +332,10 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
         expect(Logger.warn).to.have.callCount(0)
       })
     }
+
+    it('should not throw errors', function () {
+      expect(logger.throwError).to.have.callCount(0)
+    })
   }
 }
 
@@ -303,6 +344,7 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
  * @param {*} sandbox - the sinon sandbox instance to use to stub/spy
  */
 export function spyOnValidateMethods (sandbox) {
+  sandbox.stub(logger, 'throwError')
   sandbox.spy(helpers, 'validatePropTypes')
   sandbox.spy(helpers, 'validateProperty')
   sandbox.stub(Logger, 'warn')

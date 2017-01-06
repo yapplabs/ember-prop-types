@@ -7,19 +7,16 @@ import config from 'ember-get-config'
 
 import PropTypes, {logger, validators} from '../utils/prop-types'
 
-const helpers = {
-  handleError (ctx, message) {
-    const shouldThrow = getWithDefault(config, 'ember-prop-types.throwErrors', false)
-
-    if (shouldThrow) {
-      helpers.throwError(message)
-    } else {
-      logger.warn(ctx, message)
+export const helpers = {
+  getSettings () {
+    return {
+      throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
+      validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
     }
   },
 
-  throwError (message) {
-    throw new Error(message)
+  handleError (ctx, message) {
+    logger.warn(ctx, message, helpers.getSettings().throwErrors)
   },
 
   /* eslint-disable complexity */
@@ -37,7 +34,7 @@ const helpers = {
     }
 
     if (def.type in validators) {
-      validators[def.type](ctx, name, value, def, true)
+      validators[def.type](ctx, name, value, def, true, helpers.getSettings().throwErrors)
     } else {
       helpers.handleError(ctx, `Unknown propType ${def.type}`)
     }
@@ -63,7 +60,7 @@ const helpers = {
           return
         }
 
-        if (getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)) {
+        if (helpers.getSettings().validateOnUpdate) {
           ctx.addObserver(name, ctx, function () {
             helpers.validateProperty(this, name, def)
           })
@@ -106,4 +103,4 @@ export default Mixin.create({
   }
 })
 
-export {helpers, PropTypes}
+export {PropTypes}
