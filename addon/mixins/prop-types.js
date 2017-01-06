@@ -2,12 +2,13 @@
  * The PropTypesMixin definition
  */
 import Ember from 'ember'
-const {Mixin, getWithDefault, typeOf} = Ember
+const {Mixin, get, getWithDefault, typeOf} = Ember
 import config from 'ember-get-config'
 
 import PropTypes, {logger, validators} from '../utils/prop-types'
 
 export const settings = {
+  spreadProperty: get(config, 'ember-prop-types.spreadProperty'),
   throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
   validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
 }
@@ -19,7 +20,11 @@ export const helpers = {
 
   /* eslint-disable complexity */
   validateProperty (ctx, name, def) {
-    const value = ctx.get(name)
+    let value = get(ctx, name)
+
+    if (value === undefined && settings.spreadProperty) {
+      value = get(ctx, `${settings.spreadProperty}.${name}`)
+    }
 
     if (value === undefined) {
       if (!def.required) {
