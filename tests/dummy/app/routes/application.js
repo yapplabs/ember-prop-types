@@ -31,6 +31,12 @@ const errorConfig = `
 }
 `
 
+const spreadConfig = `
+'ember-prop-types': {
+  spreadProperty: 'options'
+}
+`
+
 const updateConfig = `
 'ember-prop-types': {
   validateOnUpdate: true
@@ -43,6 +49,7 @@ export default Route.extend({
       contributors,
       defaultsExample,
       errorConfig,
+      spreadConfig,
       updateConfig,
       validators
     }

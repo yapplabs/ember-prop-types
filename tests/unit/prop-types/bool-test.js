@@ -2,6 +2,7 @@
  * Unit test for the PropTypes.bool validator
  */
 import Ember from 'ember'
+import SpreadMixin from 'ember-spread'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -40,7 +41,7 @@ describe('Unit / validator / PropTypes.bool', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.bool.isRequired
         }
@@ -73,12 +74,46 @@ describe('Unit / validator / PropTypes.bool', function () {
       itValidatesTheProperty(ctx, false, 'Missing required property bar')
       itValidatesOnUpdate(ctx, 'bool', 'Expected property bar to be a boolean')
     })
+
+    describe('when initialized with boolean value via spread property', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          options: {
+            bar: true
+          }
+        })
+      })
+
+      itValidatesTheProperty(ctx, false)
+    })
+
+    describe('when initialized with number value via spread property', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          options: {
+            bar: 1
+          }
+        })
+      })
+
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be a boolean')
+    })
+
+    describe('when initialized without value via spread property', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          options: {}
+        })
+      })
+
+      itValidatesTheProperty(ctx, false, 'Missing required property bar')
+    })
   })
 
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.bool
         }
@@ -110,6 +145,40 @@ describe('Unit / validator / PropTypes.bool', function () {
 
       itValidatesTheProperty(ctx, false)
       itValidatesOnUpdate(ctx, 'bool', 'Expected property bar to be a boolean')
+    })
+
+    describe('when initialized with boolean value via spread property', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          options: {
+            bar: true
+          }
+        })
+      })
+
+      itValidatesTheProperty(ctx, false)
+    })
+
+    describe('when initialized with number value via spread property', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          options: {
+            bar: 1
+          }
+        })
+      })
+
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be a boolean')
+    })
+
+    describe('when initialized without value via spread property', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({
+          options: {}
+        })
+      })
+
+      itValidatesTheProperty(ctx, false)
     })
   })
 })
