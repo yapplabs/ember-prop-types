@@ -7,16 +7,14 @@ import config from 'ember-get-config'
 
 import PropTypes, {logger, validators} from '../utils/prop-types'
 
-export const helpers = {
-  getSettings () {
-    return {
-      throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
-      validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
-    }
-  },
+export const settings = {
+  throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
+  validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
+}
 
+export const helpers = {
   handleError (ctx, message) {
-    logger.warn(ctx, message, helpers.getSettings().throwErrors)
+    logger.warn(ctx, message, settings.throwErrors)
   },
 
   /* eslint-disable complexity */
@@ -34,7 +32,7 @@ export const helpers = {
     }
 
     if (def.type in validators) {
-      validators[def.type](ctx, name, value, def, true, helpers.getSettings().throwErrors)
+      validators[def.type](ctx, name, value, def, true, settings.throwErrors)
     } else {
       helpers.handleError(ctx, `Unknown propType ${def.type}`)
     }
@@ -60,7 +58,7 @@ export const helpers = {
           return
         }
 
-        if (helpers.getSettings().validateOnUpdate) {
+        if (settings.validateOnUpdate) {
           ctx.addObserver(name, ctx, function () {
             helpers.validateProperty(this, name, def)
           })

@@ -5,22 +5,17 @@ import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
 import {after, before, beforeEach, describe, it} from 'mocha'
-import sinon from 'sinon'
 
-import {helpers} from 'ember-prop-types/mixins/prop-types'
+import {helpers, settings} from 'ember-prop-types/mixins/prop-types'
 import logger from 'ember-prop-types/utils/logger'
 
 export function itValidatesOnUpdate (ctx, type, warningMessage) {
   describe('when throwErrors set to false', function () {
-    let getSettingsStub
+    let throwErrorsOriginalValue
 
     before(function () {
-      getSettingsStub = sinon.stub(helpers, 'getSettings', () => {
-        return {
-          throwErrors: false,
-          validateOnUpdate: true
-        }
-      })
+      throwErrorsOriginalValue = settings.throwErrors
+      settings.throwErrors = false
     })
 
     beforeEach(function () {
@@ -29,7 +24,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
     })
 
     after(function () {
-      getSettingsStub.restore()
+      settings.throwErrors = throwErrorsOriginalValue
     })
 
     describe('updated with array value', function () {
@@ -142,15 +137,11 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
   })
 
   describe('when throwErrors set to true', function () {
-    let getSettingsStub
+    let throwErrorsOriginalValue
 
     before(function () {
-      getSettingsStub = sinon.stub(helpers, 'getSettings', () => {
-        return {
-          throwErrors: true,
-          validateOnUpdate: true
-        }
-      })
+      throwErrorsOriginalValue = settings.throwErrors
+      settings.throwErrors = true
     })
 
     beforeEach(function () {
@@ -159,7 +150,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
     })
 
     after(function () {
-      getSettingsStub.restore()
+      settings.throwErrors = throwErrorsOriginalValue
     })
 
     describe('updated with array value', function () {
