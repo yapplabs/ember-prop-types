@@ -1,3 +1,14 @@
+# 3.4.0
+
+* **Added** the ability to configure validation errors to be throw as errors instead of logged as warnings. To enable this feature simply add the following to `config/environment.js`:
+
+  ```js
+  'ember-prop-types': {
+    throwErrors: true
+  }
+  ```
+
+
 # 3.3.0
 
 * **Added** opt-in validation checks when properties that are spec'd in `propTypes` are updated. To enable this feature simply add the following to `config/environment.js`:
