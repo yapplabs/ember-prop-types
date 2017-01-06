@@ -5,7 +5,12 @@ import Ember from 'ember'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itValidatesOnUpdate,
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
+
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const requiredDef = {
@@ -47,7 +52,8 @@ describe('Unit / validator / PropTypes.func', function () {
         ctx.instance = Foo.create({bar () {}})
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
+      itValidatesOnUpdate(ctx, 'func', 'Expected property bar to be a function')
     })
 
     describe('when initialized with number value', function () {
@@ -55,7 +61,8 @@ describe('Unit / validator / PropTypes.func', function () {
         ctx.instance = Foo.create({bar: 1})
       })
 
-      itValidatesTheProperty(ctx, 'Expected property bar to be a function')
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be a function')
+      itValidatesOnUpdate(ctx, 'func', 'Expected property bar to be a function')
     })
 
     describe('when initialized without value', function () {
@@ -63,7 +70,8 @@ describe('Unit / validator / PropTypes.func', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx, 'Missing required property bar')
+      itValidatesTheProperty(ctx, false, 'Missing required property bar')
+      itValidatesOnUpdate(ctx, 'func', 'Expected property bar to be a function')
     })
   })
 
@@ -82,7 +90,8 @@ describe('Unit / validator / PropTypes.func', function () {
         ctx.instance = Foo.create({bar () {}})
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
+      itValidatesOnUpdate(ctx, 'func', 'Expected property bar to be a function')
     })
 
     describe('when initialized with number value', function () {
@@ -90,7 +99,8 @@ describe('Unit / validator / PropTypes.func', function () {
         ctx.instance = Foo.create({bar: 1})
       })
 
-      itValidatesTheProperty(ctx, 'Expected property bar to be a function')
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be a function')
+      itValidatesOnUpdate(ctx, 'func', 'Expected property bar to be a function')
     })
 
     describe('when initialized without value', function () {
@@ -98,7 +108,8 @@ describe('Unit / validator / PropTypes.func', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
+      itValidatesOnUpdate(ctx, 'func', 'Expected property bar to be a function')
     })
   })
 })

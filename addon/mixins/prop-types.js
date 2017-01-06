@@ -8,6 +8,20 @@ import config from 'ember-get-config'
 import PropTypes, {logger, validators} from '../utils/prop-types'
 
 const helpers = {
+  handleError (ctx, message) {
+    const shouldThrow = getWithDefault(config, 'ember-prop-types.throwErrors', false)
+
+    if (shouldThrow) {
+      helpers.throwError(message)
+    } else {
+      logger.warn(ctx, message)
+    }
+  },
+
+  throwError (message) {
+    throw new Error(message)
+  },
+
   /* eslint-disable complexity */
   validateProperty (ctx, name, def) {
     const value = ctx.get(name)
@@ -17,7 +31,7 @@ const helpers = {
         return
       }
 
-      logger.warn(ctx, `Missing required property ${name}`)
+      helpers.handleError(ctx, `Missing required property ${name}`)
 
       return
     }
@@ -25,7 +39,7 @@ const helpers = {
     if (def.type in validators) {
       validators[def.type](ctx, name, value, def, true)
     } else {
-      logger.warn(ctx, `Unknown propType ${def.type}`)
+      helpers.handleError(ctx, `Unknown propType ${def.type}`)
     }
   },
   /* eslint-enable complexity */
@@ -45,7 +59,7 @@ const helpers = {
         const def = propType[name]
 
         if (def === undefined) {
-          logger.warn(ctx, `propType for ${name} is unknown`)
+          helpers.handleError(ctx, `propType for ${name} is unknown`)
           return
         }
 

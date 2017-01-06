@@ -47,7 +47,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
         ctx.instance = Foo.create({bar: Ember.Object.create({})})
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with POJO value', function () {
@@ -55,7 +55,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
         ctx.instance = Foo.create({bar: {}})
       })
 
-      itValidatesTheProperty(ctx, 'Expected property bar to be an Ember.Object')
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be an Ember.Object')
     })
 
     describe('when initialized without value', function () {
@@ -63,7 +63,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx, 'Missing required property bar')
+      itValidatesTheProperty(ctx, false, 'Missing required property bar')
     })
   })
 
@@ -82,7 +82,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
         ctx.instance = Foo.create({bar: Ember.Object.create({})})
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
 
     describe('when initialized with POJO value', function () {
@@ -90,7 +90,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
         ctx.instance = Foo.create({bar: {}})
       })
 
-      itValidatesTheProperty(ctx, 'Expected property bar to be an Ember.Object')
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be an Ember.Object')
     })
 
     describe('when initialized without value', function () {
@@ -98,7 +98,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
         ctx.instance = Foo.create()
       })
 
-      itValidatesTheProperty(ctx)
+      itValidatesTheProperty(ctx, false)
     })
   })
 })

@@ -4,9 +4,249 @@
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
-import {beforeEach, it} from 'mocha'
+import config from 'ember-get-config'
+import {beforeEach, describe, it} from 'mocha'
 
 import {helpers} from 'ember-prop-types/mixins/prop-types'
+
+export function itValidatesOnUpdate (ctx, type, warningMessage) {
+  describe('when throwErrors not set', function () {
+    beforeEach(function () {
+      config['ember-prop-types'] = {
+        validateOnUpdate: true
+      }
+
+      Logger.warn.reset()
+    })
+
+    describe('with array value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', [])
+      })
+
+      if (type === 'array') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with boolean value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', false)
+      })
+
+      if (type === 'bool') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with element value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', document.createElement('span'))
+      })
+
+      if (['element', 'object'].indexOf(type) !== -1) {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with function value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', () => {})
+      })
+
+      if (type === 'func') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with null value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', null)
+      })
+
+      if (type === 'null') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with number value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', 2)
+      })
+
+      if (type === 'number') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with object value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', {})
+      })
+
+      if (type === 'object') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with string value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', 'spam')
+      })
+
+      if (type === 'string') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with symbol value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', Symbol())
+      })
+
+      if (['object', 'symbol'].indexOf(type) !== -1) {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+  })
+
+  describe('when throwErrors set to false', function () {
+    beforeEach(function () {
+      config['ember-prop-types'] = {
+        throwErrors: false,
+        validateOnUpdate: true
+      }
+
+      Logger.warn.reset()
+    })
+
+    describe('with array value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', [])
+      })
+
+      if (type === 'array') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with boolean value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', false)
+      })
+
+      if (type === 'bool') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with element value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', document.createElement('span'))
+      })
+
+      if (['element', 'object'].indexOf(type) !== -1) {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with function value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', () => {})
+      })
+
+      if (type === 'func') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with null value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', null)
+      })
+
+      if (type === 'null') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with number value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', 2)
+      })
+
+      if (type === 'number') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with object value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', {})
+      })
+
+      if (type === 'object') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with string value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', 'spam')
+      })
+
+      if (type === 'string') {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+
+    describe('with symbol value', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', Symbol())
+      })
+
+      if (['object', 'symbol'].indexOf(type) !== -1) {
+        itValidatesTheProperty(ctx, false)
+      } else {
+        itValidatesTheProperty(ctx, false, warningMessage)
+      }
+    })
+  })
+}
 
 /**
  * Ensure that the proper validation methods are called and that no warning is logged
@@ -18,9 +258,10 @@ import {helpers} from 'ember-prop-types/mixins/prop-types'
  * @param {Object} ctx.def - the propType definition
  * @param {Object} ctx.instance - the object instance that has the mixin
  * @param {String} ctx.propertyName - the object instance that has the mixin
+ * @param {Boolean} throwErrors - whether or not errors should be thrown
  * @param {String[]} [warningMessages] - if present, expect Logger.warn to be called with them, else expect no warnings
  */
-export function itValidatesTheProperty (ctx, ...warningMessages) {
+export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
   let def, instance, propertyName
 
   beforeEach(function () {
@@ -37,17 +278,23 @@ export function itValidatesTheProperty (ctx, ...warningMessages) {
     expect(helpers.validateProperty).to.have.been.calledWith(instance, propertyName, def)
   })
 
-  if (warningMessages.length > 0) {
-    it('should log warning(s)', function () {
-      expect(Logger.warn).to.have.callCount(warningMessages.length)
-      warningMessages.forEach((msg) => {
-        expect(Logger.warn).to.have.been.calledWith(`[${instance.toString()}]: ${msg}`)
-      })
-    })
-  } else {
+  if (throwErrors) {
     it('should not log warning', function () {
       expect(Logger.warn).to.have.callCount(0)
     })
+  } else {
+    if (warningMessages.length > 0) {
+      it('should log warning(s)', function () {
+        expect(Logger.warn).to.have.callCount(warningMessages.length)
+        warningMessages.forEach((msg) => {
+          expect(Logger.warn).to.have.been.calledWith(`[${instance.toString()}]: ${msg}`)
+        })
+      })
+    } else {
+      it('should not log warning', function () {
+        expect(Logger.warn).to.have.callCount(0)
+      })
+    }
   }
 }
 
