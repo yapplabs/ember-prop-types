@@ -1,3 +1,8 @@
+# 3.5.0
+
+* **Added** ability to validate properties on initialized that are nested under a single property via something like [ember-spread](https://github.com/ciena-blueplanet/ember-spread).
+
+
 # 3.4.0
 
 * **Added** the ability to configure validation errors to be throw as errors instead of logged as warnings. To enable this feature simply add the following to `config/environment.js`:
