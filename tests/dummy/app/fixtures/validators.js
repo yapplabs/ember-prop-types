@@ -8,7 +8,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.any
+    bar: PropTypes.any,
+    baz: PropTypes.any.isRequired,
+    foo: PropTypes.any({required: true})
   }
 })
     `,
@@ -23,7 +25,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.array
+    bar: PropTypes.array,
+    baz: PropTypes.array.isRequired,
+    foo: PropTypes.array({required: true})
   }
 })
     `,
@@ -38,7 +42,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.arrayOf(PropTypes.string)
+    bar: PropTypes.arrayOf(PropTypes.string),
+    baz: PropTypes.arrayOf(PropTypes.string).isRequired,
+    foo: PropTypes.arrayOf(PropTypes.string, {required: true})
   }
 })
     `,
@@ -53,7 +59,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.boolean
+    bar: PropTypes.bool,
+    baz: PropTypes.bool.isRequired,
+    foo: PropTypes.bool({required: true})
   }
 })
     `,
@@ -68,7 +76,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.element
+    bar: PropTypes.element,
+    baz: PropTypes.element.isRequired,
+    foo: PropTypes.element({required: true})
   }
 })
     `,
@@ -83,7 +93,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.EmberObject
+    bar: PropTypes.EmberObject,
+    baz: PropTypes.EmberObject.isRequired,
+    foo: PropTypes.EmberObject({required: true})
   }
 })
     `,
@@ -98,7 +110,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.func
+    bar: PropTypes.func,
+    baz: PropTypes.func.isRequired,
+    foo: PropTypes.func({required: true})
   }
 })
     `,
@@ -113,7 +127,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.instanceOf(HTMLElement)
+    bar: PropTypes.instanceOf(HTMLElement),
+    baz: PropTypes.instanceOf(HTMLElement).isRequired
+    foo: PropTypes.instanceOf(HTMLElement, {required: true})
   }
 })
     `,
@@ -128,10 +144,23 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.oneOfType([
+    bar: PropTypes.oneOfType([
       PropTypes.null,
       PropTypes.string
-    ])
+    ]),
+    baz: PropTypes.oneOfType([
+      PropTypes.null,
+      PropTypes.string
+    ]).isRequired,
+    foo: PropTypes.oneOfType(
+      [
+        PropTypes.null,
+        PropTypes.string
+      ],
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -146,7 +175,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.number
+    bar: PropTypes.number,
+    baz: PropTypes.number.isRequired,
+    foo: PropTypes.number({required: true})
   }
 })
     `,
@@ -161,7 +192,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.object
+    bar: PropTypes.object,
+    baz: PropTypes.object.isRequired,
+    foo: PropTypes.object({required: true})
   }
 })
     `,
@@ -176,7 +209,17 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.oneOf(['bar', 'baz'])
+    bar: PropTypes.oneOf(['bar', 'baz']),
+    baz: PropTypes.oneOf(['bar', 'baz']).isRequired,
+    foo: PropTypes.oneOf(
+      [
+        'bar',
+        'baz'
+      ],
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -191,10 +234,23 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.oneOfType([
+    bar: PropTypes.oneOfType([
       PropTypes.null,
       PropTypes.string
-    ])
+    ]),
+    baz: PropTypes.oneOfType([
+      PropTypes.null,
+      PropTypes.string
+    ]).isRequired,
+    foo: PropTypes.oneOfType(
+      [
+        PropTypes.null,
+        PropTypes.string
+      ],
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -209,10 +265,23 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.shape({
+    bar: PropTypes.shape({
       bar: PropTypes.number.isRequired,
       baz: PropTypes.string
-    })
+    }),
+    baz: PropTypes.shape({
+      bar: PropTypes.number.isRequired,
+      baz: PropTypes.string
+    }).isRequired,
+    foo: PropTypes.shape(
+      {
+        bar: PropTypes.number.isRequired,
+        baz: PropTypes.string
+      },
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -227,7 +296,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.string
+    bar: PropTypes.string,
+    baz: PropTypes.string.isRequired,
+    foo: PropTypes.string({required: true})
   }
 })
     `,
@@ -242,7 +313,9 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
-    foo: PropTypes.symbol
+    bar: PropTypes.symbol,
+    baz: PropTypes.symbol.isRequired,
+    foo: PropTypes.symbol({required: true})
   }
 })
     `,
