@@ -5,7 +5,7 @@ import Ember from 'ember'
 const {Mixin, get, getWithDefault, typeOf} = Ember
 import config from 'ember-get-config'
 
-import PropTypes, {logger, validators} from '../utils/prop-types'
+import PropTypes, {getDef, logger, validators} from '../utils/prop-types'
 
 export const settings = {
   spreadProperty: get(config, 'ember-prop-types.spreadProperty'),
@@ -64,7 +64,7 @@ export const helpers = {
       }
 
       Object.keys(propType).forEach(name => {
-        const def = propType[name]
+        const def = getDef(propType[name])
 
         if (def === undefined) {
           helpers.handleError(ctx, `propType for ${name} is unknown`)
