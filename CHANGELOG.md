@@ -1,3 +1,7 @@
+# 3.7.1
+* **Fixed** typo in dummy app.
+
+
 # 3.7.0
 
 * **Added** new alternative API for the following types:
