@@ -43,6 +43,12 @@ const updateConfig = `
 }
 `
 
+const validateConfig = `
+'ember-prop-types': {
+  validate: true
+}
+`
+
 export default Route.extend({
   model () {
     return {
@@ -51,6 +57,7 @@ export default Route.extend({
       errorConfig,
       spreadConfig,
       updateConfig,
+      validateConfig,
       validators
     }
   }

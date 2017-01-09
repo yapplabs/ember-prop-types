@@ -10,6 +10,7 @@ import PropTypes, {logger, validators} from '../utils/prop-types'
 export const settings = {
   spreadProperty: get(config, 'ember-prop-types.spreadProperty'),
   throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
+  validate: get(config, 'ember-prop-types.validate'),
   validateOnUpdate: getWithDefault(config, 'ember-prop-types.validateOnUpdate', false)
 }
 
@@ -45,7 +46,14 @@ export const helpers = {
   /* eslint-enable complexity */
 
   validatePropTypes (ctx) {
-    if (!config || config.environment === 'production') {
+    const disabledForEnv = settings.validate === false
+    const isProduction = !config || config.environment === 'production'
+    const settingMissing = settings.validate === undefined
+
+    if (
+      disabledForEnv ||
+      (settingMissing && isProduction)
+    ) {
       return
     }
 

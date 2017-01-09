@@ -16,11 +16,13 @@ export default {
    * @param {Boolean} throwError - whether or not to throw error
    */
   warn (obj, message, throwError) {
+    const id = obj.toString()
+    message = `[${id}]: ${message}`
+
     if (throwError) {
       this.throwError(message)
     } else {
-      const id = obj.toString()
-      Logger.warn(`[${id}]: ${message}`)
+      Logger.warn(message)
     }
   }
 }

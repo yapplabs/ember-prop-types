@@ -298,7 +298,7 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
       it('should throw errors', function () {
         expect(logger.throwError).to.have.callCount(warningMessages.length)
         warningMessages.forEach((msg) => {
-          expect(logger.throwError).to.have.been.calledWith(msg)
+          expect(logger.throwError).to.have.been.calledWith(`[${instance.toString()}]: ${msg}`)
         })
       })
     } else {

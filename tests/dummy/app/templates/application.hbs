@@ -38,6 +38,14 @@
   {{#code-block language="javascript"}}{{model.spreadConfig}}{{/code-block}}
 </p>
 
+<p>
+  <em>ember-prop-types</em> will validate properties in any environment other than <em>production</em> out-of-box.
+  However if you find yourself wanting to enable validations in your production environment or disable validations
+  in a specific environment such as your test environment you can configure <em>ember-prop-types</em> with the
+  following setting on an environment by environment basis:
+  {{#code-block language="javascript"}}{{model.validateConfig}}{{/code-block}}
+</p>
+
 <h2>Validators</h2>
 
 <div class="flex">
