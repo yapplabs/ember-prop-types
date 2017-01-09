@@ -74,13 +74,26 @@ export function generateType (key) {
     obj.type = key
   })
 
-PropTypes.arrayOf = function (typeDef) {
+PropTypes.arrayOf = function (typeDef, options) {
   const type = generateType('arrayOf')
-  type.isRequired.typeDef = type.typeDef = getDef(typeDef)
+
+  type.typeDef = getDef(typeDef)
+
+  if (typeOf(options) !== 'object') {
+    type.isRequired.typeDef = type.typeDef
+    return type
+  }
+
+  delete type.isRequired
+
+  if ('required' in options) {
+    type.required = options.required
+  }
+
   return type
 }
 
-PropTypes.oneOfType = function (typeDefs) {
+PropTypes.oneOfType = function (typeDefs, options) {
   const type = generateType('oneOfType')
 
   if (isArray(typeDefs)) {
@@ -89,24 +102,61 @@ PropTypes.oneOfType = function (typeDefs) {
     })
   }
 
-  type.isRequired.typeDefs = type.typeDefs = typeDefs
+  type.typeDefs = typeDefs
+
+  if (typeOf(options) !== 'object') {
+    type.isRequired.typeDefs = type.typeDefs
+    return type
+  }
+
+  delete type.isRequired
+
+  if ('required' in options) {
+    type.required = options.required
+  }
 
   return type
 }
 
-PropTypes.oneOf = function (valueOptions) {
+PropTypes.oneOf = function (valueOptions, options) {
   const type = generateType('oneOf')
-  type.isRequired.valueOptions = type.valueOptions = valueOptions
+
+  type.valueOptions = valueOptions
+
+  if (typeOf(options) !== 'object') {
+    type.isRequired.valueOptions = type.valueOptions
+    return type
+  }
+
+  delete type.isRequired
+
+  if ('required' in options) {
+    type.required = options.required
+  }
+
   return type
 }
 
-PropTypes.instanceOf = function (typeDef) {
+PropTypes.instanceOf = function (typeDef, options) {
   const type = generateType('instanceOf')
-  type.isRequired.typeDef = type.typeDef = typeDef
+
+  type.typeDef = typeDef
+
+  if (typeOf(options) !== 'object') {
+    type.isRequired.typeDef = type.typeDef
+    return type
+  }
+
+  delete type.isRequired
+
+  if ('required' in options) {
+    type.required = options.required
+  }
+
   return type
 }
 
-PropTypes.shape = function (typeDefs) {
+PropTypes.shape = function (typeDefs, options) {
   const type = generateType('shape')
 
   if (typeOf(typeDefs) === 'object') {
@@ -116,7 +166,18 @@ PropTypes.shape = function (typeDefs) {
       })
   }
 
-  type.isRequired.typeDefs = type.typeDefs = typeDefs
+  type.typeDefs = typeDefs
+
+  if (typeOf(options) !== 'object') {
+    type.isRequired.typeDefs = type.typeDefs
+    return type
+  }
+
+  delete type.isRequired
+
+  if ('required' in options) {
+    type.required = options.required
+  }
 
   return type
 }

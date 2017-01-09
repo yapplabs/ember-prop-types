@@ -43,7 +43,8 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.arrayOf(PropTypes.string),
-    baz: PropTypes.arrayOf(PropTypes.string).isRequired
+    baz: PropTypes.arrayOf(PropTypes.string).isRequired,
+    foo: PropTypes.arrayOf(PropTypes.string, {required: true})
   }
 })
     `,
@@ -128,6 +129,7 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.instanceOf(HTMLElement),
     baz: PropTypes.instanceOf(HTMLElement).isRequired
+    foo: PropTypes.instanceOf(HTMLElement, {required: true})
   }
 })
     `,
@@ -149,7 +151,16 @@ export default Component.extend(PropTypeMixin, {
     baz: PropTypes.oneOfType([
       PropTypes.null,
       PropTypes.string
-    ]).isRequired
+    ]).isRequired,
+    foo: PropTypes.oneOfType(
+      [
+        PropTypes.null,
+        PropTypes.string
+      ],
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -199,7 +210,16 @@ import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.oneOf(['bar', 'baz']),
-    baz: PropTypes.oneOf(['bar', 'baz']).isRequired
+    baz: PropTypes.oneOf(['bar', 'baz']).isRequired,
+    foo: PropTypes.oneOf(
+      [
+        'bar',
+        'baz'
+      ],
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -221,7 +241,16 @@ export default Component.extend(PropTypeMixin, {
     baz: PropTypes.oneOfType([
       PropTypes.null,
       PropTypes.string
-    ]).isRequired
+    ]).isRequired,
+    foo: PropTypes.oneOfType(
+      [
+        PropTypes.null,
+        PropTypes.string
+      ],
+      {
+        required: true
+      }
+    )
   }
 })
     `,
@@ -243,7 +272,16 @@ export default Component.extend(PropTypeMixin, {
     baz: PropTypes.shape({
       bar: PropTypes.number.isRequired,
       baz: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    foo: PropTypes.shape(
+      {
+        bar: PropTypes.number.isRequired,
+        baz: PropTypes.string
+      },
+      {
+        required: true
+      }
+    )
   }
 })
     `,
