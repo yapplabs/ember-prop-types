@@ -25,39 +25,28 @@ export default Component.extend(PropTypeMixin, {
 
 `
 
-const errorConfig = `
+const config = `
 'ember-prop-types': {
-  throwErrors: true
-}
-`
+  // Validate properties coming from a spread property (default is undefined)
+  spreadProperty: 'options',
 
-const spreadConfig = `
-'ember-prop-types': {
-  spreadProperty: 'options'
-}
-`
+  // Throw errors instead of logging warnings (default is false)
+  throwErrors: true,
 
-const updateConfig = `
-'ember-prop-types': {
+  // Validate properties (default is true for all environments except "production")
+  validate: true,
+
+  // Validate properties when they are updated (default is false)
   validateOnUpdate: true
-}
-`
-
-const validateConfig = `
-'ember-prop-types': {
-  validate: true
 }
 `
 
 export default Route.extend({
   model () {
     return {
+      config,
       contributors,
       defaultsExample,
-      errorConfig,
-      spreadConfig,
-      updateConfig,
-      validateConfig,
       validators
     }
   }

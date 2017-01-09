@@ -17,33 +17,10 @@
 </p>
 
 <p>
-  Out-of-box <em>ember-prop-types</em> informs users of validation errors by logging warnings to the console.
-  Alternativeley you can configure <em>ember-prop-types</em> to throw errors instead with the following in
-  <em>config/environment.js</em>:
-  {{#code-block language="javascript"}}{{model.errorConfig}}{{/code-block}}
-</p>
-
-<p>
-  Out-of-box <em>ember-prop-types</em> will only run validation checks when objects are intialized, not on property
-  updates. If you'd like to also run validation on property updates you can enable it with the following in
-  <em>config/environment.js</em>:
-  {{#code-block language="javascript"}}{{model.updateConfig}}{{/code-block}}
-</p>
-
-<p>
-  Some projects desire to use <em>ember-prop-types</em> in conjunction with <em>ember-spread</em> which don't
-  play well as <em>ember-prop-types</em> doesn't apply validation on the <em>options</em> property used by
-  <em>ember-spread</em>. You can however inform <em>ember-prop-types</em> to look for properties under this
-  option with the following configuration:
-  {{#code-block language="javascript"}}{{model.spreadConfig}}{{/code-block}}
-</p>
-
-<p>
-  <em>ember-prop-types</em> will validate properties in any environment other than <em>production</em> out-of-box.
-  However if you find yourself wanting to enable validations in your production environment or disable validations
-  in a specific environment such as your test environment you can configure <em>ember-prop-types</em> with the
-  following setting on an environment by environment basis:
-  {{#code-block language="javascript"}}{{model.validateConfig}}{{/code-block}}
+  <em>ember-prop-types</em>comes with a few configuration options which can be set in <em>config/environment.js</em>
+  for all environments or specific environments. Below is an example configuration with comments as to what each
+  option is for:
+  {{#code-block language="javascript"}}{{model.config}}{{/code-block}}
 </p>
 
 <h2>Validators</h2>
