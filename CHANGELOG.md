@@ -1,3 +1,18 @@
+# 3.6.0
+
+* **Added** the ability to enable/disable validation from an environment configuration setting, allowing consumers to control which environments `ember-prop-types` warnings/errors appear in. Below is an example of how to explicitly enable validation:
+
+  ```js
+  'ember-prop-types': {
+    validate: true
+  }
+  ```
+
+  > Note: Without explicitly adding this setting things will continue to work as they did before in which validation is enabled for all environments except *production*.
+
+* **Fixed** validation error messages when `throwErrors` is set to true to match error messages when errors are not thrown (logging warnings instead).
+
+
 # 3.5.0
 
 * **Added** ability to validate properties on initialized that are nested under a single property via something like [ember-spread](https://github.com/ciena-blueplanet/ember-spread).
