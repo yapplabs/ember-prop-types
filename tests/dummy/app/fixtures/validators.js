@@ -85,6 +85,30 @@ export default Component.extend(PropTypeMixin, {
     name: 'element'
   },
   {
+    description: 'Property must be from {{component}} helper.',
+    example: `
+import Ember from 'ember'
+const {Component} = Ember
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+
+export default Component.extend(PropTypeMixin, {
+  propTypes: {
+    bar: PropTypes.EmberComponent,
+    baz: PropTypes.EmberComponent.isRequired,
+    foo: PropTypes.EmberComponent({required: true})
+  }
+})
+    `,
+    hbs: `
+{{my-component
+  bar={{component 'foo-bar'}}
+  baz={{component 'foo-bar' 'test' 'spam'}}
+  foo={{component prop1='test' prop2='spam'}}
+}}
+    `,
+    name: 'EmberComponent'
+  },
+  {
     description: 'Property must be an Ember.Object.',
     example: `
 import Ember from 'ember'
