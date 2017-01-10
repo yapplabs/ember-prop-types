@@ -1,3 +1,8 @@
+# 3.9.0
+
+* **Added** new `updatable` option to all types to flag components that shouldn't allow updates. By default all properties will allow updates so specifying `updatable: true` isn't necessary.
+
+
 # 3.8.0
 
 * **Added** `EmberComponent` prop-type for properties that come from the `{{component}}` helper.
