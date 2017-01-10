@@ -73,6 +73,11 @@ export const helpers = {
 
         if (settings.validateOnUpdate) {
           ctx.addObserver(name, ctx, function () {
+            if (def.updatable === false) {
+              helpers.handleError(ctx, `${name} should not be updated`)
+              return
+            }
+
             helpers.validateProperty(this, name, def)
           })
         }

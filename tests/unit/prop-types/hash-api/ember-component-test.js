@@ -5,7 +5,12 @@ import Ember from 'ember'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itSupportsUpdatableOption,
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
+
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const requiredDef = {
@@ -152,4 +157,6 @@ describe('Unit / validator / PropTypes.EmberComponent', function () {
       itValidatesTheProperty(ctx, false)
     })
   })
+
+  itSupportsUpdatableOption('EmberComponent', component('foo-bar'), component('bar-baz'))
 })

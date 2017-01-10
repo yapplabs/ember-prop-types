@@ -61,6 +61,10 @@ export function generateType (key) {
         def.required = options.required
       }
 
+      if (options.updatable === false) {
+        def.updatable = false
+      }
+
       return def
     }
 
@@ -91,6 +95,10 @@ PropTypes.arrayOf = function (typeDef, options) {
     type.required = options.required
   }
 
+  if (options.updatable === false) {
+    type.updatable = false
+  }
+
   return type
 }
 
@@ -116,6 +124,10 @@ PropTypes.oneOfType = function (typeDefs, options) {
     type.required = options.required
   }
 
+  if (options.updatable === false) {
+    type.updatable = false
+  }
+
   return type
 }
 
@@ -135,6 +147,10 @@ PropTypes.oneOf = function (valueOptions, options) {
     type.required = options.required
   }
 
+  if (options.updatable === false) {
+    type.updatable = false
+  }
+
   return type
 }
 
@@ -152,6 +168,10 @@ PropTypes.instanceOf = function (typeDef, options) {
 
   if ('required' in options) {
     type.required = options.required
+  }
+
+  if (options.updatable === false) {
+    type.updatable = false
   }
 
   return type
@@ -178,6 +198,10 @@ PropTypes.shape = function (typeDefs, options) {
 
   if ('required' in options) {
     type.required = options.required
+  }
+
+  if (options.updatable === false) {
+    type.updatable = false
   }
 
   return type

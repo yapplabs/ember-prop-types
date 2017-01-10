@@ -1,8 +1,10 @@
 /**
  * Unit test for the PropTypes.instanceOf validator
  */
+import {expect} from 'chai'
 import Ember from 'ember'
-import {afterEach, beforeEach, describe} from 'mocha'
+const {Logger} = Ember
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
@@ -102,6 +104,69 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
       })
 
       itValidatesTheProperty(ctx, false)
+    })
+  })
+
+  describe('when updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type: 'instanceOf',
+        updatable: true
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes.instanceOf(Classy, {updatable: true})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: new Classy()})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', new Classy())
+      })
+
+      it('does not log warning', function () {
+        expect(Logger.warn.called).to.equal(false)
+      })
+    })
+  })
+
+  describe('when not updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type: 'instanceOf',
+        updatable: false
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes.instanceOf(Classy, {updatable: false})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: new Classy()})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', new Classy())
+      })
+
+      it('logs warning', function () {
+        expect(Logger.warn.called).to.equal(true)
+        expect(Logger.warn).to.have.been.calledWith(
+          `[${ctx.instance.toString()}]: bar should not be updated`
+        )
+      })
     })
   })
 })

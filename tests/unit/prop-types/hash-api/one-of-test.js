@@ -1,8 +1,10 @@
 /**
  * Unit test for the PropTypes.oneOf validator
  */
+import {expect} from 'chai'
 import Ember from 'ember'
-import {afterEach, beforeEach, describe} from 'mocha'
+const {Logger} = Ember
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
@@ -132,6 +134,69 @@ describe('Unit / validator / PropTypes.oneOf', function () {
       })
 
       itValidatesTheProperty(ctx, false)
+    })
+  })
+
+  describe('when updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type: 'oneOf',
+        updatable: true
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes.oneOf(['foo', 'bar'], {updatable: true})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: 'foo'})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', 'bar')
+      })
+
+      it('does not log warning', function () {
+        expect(Logger.warn.called).to.equal(false)
+      })
+    })
+  })
+
+  describe('when not updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type: 'oneOf',
+        updatable: false
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes.oneOf(['foo', 'bar'], {updatable: false})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: 'foo'})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', 'bar')
+      })
+
+      it('logs warning', function () {
+        expect(Logger.warn.called).to.equal(true)
+        expect(Logger.warn).to.have.been.calledWith(
+          `[${ctx.instance.toString()}]: bar should not be updated`
+        )
+      })
     })
   })
 })
