@@ -6,6 +6,7 @@ import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
 import {
+  itSupportsUpdatableOption,
   itValidatesOnUpdate,
   itValidatesTheProperty,
   spyOnValidateMethods
@@ -149,4 +150,6 @@ describe('Unit / validator / PropTypes.symbol', function () {
       itValidatesOnUpdate(ctx, 'symbol', 'Expected property bar to be a symbol')
     })
   })
+
+  itSupportsUpdatableOption('symbol', Symbol(), Symbol())
 })

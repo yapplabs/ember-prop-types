@@ -6,8 +6,75 @@ import Ember from 'ember'
 const {Logger} = Ember
 import {after, before, beforeEach, describe, it} from 'mocha'
 
-import {helpers, settings} from 'ember-prop-types/mixins/prop-types'
+import PropTypesMixin, {PropTypes, helpers, settings} from 'ember-prop-types/mixins/prop-types'
 import logger from 'ember-prop-types/utils/logger'
+
+export function itSupportsUpdatableOption (type, value1, value2) {
+  let ctx = {propertyName: 'bar'}
+
+  describe('when updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type,
+        updatable: true
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes[type]({updatable: true})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: value1})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', value2)
+      })
+
+      it('does not log warning', function () {
+        expect(Logger.warn.called).to.equal(false)
+      })
+    })
+  })
+
+  describe('when not updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type,
+        updatable: false
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes[type]({updatable: false})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: value1})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', value2)
+      })
+
+      it('logs warning', function () {
+        expect(Logger.warn.called).to.equal(true)
+        expect(Logger.warn).to.have.been.calledWith(
+          `[${ctx.instance.toString()}]: bar should not be updated`
+        )
+      })
+    })
+  })
+}
 
 export function itValidatesOnUpdate (ctx, type, warningMessage) {
   describe('when throwErrors set to false', function () {

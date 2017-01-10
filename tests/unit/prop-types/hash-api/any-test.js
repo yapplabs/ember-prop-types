@@ -6,7 +6,12 @@ const {Logger} = Ember
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itSupportsUpdatableOption,
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
+
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const requiredDef = {
@@ -1553,4 +1558,6 @@ describe('Unit / validator / PropTypes.any()', function () {
       })
     })
   })
+
+  itSupportsUpdatableOption('any', 1, 'test')
 })

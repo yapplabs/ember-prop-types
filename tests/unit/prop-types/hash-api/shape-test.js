@@ -1,8 +1,10 @@
 /**
  * Unit test for the PropTypes.shape validator
  */
+import {expect} from 'chai'
 import Ember from 'ember'
-import {afterEach, beforeEach, describe} from 'mocha'
+const {Logger} = Ember
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
@@ -439,6 +441,69 @@ describe('Unit / validator / PropTypes.shape', function () {
       })
 
       itValidatesTheProperty(ctx, false)
+    })
+  })
+
+  describe('when updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type: 'shape',
+        updatable: true
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes.shape({foo: PropTypes.string}, {updatable: true})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: {foo: 'bar'}})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', {foo: 'baz'})
+      })
+
+      it('does not log warning', function () {
+        expect(Logger.warn.called).to.equal(false)
+      })
+    })
+  })
+
+  describe('when not updatable', function () {
+    beforeEach(function () {
+      Logger.warn.reset()
+
+      ctx.def = {
+        required: false,
+        type: 'shape',
+        updatable: false
+      }
+
+      const Foo = Ember.Object.extend(PropTypesMixin, {
+        propTypes: {
+          bar: PropTypes.shape({foo: PropTypes.string}, {updatable: false})
+        }
+      })
+
+      ctx.instance = Foo.create({bar: {foo: 'bar'}})
+    })
+
+    describe('when updated', function () {
+      beforeEach(function () {
+        ctx.instance.set('bar', {foo: 'baz'})
+      })
+
+      it('logs warning', function () {
+        expect(Logger.warn.called).to.equal(true)
+        expect(Logger.warn).to.have.been.calledWith(
+          `[${ctx.instance.toString()}]: bar should not be updated`
+        )
+      })
     })
   })
 })

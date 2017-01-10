@@ -10,7 +10,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.any,
     baz: PropTypes.any.isRequired,
-    foo: PropTypes.any({required: true})
+    foo: PropTypes.any({required: true}),
+    spam: PropTypes.any({updatable: false})
   }
 })
     `,
@@ -27,7 +28,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.array,
     baz: PropTypes.array.isRequired,
-    foo: PropTypes.array({required: true})
+    foo: PropTypes.array({required: true}),
+    spam: PropTypes.array({updatable: false})
   }
 })
     `,
@@ -44,7 +46,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.arrayOf(PropTypes.string),
     baz: PropTypes.arrayOf(PropTypes.string).isRequired,
-    foo: PropTypes.arrayOf(PropTypes.string, {required: true})
+    foo: PropTypes.arrayOf(PropTypes.string, {required: true}),
+    spam: PropTypes.arrayOf(PropTypes.string, {updatable: false})
   }
 })
     `,
@@ -61,7 +64,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.bool,
     baz: PropTypes.bool.isRequired,
-    foo: PropTypes.bool({required: true})
+    foo: PropTypes.bool({required: true}),
+    spam: PropTypes.bool({updatable: false})
   }
 })
     `,
@@ -78,7 +82,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.element,
     baz: PropTypes.element.isRequired,
-    foo: PropTypes.element({required: true})
+    foo: PropTypes.element({required: true}),
+    spam: PropTypes.element({updatable: false})
   }
 })
     `,
@@ -95,7 +100,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.EmberComponent,
     baz: PropTypes.EmberComponent.isRequired,
-    foo: PropTypes.EmberComponent({required: true})
+    foo: PropTypes.EmberComponent({required: true}),
+    spam: PropTypes.EmberComponent({updatable: false})
   }
 })
     `,
@@ -119,7 +125,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.EmberObject,
     baz: PropTypes.EmberObject.isRequired,
-    foo: PropTypes.EmberObject({required: true})
+    foo: PropTypes.EmberObject({required: true}),
+    spam: PropTypes.EmberObject({updatable: false})
   }
 })
     `,
@@ -136,7 +143,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.func,
     baz: PropTypes.func.isRequired,
-    foo: PropTypes.func({required: true})
+    foo: PropTypes.func({required: true}),
+    spam: PropTypes.func({updatable: false})
   }
 })
     `,
@@ -153,7 +161,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.instanceOf(HTMLElement),
     baz: PropTypes.instanceOf(HTMLElement).isRequired
-    foo: PropTypes.instanceOf(HTMLElement, {required: true})
+    foo: PropTypes.instanceOf(HTMLElement, {required: true}),
+    spam: PropTypes.instanceOf(HTMLElement, {updatable: false})
   }
 })
     `,
@@ -171,20 +180,7 @@ export default Component.extend(PropTypeMixin, {
     bar: PropTypes.oneOfType([
       PropTypes.null,
       PropTypes.string
-    ]),
-    baz: PropTypes.oneOfType([
-      PropTypes.null,
-      PropTypes.string
-    ]).isRequired,
-    foo: PropTypes.oneOfType(
-      [
-        PropTypes.null,
-        PropTypes.string
-      ],
-      {
-        required: true
-      }
-    )
+    ])
   }
 })
     `,
@@ -201,7 +197,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.number,
     baz: PropTypes.number.isRequired,
-    foo: PropTypes.number({required: true})
+    foo: PropTypes.number({required: true}),
+    spam: PropTypes.number({updatable: false})
   }
 })
     `,
@@ -218,7 +215,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.object,
     baz: PropTypes.object.isRequired,
-    foo: PropTypes.object({required: true})
+    foo: PropTypes.object({required: true}),
+    spam: PropTypes.object({updatable: false})
   }
 })
     `,
@@ -242,6 +240,15 @@ export default Component.extend(PropTypeMixin, {
       ],
       {
         required: true
+      }
+    ),
+    spam: PropTypes.oneOf(
+      [
+        'bar',
+        'baz'
+      ],
+      {
+        updatable: false
       }
     )
   }
@@ -274,6 +281,15 @@ export default Component.extend(PropTypeMixin, {
       {
         required: true
       }
+    ),
+    spam: PropTypes.oneOfType(
+      [
+        PropTypes.null,
+        PropTypes.string
+      ],
+      {
+        updatable: false
+      }
     )
   }
 })
@@ -305,6 +321,15 @@ export default Component.extend(PropTypeMixin, {
       {
         required: true
       }
+    ),
+    spam: PropTypes.shape(
+      {
+        bar: PropTypes.number.isRequired,
+        baz: PropTypes.string
+      },
+      {
+        updatable: false
+      }
     )
   }
 })
@@ -322,7 +347,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.string,
     baz: PropTypes.string.isRequired,
-    foo: PropTypes.string({required: true})
+    foo: PropTypes.string({required: true}),
+    spam: PropTypes.string({updatable: false})
   }
 })
     `,
@@ -339,7 +365,8 @@ export default Component.extend(PropTypeMixin, {
   propTypes: {
     bar: PropTypes.symbol,
     baz: PropTypes.symbol.isRequired,
-    foo: PropTypes.symbol({required: true})
+    foo: PropTypes.symbol({required: true}),
+    spam: PropTypes.symbol({updatable: false})
   }
 })
     `,

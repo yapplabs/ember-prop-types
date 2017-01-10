@@ -6,6 +6,7 @@ import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
 import {
+  itSupportsUpdatableOption,
   itValidatesOnUpdate,
   itValidatesTheProperty,
   spyOnValidateMethods
@@ -149,4 +150,6 @@ describe('Unit / validator / PropTypes.null', function () {
       itValidatesOnUpdate(ctx, 'null', 'Expected property bar to be null')
     })
   })
+
+  itSupportsUpdatableOption('null', undefined, null)
 })
