@@ -1,3 +1,8 @@
+# 3.8.0
+
+* **Added** `EmberComponent` prop-type for properties that come from the `{{component}}` helper.
+
+
 # 3.7.1
 * **Fixed** typo in dummy app.
 
