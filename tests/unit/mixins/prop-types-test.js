@@ -36,7 +36,7 @@ describe('Unit / Mixins / prop-types', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
       const MyComponent = Component.extend(PropTypesMixin, {})
-      MyComponent.create()
+      MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     it('does not call validateProperty', function () {
@@ -64,7 +64,7 @@ describe('Unit / Mixins / prop-types', function () {
       const MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {}
       })
-      MyComponent.create()
+      MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     it('does not call validateProperty', function () {
@@ -171,7 +171,7 @@ describe('Unit / Mixins / prop-types', function () {
       beforeEach(function () {
         validateSettingOriginalValue = settings.validate
         settings.validate = undefined
-        MyComponent.create()
+        MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
       })
 
       afterEach(function () {
@@ -193,7 +193,7 @@ describe('Unit / Mixins / prop-types', function () {
       beforeEach(function () {
         validateSettingOriginalValue = settings.validate
         settings.validate = false
-        MyComponent.create()
+        MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
       })
 
       afterEach(function () {
@@ -215,7 +215,7 @@ describe('Unit / Mixins / prop-types', function () {
       beforeEach(function () {
         validateSettingOriginalValue = settings.validate
         settings.validate = true
-        MyComponent.create()
+        MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
       })
 
       afterEach(function () {
@@ -264,7 +264,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     it('should set defaults for each property', function () {
@@ -290,7 +290,7 @@ describe('Unit / Mixins / prop-types', function () {
           bar: PropTypes.number
         }
       })
-      instance = MyComponent.create()
+      instance = MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     ;['foo', 'bar', 'baz', 'quux'].forEach((prop) => {
@@ -337,7 +337,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     ;['foo', 'bar'].forEach((prop) => {
@@ -399,7 +399,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     ;['foo', 'bar'].forEach((prop) => {
@@ -444,7 +444,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = MyComponent.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     ;['foo', 'bar', 'baz', 'quux'].forEach((prop) => {

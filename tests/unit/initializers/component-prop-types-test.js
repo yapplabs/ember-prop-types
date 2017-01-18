@@ -25,7 +25,7 @@ describe('Unit / Initializers / component-prop-types', function () {
   describe('when a new component is created', function () {
     let component
     beforeEach(function () {
-      component = Component.create()
+      component = Component.create({renderer: {}}) // Pass in renderer so it doesn't die on Ember 2.10
     })
 
     it('should have the PropTypesMixin', function () {
