@@ -9,7 +9,7 @@ module.exports = function (environment) {
       'Roboto:300'
     ],
     environment: environment,
-    locationType: 'auto',
+    locationType: 'hash',
     modulePrefix: 'dummy',
 
     'ember-prop-types': {
