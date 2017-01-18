@@ -1,3 +1,10 @@
+# 3.10.0
+
+* **Added** additional builds to CI to make sure addon works with latest versions of Ember.
+* **Removed** files from npm package that aren't necessary (all of the various config files).
+* **Updated** dependencies to latest versions.
+
+
 # 3.9.0
 
 * **Added** new `updatable` option to all types to flag components that shouldn't allow updates. By default all properties will allow updates so specifying `updatable: true` isn't necessary.
