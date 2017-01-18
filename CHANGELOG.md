@@ -1,3 +1,8 @@
+# 3.10.1
+
+* Attempt to fix publishing of dummy app to `gh-pages` branch.
+
+
 # 3.10.0
 
 * **Added** additional builds to CI to make sure addon works with latest versions of Ember.
