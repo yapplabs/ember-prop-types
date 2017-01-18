@@ -8,7 +8,7 @@
           "../",
           "./",
           "dummy/",
-          "ember-prop-types/"
+          "ember-prop-types"
         ]
       }
     ]

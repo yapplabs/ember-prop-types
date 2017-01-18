@@ -7,6 +7,7 @@ const {Component, Logger, Mixin} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
+import {createComponent} from 'dummy/tests/helpers/ember-prop-types'
 import PropTypesMixin, {PropTypes, helpers, settings} from 'ember-prop-types/mixins/prop-types'
 
 describe('Unit / Mixins / prop-types', function () {
@@ -36,7 +37,7 @@ describe('Unit / Mixins / prop-types', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
       const MyComponent = Component.extend(PropTypesMixin, {})
-      MyComponent.create()
+      createComponent(MyComponent)
     })
 
     it('does not call validateProperty', function () {
@@ -64,7 +65,7 @@ describe('Unit / Mixins / prop-types', function () {
       const MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {}
       })
-      MyComponent.create()
+      createComponent(MyComponent)
     })
 
     it('does not call validateProperty', function () {
@@ -171,7 +172,7 @@ describe('Unit / Mixins / prop-types', function () {
       beforeEach(function () {
         validateSettingOriginalValue = settings.validate
         settings.validate = undefined
-        MyComponent.create()
+        createComponent(MyComponent)
       })
 
       afterEach(function () {
@@ -193,7 +194,7 @@ describe('Unit / Mixins / prop-types', function () {
       beforeEach(function () {
         validateSettingOriginalValue = settings.validate
         settings.validate = false
-        MyComponent.create()
+        createComponent(MyComponent)
       })
 
       afterEach(function () {
@@ -215,7 +216,7 @@ describe('Unit / Mixins / prop-types', function () {
       beforeEach(function () {
         validateSettingOriginalValue = settings.validate
         settings.validate = true
-        MyComponent.create()
+        createComponent(MyComponent)
       })
 
       afterEach(function () {
@@ -264,7 +265,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = createComponent(MyComponent)
     })
 
     it('should set defaults for each property', function () {
@@ -290,7 +291,7 @@ describe('Unit / Mixins / prop-types', function () {
           bar: PropTypes.number
         }
       })
-      instance = MyComponent.create()
+      instance = createComponent(MyComponent)
     })
 
     ;['foo', 'bar', 'baz', 'quux'].forEach((prop) => {
@@ -337,7 +338,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = createComponent(MyComponent)
     })
 
     ;['foo', 'bar'].forEach((prop) => {
@@ -399,7 +400,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = createComponent(MyComponent)
     })
 
     ;['foo', 'bar'].forEach((prop) => {
@@ -444,7 +445,7 @@ describe('Unit / Mixins / prop-types', function () {
           }
         }
       })
-      instance = MyComponent.create()
+      instance = createComponent(MyComponent)
     })
 
     ;['foo', 'bar', 'baz', 'quux'].forEach((prop) => {

@@ -6,6 +6,7 @@ import Ember from 'ember'
 const {Application, Component, run} = Ember
 import {beforeEach, describe, it} from 'mocha'
 
+import {createComponent} from 'dummy/tests/helpers/ember-prop-types'
 import {initialize} from 'ember-prop-types/initializers/component-prop-types'
 import PropTypesMixin from 'ember-prop-types/mixins/prop-types'
 
@@ -25,7 +26,7 @@ describe('Unit / Initializers / component-prop-types', function () {
   describe('when a new component is created', function () {
     let component
     beforeEach(function () {
-      component = Component.create()
+      component = createComponent(Component)
     })
 
     it('should have the PropTypesMixin', function () {
