@@ -1,3 +1,8 @@
+# 3.10.3
+
+* **Fixed** `EmberComponent` prop type to work properly with Glimmer 2.
+
+
 # 3.10.2
 
 * **Upgraded** to test against Ember 2.11.
