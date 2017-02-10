@@ -1,3 +1,8 @@
+# 3.10.2
+
+* **Upgraded** to test against Ember 2.11.
+
+
 # 3.10.1
 
 * Attempt to fix publishing of dummy app to `gh-pages` branch.
