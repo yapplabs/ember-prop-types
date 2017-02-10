@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "ember build",
-    "lint": "eslint *.js addon app config tests",
+    "lint": "lint-all-the-things",
     "start": "ember server",
     "test": "npm run lint && COVERAGE=true ember test"
   },
@@ -50,9 +50,7 @@
     "ember-resolver": "^2.1.1",
     "ember-sinon": "0.6.0",
     "ember-spread": "^1.0.0",
-    "ember-test-utils": "^1.5.1",
-    "eslint": "^3.13.1",
-    "eslint-config-frost-standard": "^5.3.2",
+    "ember-test-utils": "^1.10.3",
     "loader.js": "^4.1.0"
   },
   "keywords": [
