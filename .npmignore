@@ -11,11 +11,12 @@
 .eslintrc
 .github
 .gitignore
+.npmignore
 .pullapprove.yml
 .remarkrc
 .travis
-.watchmanconfig
 .travis.yml
+.watchmanconfig
 bower.json
 dependency-snapshot.json
 ember-cli-build.js
