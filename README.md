@@ -24,6 +24,10 @@ ember install ember-prop-types
 
 ## Usage
 
+**[Full Docs](http://ciena-blueplanet.github.io/ember-prop-types/)**
+
+## Examples
+
 ### Better Components
 
 Below is an example of a component that uses the property mixin provided by this
