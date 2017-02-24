@@ -1,3 +1,8 @@
+# 3.10.4
+
+* **Upgraded** `ember-get-config`.
+
+
 # 3.10.3
 
 * **Fixed** `EmberComponent` prop type to work properly with Glimmer 2.
