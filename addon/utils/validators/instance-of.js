@@ -10,7 +10,7 @@ export default function (ctx, name, value, def, logErrors, throwErrors) {
 
   if (!valid && logErrors) {
     const nameOfType = type.toString().match(/function (\w*)/)[1]
-    logger.warn(ctx, `Expected property ${name} to be an instance of ${nameOfType}`, throwErrors)
+    logger.warn(ctx, `Expected property ${name} to be an instance of ${nameOfType} but instead got: ${typeof value}`, throwErrors)
   }
 
   return valid

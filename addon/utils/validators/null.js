@@ -8,7 +8,7 @@ export default function (ctx, name, value, def, logErrors, throwErrors) {
   const valid = value === null
 
   if (!valid && logErrors) {
-    logger.warn(ctx, `Expected property ${name} to be null`, throwErrors)
+    logger.warn(ctx, `Expected property ${name} to be null but instead got: ${typeof value}`, throwErrors)
   }
 
   return valid
