@@ -365,7 +365,7 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
       it('should throw errors', function () {
         expect(logger.throwError).to.have.callCount(warningMessages.length)
         warningMessages.forEach((msg) => {
-          expect(logger.throwError).to.have.been.calledWith(`[${instance.toString()}]: ${msg}`)
+          expect(logger.throwError).to.have.been.calledWithMatch(`[${instance.toString()}]: ${msg}`)
         })
       })
     } else {
@@ -382,7 +382,7 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
       it('should log warning(s)', function () {
         expect(Logger.warn).to.have.callCount(warningMessages.length)
         warningMessages.forEach((msg) => {
-          expect(Logger.warn).to.have.been.calledWith(`[${instance.toString()}]: ${msg}`)
+          expect(Logger.warn).to.have.been.calledWithMatch(`[${instance.toString()}]: ${msg}`)
         })
       })
     } else {

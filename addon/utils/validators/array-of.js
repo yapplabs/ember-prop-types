@@ -1,6 +1,9 @@
 /**
  * The PropTypes.arrayOf validator
  */
+import Ember from 'ember'
+const {typeOf} = Ember
+
 import logger from '../logger'
 const {isArray} = Array
 
@@ -12,7 +15,11 @@ export default function (validators, ctx, name, value, def, logErrors, throwErro
   })
 
   if (!valid && logErrors) {
-    logger.warn(ctx, `Expected property ${name} to be an array of type ${typeDef.type} but instead got: ${typeof value}`, throwErrors)
+    logger.warn(
+      ctx,
+      `Expected property ${name} to be an array of type ${typeDef.type} but instead got: ${typeOf(value)}`,
+      throwErrors
+    )
   }
 
   return valid
