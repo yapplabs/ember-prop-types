@@ -224,7 +224,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
           ctx,
           false,
           'Property bar[0] has an unknown key: foo',
-          'Property bar[0] does not match the given shape',
+          'Expected property bar[0] to match given shape',
           'Expected property bar to be an array of type shape'
         )
       })
@@ -238,7 +238,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
           ctx,
           false,
           'Property bar[1] has an unknown key: foo',
-          'Property bar[1] does not match the given shape',
+          'Expected property bar[1] to match given shape',
           'Expected property bar to be an array of type shape'
         )
       })
@@ -287,7 +287,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
           ctx,
           false,
           'Property bar[0] has an unknown key: foo',
-          'Property bar[0] does not match the given shape',
+          'Expected property bar[0] to match given shape',
           'Expected property bar to be an array of type shape'
         )
       })
@@ -301,7 +301,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
           ctx,
           false,
           'Property bar[1] has an unknown key: foo',
-          'Property bar[1] does not match the given shape',
+          'Expected property bar[1] to match given shape',
           'Expected property bar to be an array of type shape'
         )
       })

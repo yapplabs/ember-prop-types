@@ -8,6 +8,7 @@ const {get, typeOf} = Ember
 import logger from '../logger'
 
 export default function (validators, ctx, name, value, def, logErrors, throwErrors) {
+  const shape = JSON.stringify(value, null, ' ')
   const typeDefs = def.typeDefs
   if (typeOf(typeDefs) !== 'object') {
     logger.warn(ctx, 'PropTypes.shape() requires a plain object to be be passed in as an argument', throwErrors)
@@ -15,7 +16,7 @@ export default function (validators, ctx, name, value, def, logErrors, throwErro
   }
 
   if (typeOf(value) !== 'object') {
-    logger.warn(ctx, `Property ${name} does not match the given shape`, throwErrors)
+    logger.warn(ctx, `Expected property ${name} to match given shape, instead got value ${shape}`, throwErrors)
     return false
   }
 
@@ -46,7 +47,7 @@ export default function (validators, ctx, name, value, def, logErrors, throwErro
   })
 
   if (!valid && logErrors) {
-    logger.warn(ctx, `Property ${name} does not match the given shape`, throwErrors)
+    logger.warn(ctx, `Expected property ${name} to match given shape, instead got value ${shape}`, throwErrors)
   }
 
   return valid
