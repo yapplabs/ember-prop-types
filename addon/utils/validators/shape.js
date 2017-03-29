@@ -10,7 +10,7 @@ import logger from '../logger'
 export default function (validators, ctx, name, value, def, logErrors, throwErrors) {
   const typeDefs = def.typeDefs
   let msg = `Expected property ${name} to match given shape`
-
+  let shape
   try {
     shape = JSON.stringify(value, null, ' ')
     msg = `${msg}, but instead got value ${shape}`
