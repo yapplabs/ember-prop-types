@@ -1,3 +1,6 @@
+# 3.11.0 (2017-04-03)
+- Log typeOf value when asserting type
+
 # 3.10.4
 
 * **Upgraded** `ember-get-config`.
