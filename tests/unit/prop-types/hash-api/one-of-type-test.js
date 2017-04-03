@@ -92,7 +92,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
         ctx.instance = Foo.create({bar: true})
       })
 
-      itValidatesTheProperty(ctx, false, 'Property bar does not match expected types: number, string')
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be one of expected types: [number, string]')
     })
 
     describe('when initialized without value', function () {
@@ -145,7 +145,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
         ctx.instance = Foo.create({bar: true})
       })
 
-      itValidatesTheProperty(ctx, false, 'Property bar does not match expected types: number, string')
+      itValidatesTheProperty(ctx, false, 'Expected property bar to be one of expected types: [number, string]')
     })
 
     describe('when initialized without value', function () {

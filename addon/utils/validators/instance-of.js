@@ -1,7 +1,8 @@
 /**
  * The PropTypes.instanceOf validator
  */
-
+import Ember from 'ember'
+const {typeOf} = Ember
 import logger from '../logger'
 
 export default function (ctx, name, value, def, logErrors, throwErrors) {
@@ -10,7 +11,11 @@ export default function (ctx, name, value, def, logErrors, throwErrors) {
 
   if (!valid && logErrors) {
     const nameOfType = type.toString().match(/function (\w*)/)[1]
-    logger.warn(ctx, `Expected property ${name} to be an instance of ${nameOfType}`, throwErrors)
+    logger.warn(
+      ctx,
+      `Expected property ${name} to be an instance of ${nameOfType} but instead got: ${typeOf(value)}`,
+      throwErrors
+    )
   }
 
   return valid

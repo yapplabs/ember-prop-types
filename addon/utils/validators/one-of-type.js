@@ -27,7 +27,11 @@ export default function (validators, ctx, name, value, def, logErrors, throwErro
 
   if (!valid) {
     const types = def.typeDefs.map((typeDef) => typeDef.type)
-    logger.warn(ctx, `Property ${name} does not match expected types: ${types.join(', ')}`, throwErrors)
+    logger.warn(
+      ctx,
+      `Expected property ${name} to be one of expected types: [${types.join(', ')}] but instead got ${typeOf(value)}`,
+      throwErrors
+    )
   }
 
   return valid

@@ -19,7 +19,11 @@ export default function (ctx, name, value, def, logErrors, throwErrors) {
   })
 
   if (!valid && logErrors) {
-    logger.warn(ctx, `Expected property ${name} to be an Ember.Component`, throwErrors)
+    logger.warn(
+      ctx,
+      `Expected property ${name} to be an Ember.Component but instead got: ${typeOf(value)}`,
+      throwErrors
+    )
   }
 
   return valid

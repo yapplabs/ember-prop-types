@@ -11,7 +11,7 @@ export default function (ctx, name, value, def, logErrors, throwErrors) {
   const valid = typeOf(value) === ('instance' || 'class')
 
   if (!valid && logErrors) {
-    logger.warn(ctx, `Expected property ${name} to be an Ember.Object`, throwErrors)
+    logger.warn(ctx, `Expected property ${name} to be an Ember.Object but instead got: ${typeOf(value)}`, throwErrors)
   }
 
   return valid

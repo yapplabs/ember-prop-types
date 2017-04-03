@@ -9,13 +9,20 @@ import logger from '../logger'
 
 export default function (validators, ctx, name, value, def, logErrors, throwErrors) {
   const typeDefs = def.typeDefs
+  let msg = `Expected property ${name} to match given shape`
+  let shape
+  try {
+    shape = JSON.stringify(value, null, ' ')
+    msg = `${msg}, but instead got value ${shape}`
+  } catch (e) {}
+
   if (typeOf(typeDefs) !== 'object') {
     logger.warn(ctx, 'PropTypes.shape() requires a plain object to be be passed in as an argument', throwErrors)
     return false
   }
 
   if (typeOf(value) !== 'object') {
-    logger.warn(ctx, `Property ${name} does not match the given shape`, throwErrors)
+    logger.warn(ctx, msg, throwErrors)
     return false
   }
 
@@ -46,7 +53,7 @@ export default function (validators, ctx, name, value, def, logErrors, throwErro
   })
 
   if (!valid && logErrors) {
-    logger.warn(ctx, `Property ${name} does not match the given shape`, throwErrors)
+    logger.warn(ctx, msg, throwErrors)
   }
 
   return valid
