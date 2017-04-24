@@ -99,22 +99,34 @@ export default Mixin.create({
   init () {
     helpers.validatePropTypes(this)
 
-    const keys = Object.keys(this)
+    // Note defaults is a concatenated property so this is actually an array
+    // of getDefaultProps() methods all the way up the inheritance chain
     const defaults = this.get('getDefaultProps')
-    defaults.forEach((propsFunction) => {
-      if (typeOf(propsFunction) !== 'function') {
-        return
-      }
 
-      const defaultProps = propsFunction.apply(this)
-      keys.forEach((key) => {
-        if (this.get(key) !== undefined) {
-          delete defaultProps[key]
-        }
+    const defaultProps = {} // Concatenated list of all defaults
+
+    defaults
+      .forEach((propsFunction) => {
+        // If for some reason getDefaultProps() isn't a function we'll simply
+        // ignore it. In the future we might want to actually assert an error
+        // here.
+        if (typeOf(propsFunction) !== 'function') return
+
+        // Now let's actually call the getDefaultProps() method and update our
+        // concatenated defaults with the results of this method call.
+        Object.assign(defaultProps, propsFunction.apply(this))
       })
 
-      this.setProperties(defaultProps)
-    })
+    // Now iterate defaults and remove any properties that already have
+    // values set on this instance.
+    Object.keys(defaultProps)
+      .forEach((key) => {
+        if (this.get(key) !== undefined) delete defaultProps[key]
+      })
+
+    // Time to go ahead and apply the defaults
+    this.setProperties(defaultProps)
+
     this._super(...arguments)
   }
 })
