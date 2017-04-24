@@ -8,6 +8,9 @@ import config from 'ember-get-config'
 import PropTypes, {getDef, logger, validators} from '../utils/prop-types'
 
 export const settings = {
+  requireComponentPropTypes: getWithDefault(
+    config, 'ember-prop-types.requireComponentPropTypes', false
+  ),
   spreadProperty: get(config, 'ember-prop-types.spreadProperty'),
   throwErrors: getWithDefault(config, 'ember-prop-types.throwErrors', false),
   validate: get(config, 'ember-prop-types.validate'),
