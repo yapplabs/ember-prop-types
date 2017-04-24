@@ -1,3 +1,7 @@
+# 3.12.0 (2017-04-24)
+
+* **Fixed** build.
+
 # 3.11.0 (2017-04-03)
 - Log typeOf value when asserting type
 
