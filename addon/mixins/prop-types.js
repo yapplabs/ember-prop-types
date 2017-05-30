@@ -106,29 +106,41 @@ export default Mixin.create({
     // of getDefaultProps() methods all the way up the inheritance chain
     const defaults = this.get('getDefaultProps')
 
-    const defaultProps = {} // Concatenated list of all defaults
+    // Keep a record of any properties that came from a getDefaultProps call
+    // - let child getDefaultProps functions take precedence over parents
+    // - let child getDefaultProps have _access_ to parent values set by getDefaultProps
+    // - don't apply defaults for properties set explicitly on the target object
+    const defaultedProps = {}
 
-    defaults
-      .forEach((propsFunction) => {
-        // If for some reason getDefaultProps() isn't a function we'll simply
-        // ignore it. In the future we might want to actually assert an error
-        // here.
-        if (typeOf(propsFunction) !== 'function') return
+    defaults.forEach((propsFunction) => {
+      // If for some reason getDefaultProps() isn't a function we'll simply
+      // ignore it. In the future we might want to actually assert an error
+      // here.
+      if (typeOf(propsFunction) !== 'function') return
 
-        // Now let's actually call the getDefaultProps() method and update our
-        // concatenated defaults with the results of this method call.
-        Object.assign(defaultProps, propsFunction.apply(this))
+      // Now let's actually call the getDefaultProps() method
+      const defaultProps = propsFunction.apply(this)
+
+      // Now iterate defaults and remove any properties that already have
+      // values set on this instance _that didn't come from a previous
+      // getDefaultProps_
+      Object.keys(defaultProps).forEach((key) => {
+        if (this.get(key) !== undefined && get(defaultedProps, key) === undefined) {
+          delete defaultProps[key]
+        }
       })
 
-    // Now iterate defaults and remove any properties that already have
-    // values set on this instance.
-    Object.keys(defaultProps)
-      .forEach((key) => {
-        if (this.get(key) !== undefined) delete defaultProps[key]
-      })
+      // Record the properties that were defaulted
+      Object.assign(defaultedProps, defaultProps)
 
-    // Time to go ahead and apply the defaults
-    this.setProperties(defaultProps)
+      // Apply the defaults for this layer of the hierarchy immediately
+      // @sglanzer 2017-05-29 PR #118 delayed the execution of the setProperties
+      // until the end of all the getDefaultProps() calls, which meant that parent
+      // layers in the getDefaultProps() hierarchy weren't available for use in
+      // child functions.  This broke backwards compatibility
+      // concatenated defaults with the results of this method call.
+      this.setProperties(defaultProps)
+    })
 
     this._super(...arguments)
   }
