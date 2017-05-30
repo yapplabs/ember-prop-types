@@ -1,3 +1,8 @@
+# 3.12.2 (2017-05-30)
+
+- Fixed a regression in the execution order of getDefaultProps introduced in #118 
+
+
 # 3.12.1 (2017-05-10)
 
 * **Updated** the secure auth tokens in `.travis.yml`
