@@ -1,3 +1,6 @@
+# 3.12.3 (2017-06-01)
+ fixed error with nameOfType if typedef does not return a function string
+
 # 3.12.2 (2017-05-30)
 
 - Fixed a regression in the execution order of getDefaultProps introduced in #118 
