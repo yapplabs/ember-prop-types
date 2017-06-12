@@ -56,6 +56,15 @@ describe('Unit / validator / PropTypes.string', function () {
       itValidatesOnUpdate(ctx, 'string', 'Expected property bar to be a string')
     })
 
+    describe('when initialized with a SafeString object value', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({bar: Ember.String.htmlSafe('baz')})
+      })
+
+      itValidatesTheProperty(ctx, false)
+      itValidatesOnUpdate(ctx, 'string', 'Expected property bar to be a string')
+    })
+
     describe('when initialized with number value', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({bar: 1})
@@ -94,6 +103,15 @@ describe('Unit / validator / PropTypes.string', function () {
       itValidatesOnUpdate(ctx, 'string', 'Expected property bar to be a string')
     })
 
+    describe('when initialized with a SafeString object value', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({bar: Ember.String.htmlSafe('baz')})
+      })
+
+      itValidatesTheProperty(ctx, false)
+      itValidatesOnUpdate(ctx, 'string', 'Expected property bar to be a string')
+    })
+
     describe('when initialized with number value', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({bar: 1})
@@ -126,6 +144,15 @@ describe('Unit / validator / PropTypes.string', function () {
     describe('when initialized with string value', function () {
       beforeEach(function () {
         ctx.instance = Foo.create({bar: 'baz'})
+      })
+
+      itValidatesTheProperty(ctx, false)
+      itValidatesOnUpdate(ctx, 'string', 'Expected property bar to be a string')
+    })
+
+    describe('when initialized with a SafeString object value', function () {
+      beforeEach(function () {
+        ctx.instance = Foo.create({bar: Ember.String.htmlSafe('baz')})
       })
 
       itValidatesTheProperty(ctx, false)
