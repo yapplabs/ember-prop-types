@@ -72,6 +72,24 @@ export default Component.extend(PropTypeMixin, {
     name: 'bool'
   },
   {
+    description: 'Property must be a date.',
+    example: `
+import Ember from 'ember'
+const {Component} = Ember
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+
+export default Component.extend(PropTypeMixin, {
+  propTypes: {
+    bar: PropTypes.date,
+    baz: PropTypes.date.isRequired,
+    foo: PropTypes.date({required: true}),
+    spam: PropTypes.date({updatable: false})
+  }
+})
+    `,
+    name: 'date'
+  },
+  {
     description: 'Property must be an instance of Element.',
     example: `
 import Ember from 'ember'
