@@ -4,6 +4,7 @@ import any from './any'
 import array from './array'
 import arrayOf from './array-of'
 import bool from './bool'
+import date from './date'
 import element from './element'
 import emberComponent from './ember-component'
 import emberObject from './ember-object'
@@ -24,6 +25,7 @@ const validators = {
   any,
   array,
   bool,
+  date,
   element,
   EmberComponent: emberComponent,
   EmberObject: emberObject,

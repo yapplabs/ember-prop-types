@@ -36,6 +36,7 @@ export function generateType (key) {
   'any',
   'array',
   'bool',
+  'date',
   'element',
   'EmberComponent',
   'EmberObject',
