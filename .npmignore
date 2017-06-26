@@ -15,6 +15,7 @@
 .pullapprove.yml
 .remarkrc
 .travis
+.eslintrc.js
 .travis.yml
 .watchmanconfig
 bower.json
