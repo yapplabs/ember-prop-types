@@ -31,7 +31,6 @@ module.exports = function (environment) {
 
     case 'test':
       // Testem prefers this...
-      ENV.rootURL = '/'
       ENV.locationType = 'none'
 
       // keep test console output quieter
