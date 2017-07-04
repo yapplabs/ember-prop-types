@@ -1,3 +1,6 @@
+# 3.13.1 (2017-07-04)
+* **Fix** HTMLBars linting
+
 # 3.13.0 (2017-06-23)
 * **Added** date type
 
