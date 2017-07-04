@@ -1,3 +1,7 @@
+# 3.13.2 (2017-07-04)
+
+* **Upgrade** `ember-get-config`
+
 # 3.13.1 (2017-07-04)
 * **Fix** HTMLBars linting
 
