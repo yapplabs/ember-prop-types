@@ -1,3 +1,7 @@
+# 3.13.0 (2017-06-23)
+* **Added** date type
+
+
 # 3.12.3 (2017-06-01)
  fixed error with nameOfType if typedef does not return a function string
 
