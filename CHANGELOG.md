@@ -1,3 +1,8 @@
+# 3.13.3 (2017-07-10)
+
+Upgrade ember-cli to 2.12.3
+
+
 # 3.13.2 (2017-07-04)
 
 * **Upgrade** `ember-get-config`
