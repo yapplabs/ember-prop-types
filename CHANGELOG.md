@@ -1,3 +1,7 @@
+# 3.13.4 (2017-07-10)
+
+* Fix ember-component validator usage in `ember#lts-2-8` branch of Ember
+
 # 3.13.3 (2017-07-10)
 
 Upgrade ember-cli to 2.12.3
