@@ -1,3 +1,7 @@
+# 3.14.0 (2017-08-02)
+Update string validation to support Ember SafeString objects. Fixes #128.
+
+
 # 3.13.4 (2017-07-10)
 
 * Fix ember-component validator usage in `ember#lts-2-8` branch of Ember
