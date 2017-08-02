@@ -1,3 +1,7 @@
+# 3.14.1 (2017-08-02)
+
+* Install `ember-string-ishtmlsafe-polyfill` to address #139 
+
 # 3.14.0 (2017-08-02)
 Update string validation to support Ember SafeString objects. Fixes #128.
 
