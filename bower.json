@@ -1,6 +1,10 @@
 {
   "name": "ember-prop-types",
   "dependencies": {
-    "prism": "^1.5.1"
+    "prism": "^1.5.1",
+    "ember": "components/ember#lts-2-4"
+  },
+  "resolutions": {
+    "ember": "lts-2-4"
   }
 }
