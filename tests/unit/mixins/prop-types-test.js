@@ -12,12 +12,12 @@ const {
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import {createComponent} from 'dummy/tests/helpers/ember-prop-types'
 import PropTypesMixin, {
   PropTypes,
   helpers,
   settings
 } from 'ember-prop-types/mixins/prop-types'
+import {createComponent} from 'ember-prop-types/test-support/ember-prop-types'
 
 describe('Unit / Mixins / prop-types', function () {
   let sandbox
