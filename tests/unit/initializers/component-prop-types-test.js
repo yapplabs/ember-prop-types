@@ -1,10 +1,18 @@
 /**
  * Unit test for the component-prop-types initializer
  */
+import Application from '@ember/application'
+
+import Component from '@ember/component'
+import {run} from '@ember/runloop'
 import {expect} from 'chai'
-import Ember from 'ember'
-const {Application, Component, run} = Ember
-import {after, before, beforeEach, describe, it} from 'mocha'
+import {
+  after,
+  before,
+  beforeEach,
+  describe,
+  it
+} from 'mocha'
 
 import {createComponent} from 'dummy/tests/helpers/ember-prop-types'
 import {initialize} from 'ember-prop-types/initializers/component-prop-types'

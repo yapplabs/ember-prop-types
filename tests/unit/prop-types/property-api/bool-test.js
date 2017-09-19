@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.bool validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import SpreadMixin from 'ember-spread'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
@@ -41,7 +41,7 @@ describe('Unit / validator / PropTypes.bool', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
+      Foo = EmberObject.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.bool.isRequired
         }
@@ -113,7 +113,7 @@ describe('Unit / validator / PropTypes.bool', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
+      Foo = EmberObject.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.bool
         }

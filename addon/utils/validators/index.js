@@ -1,4 +1,4 @@
-import Ember from 'ember' // eslint-disable-line
+import {assign, merge} from '@ember/polyfills' // eslint-disable-line
 
 import any from './any'
 import array from './array'
@@ -19,7 +19,7 @@ import shape from './shape'
 import string from './string'
 import symbol from './symbol'
 
-const assign = Object.assign || Ember.assign || Ember.merge // eslint-disable-line
+const assignIt = Object.assign || assign || merge // eslint-disable-line
 
 const validators = {
   any,
@@ -39,7 +39,7 @@ const validators = {
   symbol
 }
 
-assign(validators, {
+assignIt(validators, {
   arrayOf: arrayOf.bind(this, validators),
   oneOfType: oneOfType.bind(this, validators),
   shape: shape.bind(this, validators)

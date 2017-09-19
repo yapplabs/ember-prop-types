@@ -1,11 +1,14 @@
 /**
  * Unit test for the PropTypes.EmberObject validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const requiredDef = {
@@ -35,7 +38,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.EmberObject.isRequired
         }
@@ -44,7 +47,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
 
     describe('when initialized with Ember.Object value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: Ember.Object.create({})})
+        ctx.instance = Foo.create({bar: EmberObject.create({})})
       })
 
       itValidatesTheProperty(ctx, false)
@@ -70,7 +73,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.EmberObject
         }
@@ -79,7 +82,7 @@ describe('Unit / validator / PropTypes.EmberObject', function () {
 
     describe('when initialized with Ember.Object value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: Ember.Object.create({})})
+        ctx.instance = Foo.create({bar: EmberObject.create({})})
       })
 
       itValidatesTheProperty(ctx, false)

@@ -1,14 +1,23 @@
 /**
  * Unit test for the PropTypesMixin
  */
+import Component from '@ember/component'
+import EmberObject from '@ember/object'
+import Mixin from '@ember/object/mixin'
 import {expect} from 'chai'
 import Ember from 'ember'
-const {Component, Logger, Mixin} = Ember
+const {
+  Logger
+} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {createComponent} from 'dummy/tests/helpers/ember-prop-types'
-import PropTypesMixin, {PropTypes, helpers, settings} from 'ember-prop-types/mixins/prop-types'
+import PropTypesMixin, {
+  PropTypes,
+  helpers,
+  settings
+} from 'ember-prop-types/mixins/prop-types'
 
 describe('Unit / Mixins / prop-types', function () {
   let sandbox
@@ -24,7 +33,7 @@ describe('Unit / Mixins / prop-types', function () {
   describe('propTypes not defined on Ember.Object', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const MyObject = Ember.Object.extend(PropTypesMixin, {})
+      const MyObject = EmberObject.extend(PropTypesMixin, {})
       MyObject.create()
     })
 
@@ -48,7 +57,7 @@ describe('Unit / Mixins / prop-types', function () {
   describe('propTypes defined but empty on Ember.Object', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const MyObject = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = EmberObject.extend(PropTypesMixin, {
         propTypes: {}
       })
       MyObject.create()
@@ -79,7 +88,7 @@ describe('Unit / Mixins / prop-types', function () {
     beforeEach(function () {
       sandbox.spy(Logger, 'warn')
       sandbox.spy(helpers, 'validateProperty')
-      MyObject = Ember.Object.extend(PropTypesMixin, {
+      MyObject = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.doesNotExist
         }
@@ -237,7 +246,7 @@ describe('Unit / Mixins / prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const MyObject = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
@@ -305,7 +314,7 @@ describe('Unit / Mixins / prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const MyObject = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = EmberObject.extend(PropTypesMixin, {
         getDefaultProps () {
           return {
             foo: '!foo',
@@ -357,7 +366,7 @@ describe('Unit / Mixins / prop-types', function () {
     let instance
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
-      const Object = Ember.Object.extend(PropTypesMixin, {
+      const Object = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           foo: PropTypes.string,
           bar: PropTypes.number
@@ -468,7 +477,7 @@ describe('Unit / Mixins / prop-types', function () {
     beforeEach(function () {
       sandbox.spy(helpers, 'validateProperty')
 
-      const MyObject = Ember.Object.extend(PropTypesMixin, {
+      const MyObject = EmberObject.extend(PropTypesMixin, {
         getDefaultProps () {
           return {
             foo: 'bar'
