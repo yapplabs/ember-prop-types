@@ -57,6 +57,7 @@
     "ember-spread": "^1.0.0",
     "ember-string-ishtmlsafe-polyfill": "^1.1.0",
     "ember-test-utils": "^4.3.2",
+    "eslint-plugin-ember": "^4.5.0",
     "loader.js": "^4.2.3",
     "sinon-chai": "^2.13.0"
   },
