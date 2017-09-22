@@ -7,6 +7,8 @@ import config from 'ember-get-config'
 
 import PropTypes, {getDef, logger, validators} from '../utils/prop-types'
 
+const assign = Object.assign || Ember.assign || Ember.merge // eslint-disable-line
+
 export const settings = {
   requireComponentPropTypes: getWithDefault(
     config, 'ember-prop-types.requireComponentPropTypes', false
@@ -131,7 +133,7 @@ export default Mixin.create({
       })
 
       // Record the properties that were defaulted
-      Object.assign(defaultedProps, defaultProps)
+      assign(defaultedProps, defaultProps)
 
       // Apply the defaults for this layer of the hierarchy immediately
       // @sglanzer 2017-05-29 PR #118 delayed the execution of the setProperties
