@@ -1,5 +1,4 @@
 /* eslint-env node */
-var Reporter = require('ember-test-utils/reporter')
 
 module.exports = {
   disable_watching: true,
@@ -11,6 +10,6 @@ module.exports = {
   launch_in_dev: [
     'Chrome'
   ],
-  reporter: new Reporter(),
+  tap_quiet_logs: true,
   test_page: 'tests/index.html?hidepassed'
 }
