@@ -7,7 +7,13 @@ node_js:
 - 'stable'
 
 addons:
-  chrome: stable
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - google-chrome
+    packages:
+    - google-chrome-stable
+    - g++-4.8
   firefox: 'latest'
 
 cache:
