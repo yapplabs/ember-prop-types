@@ -10,6 +10,7 @@ module.exports = {
   launch_in_dev: [
     'Chrome'
   ],
+  reporter: 'tap',
   tap_quiet_logs: true,
   test_page: 'tests/index.html?hidepassed'
 }
