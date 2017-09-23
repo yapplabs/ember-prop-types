@@ -1,5 +1,7 @@
 import Ember from 'ember' // eslint-disable-line
 
+const {assign, merge} = Ember
+
 import any from './any'
 import array from './array'
 import arrayOf from './array-of'
@@ -19,7 +21,7 @@ import shape from './shape'
 import string from './string'
 import symbol from './symbol'
 
-const assign = Object.assign || Ember.assign || Ember.merge // eslint-disable-line
+const objectAssign = Object.assign || assign || merge
 
 const validators = {
   any,
@@ -39,7 +41,7 @@ const validators = {
   symbol
 }
 
-assign(validators, {
+objectAssign(validators, {
   arrayOf: arrayOf.bind(this, validators),
   oneOfType: oneOfType.bind(this, validators),
   shape: shape.bind(this, validators)
