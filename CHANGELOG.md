@@ -1,3 +1,8 @@
+# 3.14.2 (2017-09-25)
+
+- Adds a fallback for Object.assign for browsers that don't support it (i.e. IE).
+
+
 # 3.14.1 (2017-08-02)
 
 * Install `ember-string-ishtmlsafe-polyfill` to address #139 
