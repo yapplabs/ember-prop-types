@@ -9,10 +9,7 @@ const {Logger} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import {
-  itValidatesTheProperty,
-  spyOnValidateMethods
-} from 'dummy/tests/helpers/validator'
+import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 class Classy {}

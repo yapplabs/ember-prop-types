@@ -6,17 +6,11 @@ import EmberObject from '@ember/object'
 import Mixin from '@ember/object/mixin'
 import {expect} from 'chai'
 import Ember from 'ember'
-const {
-  Logger
-} = Ember
+const {Logger} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import PropTypesMixin, {
-  PropTypes,
-  helpers,
-  settings
-} from 'ember-prop-types/mixins/prop-types'
+import PropTypesMixin, {PropTypes, helpers, settings} from 'ember-prop-types/mixins/prop-types'
 import {createComponent} from 'ember-prop-types/test-support/ember-prop-types'
 
 describe('Unit / Mixins / prop-types', function () {

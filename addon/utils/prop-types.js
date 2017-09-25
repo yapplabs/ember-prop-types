@@ -32,7 +32,7 @@ export function generateType (key) {
   }
 }
 
-[
+;[
   'any',
   'array',
   'bool',

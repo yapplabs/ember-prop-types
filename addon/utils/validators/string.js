@@ -3,7 +3,6 @@
  */
 
 import {isHTMLSafe} from '@ember/string'
-
 import {typeOf} from '@ember/utils'
 
 import logger from '../logger'

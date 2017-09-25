@@ -6,19 +6,9 @@ import EmberObject from '@ember/object'
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
-import {
-  after,
-  before,
-  beforeEach,
-  describe,
-  it
-} from 'mocha'
+import {after, before, beforeEach, describe, it} from 'mocha'
 
-import PropTypesMixin, {
-  PropTypes,
-  helpers,
-  settings
-} from 'ember-prop-types/mixins/prop-types'
+import PropTypesMixin, {PropTypes, helpers, settings} from 'ember-prop-types/mixins/prop-types'
 import logger from 'ember-prop-types/utils/logger'
 
 export function itSupportsUpdatableOption (type, value1, value2) {

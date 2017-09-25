@@ -3,7 +3,6 @@
  */
 
 import {get} from '@ember/object'
-
 import {typeOf} from '@ember/utils'
 
 import logger from '../logger'

@@ -4,7 +4,7 @@ export default [
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -22,7 +22,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -40,7 +40,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -58,7 +58,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -76,7 +76,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -94,7 +94,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -112,7 +112,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -137,7 +137,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -155,7 +155,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -173,7 +173,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -191,7 +191,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -209,7 +209,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -227,7 +227,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -245,7 +245,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -279,7 +279,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -319,7 +319,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -359,7 +359,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
@@ -377,7 +377,7 @@ export default Component.extend(PropTypeMixin, {
     example: `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {

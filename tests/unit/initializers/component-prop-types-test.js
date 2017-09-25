@@ -6,13 +6,7 @@ import Application from '@ember/application'
 import Component from '@ember/component'
 import {run} from '@ember/runloop'
 import {expect} from 'chai'
-import {
-  after,
-  before,
-  beforeEach,
-  describe,
-  it
-} from 'mocha'
+import {after, before, beforeEach, describe, it} from 'mocha'
 
 import {initialize} from 'ember-prop-types/initializers/component-prop-types'
 import PropTypesMixin, {settings} from 'ember-prop-types/mixins/prop-types'

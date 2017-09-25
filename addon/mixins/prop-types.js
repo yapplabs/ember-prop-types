@@ -7,11 +7,7 @@ import {assign, merge} from '@ember/polyfills' // eslint-disable-line
 import {typeOf} from '@ember/utils'
 import config from 'ember-get-config'
 
-import PropTypes, {
-  getDef,
-  logger,
-  validators
-} from '../utils/prop-types'
+import PropTypes, {getDef, logger, validators} from '../utils/prop-types'
 
 const objectAssign = Object.assign || assign || merge
 

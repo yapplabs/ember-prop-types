@@ -6,7 +6,7 @@ import validators from '../fixtures/validators'
 const defaultsExample = `
 import Ember from 'ember'
 const {Component} = Ember
-import PropTypeMixin, { PropTypes } from 'ember-prop-types'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 
 export default Component.extend(PropTypeMixin, {
   propTypes: {
