@@ -5,7 +5,7 @@ const EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
 module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     'babel': {
-      optional: ['es6.spec.symbols']
+      plugins: ['transform-es2015-typeof-symbol']
     },
     'ember-cli-babel': {
       includePolyfill: true
