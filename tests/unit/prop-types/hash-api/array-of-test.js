@@ -2,7 +2,6 @@
  * Unit test for the PropTypes.arrayOf validator
  */
 import EmberObject from '@ember/object'
-
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember

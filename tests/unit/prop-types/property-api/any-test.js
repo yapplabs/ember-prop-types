@@ -2,7 +2,6 @@
  * Unit test for the PropTypes.any validator
  */
 import EmberObject from '@ember/object'
-
 import Ember from 'ember'
 const {Logger} = Ember
 import {afterEach, beforeEach, describe} from 'mocha'
