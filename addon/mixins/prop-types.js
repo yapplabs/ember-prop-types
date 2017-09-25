@@ -3,6 +3,7 @@
  */
 import {get, getWithDefault} from '@ember/object'
 import Mixin from '@ember/object/mixin'
+import {assign, merge} from '@ember/polyfills' // eslint-disable-line
 import {typeOf} from '@ember/utils'
 import config from 'ember-get-config'
 
@@ -11,6 +12,8 @@ import PropTypes, {
   logger,
   validators
 } from '../utils/prop-types'
+
+const objectAssign = Object.assign || assign || merge
 
 export const settings = {
   requireComponentPropTypes: getWithDefault(
@@ -136,7 +139,7 @@ export default Mixin.create({
       })
 
       // Record the properties that were defaulted
-      Object.assign(defaultedProps, defaultProps)
+      objectAssign(defaultedProps, defaultProps)
 
       // Apply the defaults for this layer of the hierarchy immediately
       // @sglanzer 2017-05-29 PR #118 delayed the execution of the setProperties

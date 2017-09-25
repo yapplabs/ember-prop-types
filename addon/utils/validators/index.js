@@ -19,7 +19,7 @@ import shape from './shape'
 import string from './string'
 import symbol from './symbol'
 
-const assignIt = Object.assign || assign || merge // eslint-disable-line
+const objectAssign = Object.assign || assign || merge
 
 const validators = {
   any,
@@ -39,7 +39,7 @@ const validators = {
   symbol
 }
 
-assignIt(validators, {
+objectAssign(validators, {
   arrayOf: arrayOf.bind(this, validators),
   oneOfType: oneOfType.bind(this, validators),
   shape: shape.bind(this, validators)
