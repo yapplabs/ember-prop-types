@@ -1,6 +1,7 @@
 /**
  * Unit test for the PropTypes.oneOfType validator
  */
+import EmberObject from '@ember/object'
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
@@ -56,7 +57,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType(
             [
@@ -109,7 +110,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
 
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType(
             [
@@ -167,7 +168,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
         updatable: true
       }
 
-      const Foo = Ember.Object.extend(PropTypesMixin, {
+      const Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType([PropTypes.null, PropTypes.string], {updatable: true})
         }
@@ -197,7 +198,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
         updatable: false
       }
 
-      const Foo = Ember.Object.extend(PropTypesMixin, {
+      const Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType([PropTypes.null, PropTypes.string], {updatable: false})
         }

@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.oneOf validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -37,7 +37,7 @@ describe('Unit / validator / PropTypes.oneOf', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOf([
             'alpha',
@@ -83,7 +83,7 @@ describe('Unit / validator / PropTypes.oneOf', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOf([
             'alpha',

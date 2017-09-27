@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.instanceOf validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -39,7 +39,7 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.instanceOf(Classy).isRequired
         }
@@ -74,7 +74,7 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.instanceOf(Classy)
         }
