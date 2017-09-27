@@ -1,3 +1,11 @@
+# 4.0.0 (2017-09-27)
+* **Updated** to Ember CLI version 2.15.1 (uses babel 6)
+* **Updated** imports to ember javascript modules syntax
+* **Added** eslint rule to require usage of new modules syntax (will remove once added to ember-test-utils)
+* **Updated** test helpers to now come from `addon-test-support`
+* **Updated** `ember-cli-code-coverage` and configured reporters
+* **Removed** `ember-string-ishtmlsafe-polyfill` - If running Ember CLI < 2.8 then add back to your consuming addon/app.
+
 # 3.14.2 (2017-09-25)
 
 - Adds a fallback for Object.assign for browsers that don't support it (i.e. IE).
