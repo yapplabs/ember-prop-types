@@ -1,4 +1,4 @@
-import {assign, merge} from '@ember/polyfills' // eslint-disable-line
+import {assign, merge} from '@ember/polyfills'
 
 import any from './any'
 import array from './array'

@@ -3,7 +3,7 @@
  */
 import {get, getWithDefault} from '@ember/object'
 import Mixin from '@ember/object/mixin'
-import {assign, merge} from '@ember/polyfills' // eslint-disable-line
+import {assign, merge} from '@ember/polyfills'
 import {typeOf} from '@ember/utils'
 import config from 'ember-get-config'
 
