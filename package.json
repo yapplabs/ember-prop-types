@@ -64,7 +64,6 @@
     "ember-addon"
   ],
   "dependencies": {
-    "babel-plugin-ember-modules-api-polyfill": "^2.0.1",
     "ember-cli-babel": "^6.6.0",
     "ember-get-config": "^0.2.2",
     "npm-install-security-check": "^1.0.0"
