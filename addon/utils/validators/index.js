@@ -15,6 +15,7 @@ import number from './number'
 import object from './object'
 import oneOf from './one-of'
 import oneOfType from './one-of-type'
+import regexp from './regexp'
 import shape from './shape'
 import string from './string'
 import symbol from './symbol'
@@ -35,6 +36,7 @@ const validators = {
   number,
   object,
   oneOf,
+  regexp,
   string,
   symbol
 }

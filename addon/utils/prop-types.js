@@ -44,6 +44,7 @@ export function generateType (key) {
   'null',
   'number',
   'object',
+  'regexp',
   'string',
   'symbol'
 ]

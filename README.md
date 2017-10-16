@@ -91,6 +91,7 @@ an almost identical API in the Ember world. Below is a list of possible
 *   array
 *   arrayOf
 *   bool
+*   date
 *   element
 *   EmberObject
 *   func
@@ -100,6 +101,7 @@ an almost identical API in the Ember world. Below is a list of possible
 *   object
 *   oneOf
 *   oneOfType
+*   regexp
 *   shape
 *   string
 *   symbol
