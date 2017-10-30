@@ -1,3 +1,7 @@
+# 4.1.0 (2017-10-30)
+* **Added** regexp type
+
+
 # 4.0.1 (2017-10-11)
 * **Updated** to Ember CLI 2.16.1
 
