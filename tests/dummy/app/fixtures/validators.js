@@ -315,6 +315,24 @@ export default Component.extend(PropTypeMixin, {
     name: 'oneOfType'
   },
   {
+    description: 'Property must be a regular expression.',
+    example: `
+import Ember from 'ember'
+const {Component} = Ember
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+
+export default Component.extend(PropTypeMixin, {
+  propTypes: {
+    bar: PropTypes.regexp,
+    baz: PropTypes.regexp.isRequired,
+    foo: PropTypes.regexp({required: true}),
+    spam: PropTypes.regexp({updatable: false})
+  }
+})
+    `,
+    name: 'regexp'
+  },
+  {
     description: 'Property must be an Object of the given shape.',
     example: `
 import Ember from 'ember'
