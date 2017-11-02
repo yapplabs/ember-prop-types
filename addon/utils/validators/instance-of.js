@@ -1,8 +1,8 @@
 /**
  * The PropTypes.instanceOf validator
  */
-import {typeOf} from '@ember/utils'
-
+import Ember from 'ember'
+const {typeOf} = Ember
 import logger from '../logger'
 
 export default function (ctx, name, value, def, logErrors, throwErrors) {

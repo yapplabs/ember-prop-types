@@ -1,8 +1,7 @@
 /**
  * Unit test for the PropTypes.string validator
  */
-import EmberObject from '@ember/object'
-import {htmlSafe} from '@ember/string'
+import Ember from 'ember'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -41,7 +40,7 @@ describe('Unit / validator / PropTypes.string', function () {
   describe('when required option not present', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = EmberObject.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.string()
         }
@@ -59,7 +58,7 @@ describe('Unit / validator / PropTypes.string', function () {
 
     describe('when initialized with a SafeString object value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: htmlSafe('baz')})
+        ctx.instance = Foo.create({bar: Ember.String.htmlSafe('baz')})
       })
 
       itValidatesTheProperty(ctx, false)
@@ -88,7 +87,7 @@ describe('Unit / validator / PropTypes.string', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = EmberObject.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.string({required: true})
         }
@@ -106,7 +105,7 @@ describe('Unit / validator / PropTypes.string', function () {
 
     describe('when initialized with a SafeString object value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: htmlSafe('baz')})
+        ctx.instance = Foo.create({bar: Ember.String.htmlSafe('baz')})
       })
 
       itValidatesTheProperty(ctx, false)
@@ -135,7 +134,7 @@ describe('Unit / validator / PropTypes.string', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = EmberObject.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.string({required: false})
         }
@@ -153,7 +152,7 @@ describe('Unit / validator / PropTypes.string', function () {
 
     describe('when initialized with a SafeString object value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: htmlSafe('baz')})
+        ctx.instance = Foo.create({bar: Ember.String.htmlSafe('baz')})
       })
 
       itValidatesTheProperty(ctx, false)

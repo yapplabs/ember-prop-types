@@ -1,8 +1,6 @@
 /**
  * Test helpers for testing a validator
  */
-import EmberObject from '@ember/object'
-
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
@@ -24,7 +22,7 @@ export function itSupportsUpdatableOption (type, value1, value2) {
         updatable: true
       }
 
-      const Foo = EmberObject.extend(PropTypesMixin, {
+      const Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes[type]({updatable: true})
         }
@@ -54,7 +52,7 @@ export function itSupportsUpdatableOption (type, value1, value2) {
         updatable: false
       }
 
-      const Foo = EmberObject.extend(PropTypesMixin, {
+      const Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes[type]({updatable: false})
         }

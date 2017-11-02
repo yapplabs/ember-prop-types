@@ -2,9 +2,10 @@
  * The PropTypes.regexp validator
  */
 
-import {typeOf} from '@ember/utils'
-
+import Ember from 'ember'
 import logger from '../logger'
+
+const {typeOf} = Ember
 
 export default function (ctx, name, value, def, logErrors, throwErrors) {
   const valid = typeOf(value) === 'regexp'
