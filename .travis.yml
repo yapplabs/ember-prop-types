@@ -22,14 +22,12 @@ cache:
 
 env:
   matrix:
-  # we recommend new addons test the current and previous LTS
-  # as well as latest stable release (bonus points to beta/canary)
   - EMBER_TRY_SCENARIO=ember-lts-2.8
   - EMBER_TRY_SCENARIO=ember-lts-2.12
+  - EMBER_TRY_SCENARIO=ember-default
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
-  - EMBER_TRY_SCENARIO=ember-default
   global:
     - CXX=g++-4.8
     - secure: fyH19kPuVZ/2TE59UdxO1K8i7DzyfOJR5UHrOeYrb7kkpyqTNaicshHWuPho9dCtdWCZS/UINIszugF/fzlDih84ZYbwP0nyH7+IiN7ipCTHOqqXr4DV4JSTW6Cu409weTj6fBiKmwRm5QzeMgMcIH3g6VSQbc+d+z4w0dvHE/2OLNNwlcdb0OPGu2JsL3t7csdrbmCfJbJruTh8MMEo3xKSdbl5x7mscJ7U0omsWlbilwuMtRz8UNPsBuHDNKuTFRp4MiwwtENUce8Ju0Rfhkg/RPdMYhuGTqXZxnxrwKZfUah8YOOAYflBJ28Ofb1M8/s0Dwnj3KgXxvVaa3PcARBCQvlbq6G3zsJUiWBusa8gE+Hcg3zZVMDmVMq5wCBHQ0s7Iq9Impnh6HWjTlqtTw5WOnjM6Ih5B8Sr6SJLmd8cmuqFPGxtgsxX4m0WNsB6vmBZAsP8U+/gw6AtL88+0Z9QTgAJwzc5pMDx2QNdkCL0BVLg8eK5zv6YU0bdoOfWUs6YNoezck2ZzrrxvFP3ByMFUW060im7coUiUkF3DZubYgaBFu+6ljtknuIYY9So3kUaTpu+OwJwXZ5JK9YIHD17JmAo8rK3yXwKqZjHvoI9YOA4u2viWX4tiaG2viShrlZEnFkjtgA93aPnvX2VUDx3NxCEaMdLM2jf7a6JAr8=
@@ -37,10 +35,10 @@ env:
 matrix:
   fast_finish: true
   allow_failures:
-    - env: EMBER_TRY_SCENARIO=ember-release
-    - env: EMBER_TRY_SCENARIO=ember-beta
-    - env: EMBER_TRY_SCENARIO=ember-canary
-    - node_js: 'stable'
+  - env: EMBER_TRY_SCENARIO=ember-release
+  - env: EMBER_TRY_SCENARIO=ember-beta
+  - env: EMBER_TRY_SCENARIO=ember-canary
+  - node_js: 'stable'
 
 before_install:
 - npm config set spin false
