@@ -2,7 +2,8 @@
  * The PropTypes.func validator
  */
 
-import {typeOf} from '@ember/utils'
+import Ember from 'ember'
+const {typeOf} = Ember
 
 import logger from '../logger'
 

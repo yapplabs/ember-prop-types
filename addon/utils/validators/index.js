@@ -1,4 +1,6 @@
-import {assign, merge} from '@ember/polyfills'
+import Ember from 'ember' // eslint-disable-line
+
+const {assign, merge} = Ember
 
 import any from './any'
 import array from './array'

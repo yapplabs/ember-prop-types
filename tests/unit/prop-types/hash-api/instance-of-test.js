@@ -1,7 +1,6 @@
 /**
  * Unit test for the PropTypes.instanceOf validator
  */
-import EmberObject from '@ember/object'
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
@@ -41,7 +40,7 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = EmberObject.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.instanceOf(Classy, {required: true})
         }
@@ -76,7 +75,7 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = EmberObject.extend(PropTypesMixin, {
+      Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.instanceOf(Classy, {required: false})
         }
@@ -118,7 +117,7 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
         updatable: true
       }
 
-      const Foo = EmberObject.extend(PropTypesMixin, {
+      const Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.instanceOf(Classy, {updatable: true})
         }
@@ -148,7 +147,7 @@ describe('Unit / validator / PropTypes.instanceOf', function () {
         updatable: false
       }
 
-      const Foo = EmberObject.extend(PropTypesMixin, {
+      const Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.instanceOf(Classy, {updatable: false})
         }
