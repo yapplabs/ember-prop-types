@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.regexp validator
  */
-import EmberObject from '@ember/object'
+import Ember from 'ember'
 import SpreadMixin from 'ember-spread'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
@@ -13,6 +13,8 @@ import {
 } from 'dummy/tests/helpers/validator'
 
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
+
+const {Object: EmberObject} = Ember
 
 const requiredDef = {
   required: true,

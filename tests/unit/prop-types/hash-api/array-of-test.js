@@ -1,7 +1,6 @@
 /**
  * Unit test for the PropTypes.arrayOf validator
  */
-import EmberObject from '@ember/object'
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
@@ -85,7 +84,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when required', function () {
       beforeEach(function () {
         ctx.def = requiredDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.string, {required: true})
           }
@@ -138,7 +137,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when not required', function () {
       beforeEach(function () {
         ctx.def = notRequiredDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.string, {required: false})
           }
@@ -193,7 +192,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when required', function () {
       beforeEach(function () {
         ctx.def = requiredShapeDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(
               PropTypes.shape({
@@ -256,7 +255,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when not required', function () {
       beforeEach(function () {
         ctx.def = notRequiredShapeDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(
               PropTypes.shape({
@@ -327,7 +326,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
         updatable: true
       }
 
-      const Foo = EmberObject.extend(PropTypesMixin, {
+      const Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.arrayOf(PropTypes.string, {updatable: true})
         }
@@ -357,7 +356,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
         updatable: false
       }
 
-      const Foo = EmberObject.extend(PropTypesMixin, {
+      const Foo = Ember.Object.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.arrayOf(PropTypes.string, {updatable: false})
         }

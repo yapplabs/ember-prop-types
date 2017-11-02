@@ -1,5 +1,6 @@
-import {isArray} from '@ember/array'
-import Component from '@ember/component'
+import Ember from 'ember'
+const {Component, isArray} = Ember
+
 import PropTypeMixin, {settings} from '../mixins/prop-types'
 import {logger} from '../utils/prop-types'
 

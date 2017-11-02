@@ -2,8 +2,8 @@
  * The PropTypes.shape validator
  */
 
-import {get} from '@ember/object'
-import {typeOf} from '@ember/utils'
+import Ember from 'ember'
+const {get, typeOf} = Ember
 
 import logger from '../logger'
 

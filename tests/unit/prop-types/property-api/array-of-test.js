@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.arrayOf validator
  */
-import EmberObject from '@ember/object'
+import Ember from 'ember'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -84,7 +84,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when required', function () {
       beforeEach(function () {
         ctx.def = requiredDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.string).isRequired
           }
@@ -137,7 +137,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when not required', function () {
       beforeEach(function () {
         ctx.def = notRequiredDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.string)
           }
@@ -192,7 +192,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when required', function () {
       beforeEach(function () {
         ctx.def = requiredShapeDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.shape({
               fizz: PropTypes.string,
@@ -250,7 +250,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when not required', function () {
       beforeEach(function () {
         ctx.def = notRequiredShapeDef
-        Foo = EmberObject.extend(PropTypesMixin, {
+        Foo = Ember.Object.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.shape({
               fizz: PropTypes.string,

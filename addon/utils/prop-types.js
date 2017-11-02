@@ -1,5 +1,5 @@
-import {isArray} from '@ember/array'
-import {typeOf} from '@ember/utils'
+import Ember from 'ember'
+const {isArray, typeOf} = Ember
 import logger from './logger'
 import validators from './validators'
 

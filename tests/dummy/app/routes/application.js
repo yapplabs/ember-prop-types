@@ -1,4 +1,5 @@
-import Route from '@ember/routing/route'
+import Ember from 'ember'
+const {Route} = Ember
 
 import contributors from '../fixtures/contributors'
 import validators from '../fixtures/validators'

@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.date validator
  */
-import EmberObject from '@ember/object'
+import Ember from 'ember'
 import SpreadMixin from 'ember-spread'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
@@ -41,7 +41,7 @@ describe('Unit / validator / PropTypes.date', function () {
   describe('when required option not present', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = EmberObject.extend(SpreadMixin, PropTypesMixin, {
+      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.date()
         }
@@ -92,7 +92,7 @@ describe('Unit / validator / PropTypes.date', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = EmberObject.extend(SpreadMixin, PropTypesMixin, {
+      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.date({required: true})
         }
@@ -143,7 +143,7 @@ describe('Unit / validator / PropTypes.date', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = EmberObject.extend(SpreadMixin, PropTypesMixin, {
+      Foo = Ember.Object.extend(SpreadMixin, PropTypesMixin, {
         propTypes: {
           bar: PropTypes.date({required: false})
         }
