@@ -1,3 +1,7 @@
+# 5.0.1 (2017-11-02)
+
+* Update `ember-spread` to Ember CLI 2.12.3 compatible version as part of reversion from Ember CLI 2.16.1 to 2.12.3
+
 # 5.0.0 (2017-11-02)
 
 ## WARNING: THIS REVERTS EMBER CLI 2.16.1 BACK TO 2.12.3
