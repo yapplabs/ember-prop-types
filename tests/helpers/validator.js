@@ -36,7 +36,7 @@ export function itSupportsUpdatableOption (type, value1, value2) {
         ctx.instance.set('bar', value2)
       })
 
-      it('does not log warning', function () {
+      it('should not log a warning', function () {
         expect(Logger.warn.called).to.equal(false)
       })
     })
@@ -66,7 +66,7 @@ export function itSupportsUpdatableOption (type, value1, value2) {
         ctx.instance.set('bar', value2)
       })
 
-      it('logs warning', function () {
+      it('should log a warning', function () {
         expect(Logger.warn.called).to.equal(true)
         expect(Logger.warn).to.have.been.calledWith(
           `[${ctx.instance.toString()}]: bar should not be updated`
@@ -192,7 +192,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
 
     describe('updated with symbol value', function () {
       beforeEach(function () {
-        ctx.instance.set('bar', Symbol())
+        ctx.instance.set('bar', Symbol('updated with symbol value'))
       })
 
       if (['object', 'symbol'].indexOf(type) !== -1) {
@@ -318,7 +318,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
 
     describe('updated with symbol value', function () {
       beforeEach(function () {
-        ctx.instance.set('bar', Symbol())
+        ctx.instance.set('bar', Symbol('updated with symbol value'))
       })
 
       if (['object', 'symbol'].indexOf(type) !== -1) {

@@ -28,7 +28,7 @@ describe('Unit / Mixins / prop-types', function () {
       MyObject.create()
     })
 
-    it('does not call validateProperty', function () {
+    it('should not call validateProperty', function () {
       expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
@@ -40,7 +40,7 @@ describe('Unit / Mixins / prop-types', function () {
       createComponent(MyComponent)
     })
 
-    it('does not call validateProperty', function () {
+    it('should not call validateProperty', function () {
       expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
@@ -54,7 +54,7 @@ describe('Unit / Mixins / prop-types', function () {
       MyObject.create()
     })
 
-    it('does not call validateProperty', function () {
+    it('should not call validateProperty', function () {
       expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
@@ -68,7 +68,7 @@ describe('Unit / Mixins / prop-types', function () {
       createComponent(MyComponent)
     })
 
-    it('does not call validateProperty', function () {
+    it('should not call validateProperty', function () {
       expect(helpers.validateProperty).to.have.callCount(0)
     })
   })
@@ -99,11 +99,11 @@ describe('Unit / Mixins / prop-types', function () {
         settings.validate = validateSettingOriginalValue
       })
 
-      it('does not call validateProperty', function () {
+      it('should not call validateProperty', function () {
         expect(helpers.validateProperty).to.have.callCount(0)
       })
 
-      it('logs warning message', function () {
+      it('should log warning message', function () {
         expect(Logger.warn).to.have.callCount(1)
       })
     })
@@ -121,11 +121,11 @@ describe('Unit / Mixins / prop-types', function () {
         settings.validate = validateSettingOriginalValue
       })
 
-      it('does not call validateProperty', function () {
+      it('should not call validateProperty', function () {
         expect(helpers.validateProperty).to.have.callCount(0)
       })
 
-      it('does not log warning message', function () {
+      it('should not log warning message', function () {
         expect(Logger.warn).to.have.callCount(0)
       })
     })
@@ -143,11 +143,11 @@ describe('Unit / Mixins / prop-types', function () {
         settings.validate = validateSettingOriginalValue
       })
 
-      it('does not call validateProperty', function () {
+      it('should not call validateProperty', function () {
         expect(helpers.validateProperty).to.have.callCount(0)
       })
 
-      it('logs warning message', function () {
+      it('should log warning message', function () {
         expect(Logger.warn).to.have.callCount(1)
       })
     })
@@ -179,11 +179,11 @@ describe('Unit / Mixins / prop-types', function () {
         settings.validate = validateSettingOriginalValue
       })
 
-      it('does not call validateProperty', function () {
+      it('should not call validateProperty', function () {
         expect(helpers.validateProperty).to.have.callCount(0)
       })
 
-      it('logs warning message', function () {
+      it('should log warning message', function () {
         expect(Logger.warn).to.have.callCount(1)
       })
     })
@@ -201,11 +201,11 @@ describe('Unit / Mixins / prop-types', function () {
         settings.validate = validateSettingOriginalValue
       })
 
-      it('does not call validateProperty', function () {
+      it('should not call validateProperty', function () {
         expect(helpers.validateProperty).to.have.callCount(0)
       })
 
-      it('does not log warning message', function () {
+      it('should not log warning message', function () {
         expect(Logger.warn).to.have.callCount(0)
       })
     })
@@ -223,11 +223,11 @@ describe('Unit / Mixins / prop-types', function () {
         settings.validate = validateSettingOriginalValue
       })
 
-      it('does not call validateProperty', function () {
+      it('should not call validateProperty', function () {
         expect(helpers.validateProperty).to.have.callCount(0)
       })
 
-      it('logs warning message', function () {
+      it('should log warning message', function () {
         expect(Logger.warn).to.have.callCount(1)
       })
     })

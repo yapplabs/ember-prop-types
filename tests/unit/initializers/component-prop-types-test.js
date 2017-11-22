@@ -58,7 +58,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         settings.throwErrors = originalThrowErrors
       })
 
-      it('does not throw error when component has propTypes', function () {
+      it('should not throw error when component has propTypes', function () {
         expect(() => {
           createComponent(Component.extend({
             propTypes: {}
@@ -66,7 +66,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         }).not.to.throw()
       })
 
-      it('throws error when component does not have propTypes', function () {
+      it('should throw error when component does not have propTypes', function () {
         expect(() => {
           createComponent(Component)
         }).to.throw()
@@ -85,7 +85,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         settings.throwErrors = originalThrowErrors
       })
 
-      it('does not throw error when component has propTypes', function () {
+      it('should not throw error when component has propTypes', function () {
         expect(() => {
           createComponent(Component.extend({
             propTypes: {}
@@ -93,7 +93,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         }).not.to.throw()
       })
 
-      it('does not throw error when component does not have propTypes', function () {
+      it('should not throw error when component does not have propTypes', function () {
         expect(() => {
           createComponent(Component)
         }).not.to.throw()
@@ -125,7 +125,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         settings.throwErrors = originalThrowErrors
       })
 
-      it('does not throw error when component has propTypes', function () {
+      it('should not throw error when component has propTypes', function () {
         expect(() => {
           createComponent(Component.extend({
             propTypes: {}
@@ -133,7 +133,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         }).not.to.throw()
       })
 
-      it('does not throw error when component does not have propTypes', function () {
+      it('should not throw error when component does not have propTypes', function () {
         expect(() => {
           createComponent(Component)
         }).not.to.throw()
@@ -152,7 +152,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         settings.throwErrors = originalThrowErrors
       })
 
-      it('does not throw error when component has propTypes', function () {
+      it('should not throw error when component has propTypes', function () {
         expect(() => {
           createComponent(Component.extend({
             propTypes: {}
@@ -160,7 +160,7 @@ describe('Unit / Initializers / component-prop-types', function () {
         }).not.to.throw()
       })
 
-      it('does not throw error when component does not have propTypes', function () {
+      it('should not throw error when component does not have propTypes', function () {
         expect(() => {
           createComponent(Component)
         }).not.to.throw()

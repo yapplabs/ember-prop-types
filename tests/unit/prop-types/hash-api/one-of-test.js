@@ -161,7 +161,7 @@ describe('Unit / validator / PropTypes.oneOf', function () {
         ctx.instance.set('bar', 'bar')
       })
 
-      it('does not log warning', function () {
+      it('should not log warning', function () {
         expect(Logger.warn.called).to.equal(false)
       })
     })
@@ -191,7 +191,7 @@ describe('Unit / validator / PropTypes.oneOf', function () {
         ctx.instance.set('bar', 'bar')
       })
 
-      it('logs warning', function () {
+      it('should log warning', function () {
         expect(Logger.warn.called).to.equal(true)
         expect(Logger.warn).to.have.been.calledWith(
           `[${ctx.instance.toString()}]: bar should not be updated`
