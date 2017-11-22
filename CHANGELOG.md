@@ -1,3 +1,9 @@
+# 5.0.2 (2017-11-22)
+* **Updated** to use latest version of `ember-frost-test`
+* **Updated** to use latest version of `ember-test-utils`
+* **Added** `bower` package since it is no longer included by Ember CLI
+* **Updated** lint to skip linting of line length in `CHANGELOG.md` file 
+
 # 5.0.1 (2017-11-02)
 
 * Update `ember-spread` to Ember CLI 2.12.3 compatible version as part of reversion from Ember CLI 2.16.1 to 2.12.3
