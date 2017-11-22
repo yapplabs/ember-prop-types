@@ -1,6 +1,7 @@
 # ember-prop-types
 
-This addon provides [React-like property management](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for components.
+This addon provides
+[React-like property management](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) for components.
 
 ###### Dependencies
 

@@ -49,7 +49,7 @@ describe('Unit / validator / PropTypes.symbol', function () {
 
     describe('when initialized with symbol value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: Symbol()})
+        ctx.instance = Foo.create({bar: Symbol('when initialized with symbol value')})
       })
 
       itValidatesTheProperty(ctx, false)
@@ -87,7 +87,7 @@ describe('Unit / validator / PropTypes.symbol', function () {
 
     describe('when initialized with symbol value', function () {
       beforeEach(function () {
-        ctx.instance = Foo.create({bar: Symbol()})
+        ctx.instance = Foo.create({bar: Symbol('when initialized with symbol value')})
       })
 
       itValidatesTheProperty(ctx, false)
