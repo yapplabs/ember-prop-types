@@ -63,8 +63,7 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-get-config": "0.2.2",
-    "ember-string-ishtmlsafe-polyfill": "^1.1.0",
-    "npm-install-security-check": "^1.0.0"
+    "ember-string-ishtmlsafe-polyfill": "^1.1.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
