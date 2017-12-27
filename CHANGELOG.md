@@ -1,3 +1,9 @@
+# 5.0.3 (2017-12-27)
+* **Updated** to use latest version of `ember-frost-test`
+* **Updated** to use latest version of `ember-test-utils`
+* **Added** `bower` package since it is no longer included by Ember CLI
+* **Updated** lint to skip linting of line length in `CHANGELOG.md` file 
+
 # 5.0.2 (2017-11-22)
 * **Updated** to use latest version of `ember-frost-test`
 * **Updated** to use latest version of `ember-test-utils`
