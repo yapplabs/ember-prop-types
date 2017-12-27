@@ -53,7 +53,6 @@
     "ember-sinon": "0.7.0",
     "ember-source": "~2.12.0",
     "ember-spread": "^3.0.0",
-    "ember-string-ishtmlsafe-polyfill": "^1.1.0",
     "ember-test-utils": "^7.0.1",
     "loader.js": "^4.2.3",
     "sinon-chai": "^2.8.0"
@@ -64,6 +63,7 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-get-config": "0.2.2",
+    "ember-string-ishtmlsafe-polyfill": "^1.1.0",
     "npm-install-security-check": "^1.0.0"
   },
   "ember-addon": {
