@@ -9,9 +9,6 @@ module.exports = function (defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    'ember-cli-mocha': {
-      useLintTree: false
-    },
     'ember-prism': {
       components: [
         'handlebars',
