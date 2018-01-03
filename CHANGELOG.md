@@ -1,3 +1,7 @@
+# 5.0.3 (2017-12-27)
+
+We experienced an issue with our release version strategy and this release should not have occurred.  It should have been part of `6.0.0`
+
 # 5.0.2 (2017-11-22)
 * **Updated** to use latest version of `ember-frost-test`
 * **Updated** to use latest version of `ember-test-utils`

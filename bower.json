@@ -1,6 +1,6 @@
 {
   "name": "ember-prop-types",
   "dependencies": {
-    "prism": "^1.5.1"
+    "prism": "1.6.0"
   }
 }
