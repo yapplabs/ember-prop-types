@@ -1,3 +1,17 @@
+# 6.0.0 (2018-01-03)
+* Update `ember-cli-google-fonts` to `^2.16.2`
+* Pin `ember-cli-htmlbars-inline-precompile` to `0.3.12`
+* Pin `ember-get-config` to `0.2.2`
+* Move `ember-string-ishtmlsafe-polyfill` to dependency
+* Remove `npm-install-security-check` dependency
+* Pin `prism` Bower dependency to `1.6.0`
+* Remove useLintTree ember-cli-mocha configuration
+* Upgrade `ember-frost-test` to `^4.0.0`
+* Install `ember-cli-frost-blueprints@^5.0.1`
+* Git ignore _package-lock.json_ file until officially support Node 8
+* Upgrade `ember-spread` to `^3.0.1`
+  
+
 # 5.0.3 (2017-12-27)
 
 We experienced an issue with our release version strategy and this release should not have occurred.  It should have been part of `6.0.0`

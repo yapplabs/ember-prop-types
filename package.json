@@ -1,6 +1,6 @@
 {
   "name": "ember-prop-types",
-  "version": "5.0.3",
+  "version": "6.0.0",
   "description": "This addon provides React-like property management for components.",
   "directories": {
     "doc": "doc",
