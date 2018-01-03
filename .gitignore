@@ -15,5 +15,6 @@
 /libpeerconnection.log
 /typings/*
 npm-debug.log*
+package-lock.json
 testem.log
 .vscodeignore
