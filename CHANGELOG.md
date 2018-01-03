@@ -1,3 +1,7 @@
+# 6.0.1 (2018-01-03)
+
+* Update `ember-spread` devDependency to ^4.0.1
+
 # 6.0.0 (2018-01-03)
 * Update `ember-cli-google-fonts` to `^2.16.2`
 * Pin `ember-cli-htmlbars-inline-precompile` to `0.3.12`
