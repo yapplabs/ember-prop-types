@@ -1,3 +1,6 @@
+# 7.0.0 (2018-02-19)
+* **Updated** test helper to now be provided from `addon-test-support`. For example, the `createComponent` test helper previously available at `dummy/tests/helpers/ember-prop-types` is now available via `ember-prop-types/test-support/utils`
+
 # 6.0.1 (2018-01-03)
 
 * Update `ember-spread` devDependency to ^4.0.1
