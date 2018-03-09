@@ -1,3 +1,6 @@
+# 7.0.2 (2018-03-09)
+* **Updated** `ember-spread` devDependency to `^5.0.0`
+
 # 7.0.1 (2018-03-09)
 * **Updated** pull request template
 * **Added** issue template
