@@ -1,3 +1,14 @@
+# 7.0.1 (2018-03-09)
+* **Updated** pull request template
+* **Added** issue template
+* **Updated** to `pr-bumper` version `3`
+* **Updated** to node 8
+* **Added** slack integration
+* **Updated** `ember-frost-test` to `^4.0.1`
+* **Updated** `ember-test-utils` to `^8.1.1`
+* **Updated** `ember-cli-frost-blueprints` to `^5.0.2`
+* **Added** `package-lock.json` file
+
 # 7.0.0 (2018-02-19)
 * **Updated** test helper to now be provided from `addon-test-support`. For example, the `createComponent` test helper previously available at `dummy/tests/helpers/ember-prop-types` is now available via `ember-prop-types/test-support/utils`
 
