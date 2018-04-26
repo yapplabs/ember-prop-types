@@ -1,3 +1,6 @@
+# 7.0.3 (2018-04-26)
+* **Updated** ember-component validator to work with Ember CLI 3.2.0
+
 # 7.0.2 (2018-03-09)
 * **Updated** `ember-spread` devDependency to `^5.0.0`
 
