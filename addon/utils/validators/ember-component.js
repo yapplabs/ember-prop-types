@@ -14,7 +14,9 @@ export default function (ctx, name, value, def, logErrors, throwErrors) {
     // NOTE: this is based on internal API and thus could break without warning.
     return (
       key.indexOf('COMPONENT_CELL') > -1 || // Pre Glimmer 2
-      key.indexOf('COMPONENT DEFINITION') === 0 // Glimmer 2
+      key.indexOf('COMPONENT DEFINITION') === 0 || // Glimmer 2
+      // Added for: Ember CLI 3.2.0 after upgrade from Ember CLI 2.12.3
+      key.indexOf('CURRIED COMPONENT DEFINITION') === 0
     )
   })
 
