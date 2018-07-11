@@ -7,17 +7,18 @@
 .bowerrc
 .editorconfig
 .ember-cli
-.eslintignore
 .eslintrc.js
-.github
 .gitignore
-.npmignore
-.pullapprove.yml
-.remarkrc
-.travis
+.watchmanconfig
 .travis.yml
 .watchmanconfig
 bower.json
 dependency-snapshot.json
 ember-cli-build.js
 testem.js
+yarn.lock
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try

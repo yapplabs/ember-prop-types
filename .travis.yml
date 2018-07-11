@@ -3,33 +3,34 @@ dist: trusty
 language: node_js
 
 node_js:
-- '8.6.0'
+  # we recommend testing addons with the same minimum supported node version as Ember CLI
+  # so that your addon works for all apps
+  - "6"
+
+sudo: false
+dist: trusty
 
 addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    - google-chrome
-    packages:
-    - google-chrome-stable
-    - g++-4.8
-  firefox: 'latest'
+  chrome: stable
 
 cache:
   directories:
-    - node_modules
+    - $HOME/.npm
 
 env:
-  matrix:
-  - EMBER_TRY_SCENARIO=ember-lts-2.4
-  - EMBER_TRY_SCENARIO=ember-lts-2.8
-  - EMBER_TRY_SCENARIO=ember-default
-  - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
   global:
-    - CXX=g++-4.8
-    - secure: fyH19kPuVZ/2TE59UdxO1K8i7DzyfOJR5UHrOeYrb7kkpyqTNaicshHWuPho9dCtdWCZS/UINIszugF/fzlDih84ZYbwP0nyH7+IiN7ipCTHOqqXr4DV4JSTW6Cu409weTj6fBiKmwRm5QzeMgMcIH3g6VSQbc+d+z4w0dvHE/2OLNNwlcdb0OPGu2JsL3t7csdrbmCfJbJruTh8MMEo3xKSdbl5x7mscJ7U0omsWlbilwuMtRz8UNPsBuHDNKuTFRp4MiwwtENUce8Ju0Rfhkg/RPdMYhuGTqXZxnxrwKZfUah8YOOAYflBJ28Ofb1M8/s0Dwnj3KgXxvVaa3PcARBCQvlbq6G3zsJUiWBusa8gE+Hcg3zZVMDmVMq5wCBHQ0s7Iq9Impnh6HWjTlqtTw5WOnjM6Ih5B8Sr6SJLmd8cmuqFPGxtgsxX4m0WNsB6vmBZAsP8U+/gw6AtL88+0Z9QTgAJwzc5pMDx2QNdkCL0BVLg8eK5zv6YU0bdoOfWUs6YNoezck2ZzrrxvFP3ByMFUW060im7coUiUkF3DZubYgaBFu+6ljtknuIYY9So3kUaTpu+OwJwXZ5JK9YIHD17JmAo8rK3yXwKqZjHvoI9YOA4u2viWX4tiaG2viShrlZEnFkjtgA93aPnvX2VUDx3NxCEaMdLM2jf7a6JAr8=
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+  matrix:
+    # we recommend new addons test the current and previous LTS
+    # as well as latest stable release (bonus points to beta/canary)
+    - EMBER_TRY_SCENARIO=ember-lts-2.12
+    - EMBER_TRY_SCENARIO=ember-lts-2.16
+    - EMBER_TRY_SCENARIO=ember-lts-2.18
+    - EMBER_TRY_SCENARIO=ember-release
+    - EMBER_TRY_SCENARIO=ember-beta
+    - EMBER_TRY_SCENARIO=ember-canary
+    - EMBER_TRY_SCENARIO=ember-default
 
 matrix:
   fast_finish: true
@@ -39,42 +40,12 @@ matrix:
   - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-- npm config set spin false
-- npm install -g coveralls pr-bumper@^3.7.0 ciena-devops@^1.0.0
-- $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
-
-install:
-- $(npm root -g)/pr-bumper/.travis/maybe-install.sh
-- bower install
-
-before_script:
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
-- sleep 3 # give xvfb some time to start
+  - npm config set spin false
+  - npm install -g npm@4
+  - npm --version
 
 script:
-- $(npm root -g)/pr-bumper/.travis/maybe-test.sh
-- .travis/maybe-bump-version.sh
-
-after_success:
-- .travis/maybe-publish-coverage.sh
-- .travis/maybe-publish-gh-pages.sh
-
-after_deploy:
-- $(npm root -g)/ciena-devops/scripts/slack/incoming-webhooks/send-message.sh
-
-deploy:
-  provider: npm
-  email: npm.ciena@gmail.com
-  skip_cleanup: true
-  api_key:
-    secure: cNFad5WBW1HC1zr761GmSxh8BcA+/T8tcag2uxz6UlCQhTQJuNLVwvo96ZbBSXLxKyxm94SHRWUARXfAhvASwpSL/aP2OBjZZe6j4VixDfdHMBae+iaKQUrfARmW24VzeI04JXFsHFMUIC+3m4NbJq627OdetD/cUOtgr6NKE0/c2AQriStkDqbQUykfcyzoVL/0QzQ57blinQ4eXXpvxiY9mB8HB4dx0047RPcf0hqGtxt8Q75R4VSLiyIbzHCm78PJhMl6tSm4n5WnItSd1sQCfXgGWzrZR+0fImYyh8whL4LyrPuSSAbsFchjUyIWNsmM0NGryWJDENFaRfP6ULKYPZYcyD+SKnVAv7XwD5yqysYf/zXelwT1SLTD0vVr81EBa0fN8l7yHfEjlo1HfElijsyJXEwVZziT6oRoUhjExeMsOPbgnbtyJ4F0iLWhLS0g/6qu5O7D008xu8orNHibPPR93AC9E6nQmVyewkhmb/QJfgJDL9jbPlG/9pROA7UH+oUvqYUacHSYqdDxopweMB8O+62/7/BX0zWoiWwUSN2hcMFzC6PnRGrGJXvyHL2rGSZydRL2v8jqWsbFgwHhBZIMIgHTSxe9rgi+fV3EhaBDVALXb8lMJqTSuGEQKXqQZvSIRPvX4wolKstbmcQ/T0buxU8GoiZz1ZBmPXU=
-  on:
-    all_branches: true
-    condition: "$EMBER_TRY_SCENARIO = 'ember-default'"
-    node: '8.6.0'
-    tags: true
-
-notifications:
-  slack:
-    secure: fHUjcnjwherFPJrINwKTe9WEmpnHuQNpeYuKk83/bgZeTSgTTFhJt1+K5Zqu7Qxsu5riGJlb03n5ZZxmMbvKB1W4w+gY0fBieFB4xCfTPGNDd2UMDOaCf37+R4XuSVgK4csWF8zAnPHf7/VnDDvvdpYwu6GXDhJ8/uFH6kOF+b9hNdvyeTNP96TlbS9bJ9dgJf1juY4mEGf5KAMynfCtOAXDnyDOoEPpzTkveuKFF8e9DTvBP/kEpAek31SvjmY/ubEiManLAK2Zz4GheQIymg63uybFK8bf/oQvwvlP8zUjrXXqnx9ha2xrmkD7b781Nl2sruhSJxQdBJEiz10csWiMZnWNq6R/+pyVwrhMwXB82tsCw3J+qV7Hl4OZjpzK6PzkopnKqUokUnnpEQv7U8F1B/g08HbrH6vrrQiH49VuFyYxXQPXR27ddpz7x4/n782M/w4/EHGTI1w8HT7f8VuY9XCYvx2ioKBDrFu0cT6oYcd0UhMc5a9jFZo3+sTFnD+jWBRXeryu9bsu+AvNhrmzAO4JGX4mS/O94vIZZAcQsPjI8tdsyvrkBI97WyKEt62J9HU/U/sugcGPn7Tek7cVyn/IjPEXDfoZWhaF7//RktB6oy+FGv0QmK2osLQIRxgkqWNKt1dlF/uWP7rLEezxcrAO8zsHoHrBu9NbLgA=
+  - npm run lint:js
+  # Usually, it's ok to finish the test scenario without reverting
+  #  to the addon's original dependency state, skipping "cleanup".
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup

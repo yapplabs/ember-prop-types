@@ -6,8 +6,9 @@ const {VERSION} = Ember
  * @returns {Boolean} whether or not we are on Glimmer 2
  */
 function isGlimmer2 () {
-  const [major, minor] = VERSION.split('.')
-  return parseInt(major) > 1 && parseInt(minor) > 9
+  const [major, minor] = VERSION.split('.');
+
+  return parseInt(major) >= 3 || parseInt(major) > 1 && parseInt(minor) > 9;
 }
 
 /**

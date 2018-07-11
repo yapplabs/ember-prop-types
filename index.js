@@ -1,5 +1,4 @@
-/* eslint-env node */
-'use strict'
+'use strict';
 
 module.exports = {
   name: 'ember-prop-types'
