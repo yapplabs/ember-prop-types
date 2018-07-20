@@ -1,3 +1,8 @@
+# 7.0.4 (2018-07-20)
+
+* **Fixed** Travis API key.
+
+
 # 7.0.3 (2018-04-26)
 * **Updated** ember-component validator to work with Ember CLI 3.2.0
 
