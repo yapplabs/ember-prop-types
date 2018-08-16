@@ -1,7 +1,7 @@
 /**
  * Unit test for the PropTypes.func validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
@@ -40,7 +40,7 @@ describe('Unit / validator / PropTypes.func', function () {
   describe('when required option not present', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.func()
         }
@@ -78,7 +78,7 @@ describe('Unit / validator / PropTypes.func', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.func({required: true})
         }
@@ -116,7 +116,7 @@ describe('Unit / validator / PropTypes.func', function () {
   describe('when not required', function () {
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.func({required: false})
         }

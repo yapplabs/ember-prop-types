@@ -1,11 +1,14 @@
 /**
  * Unit test for the PropTypes.oneOfType validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const numberTypeDef = {
@@ -55,7 +58,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
   describe('when required', function () {
     beforeEach(function () {
       ctx.def = requiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType([
             PropTypes.number,
@@ -103,7 +106,7 @@ describe('Unit / validator / PropTypes.oneOfType', function () {
 
     beforeEach(function () {
       ctx.def = notRequiredDef
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.oneOfType([
             PropTypes.number,

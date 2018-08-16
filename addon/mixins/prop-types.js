@@ -1,11 +1,17 @@
 /**
  * The PropTypesMixin definition
  */
-import Ember from 'ember'
-const {Mixin, assign, get, getWithDefault, merge, typeOf} = Ember
+import {get, getWithDefault} from '@ember/object'
+import Mixin from '@ember/object/mixin'
+import {assign, merge} from '@ember/polyfills'
+import {typeOf} from '@ember/utils'
 import config from 'ember-get-config'
 
-import PropTypes, {getDef, logger, validators} from '../utils/prop-types'
+import PropTypes, {
+  getDef,
+  logger,
+  validators
+} from '../utils/prop-types'
 
 const objectAssign = Object.assign || assign || merge
 

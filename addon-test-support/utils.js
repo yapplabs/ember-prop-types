@@ -1,5 +1,4 @@
-import Ember from 'ember'
-const {VERSION} = Ember
+import {VERSION} from '@ember/version'
 
 /**
  * Determine if we are on a version of Ember that includes Glimmer 2

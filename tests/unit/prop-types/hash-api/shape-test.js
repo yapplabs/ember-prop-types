@@ -1,13 +1,18 @@
 /**
  * Unit test for the PropTypes.shape validator
  */
+import EmberObject from '@ember/object'
+
 import {expect} from 'chai'
 import Ember from 'ember'
 const {Logger} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 describe('Unit / validator / PropTypes.shape', function () {
@@ -36,7 +41,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape(
             {
@@ -146,7 +151,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape(
             {
@@ -246,7 +251,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape(
             {
@@ -356,7 +361,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape(
             {
@@ -454,7 +459,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         updatable: true
       }
 
-      const Foo = Ember.Object.extend(PropTypesMixin, {
+      const Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape({foo: PropTypes.string}, {updatable: true})
         }
@@ -484,7 +489,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         updatable: false
       }
 
-      const Foo = Ember.Object.extend(PropTypesMixin, {
+      const Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape({foo: PropTypes.string}, {updatable: false})
         }

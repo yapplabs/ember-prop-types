@@ -1,5 +1,5 @@
-import Ember from 'ember'
-const {isArray, typeOf} = Ember
+import {isArray} from '@ember/array'
+import {typeOf} from '@ember/utils'
 import logger from './logger'
 import validators from './validators'
 
@@ -32,7 +32,7 @@ export function generateType (key) {
   }
 }
 
-;[
+[
   'any',
   'array',
   'bool',
