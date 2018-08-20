@@ -12,5 +12,8 @@ module.exports = {
         ]
       }
     ]
+  },
+  "rules": {
+    "ember-standard/logger": [2, "never"]
   }
 }

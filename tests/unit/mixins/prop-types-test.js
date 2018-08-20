@@ -20,7 +20,7 @@ import PropTypesMixin, {
 } from 'ember-prop-types/mixins/prop-types'
 import {createComponent} from 'ember-prop-types/test-support/utils'
 
-describe('Unit / Mixins / prop-types', function () {
+describe.skip('Unit / Mixins / prop-types', function () {
   let sandbox
 
   beforeEach(function () {

@@ -6,7 +6,7 @@ import {VERSION} from '@ember/version'
  */
 function isGlimmer2 () {
   const [major, minor] = VERSION.split('.')
-  return parseInt(major) > 1 && parseInt(minor) > 9
+  return (parseInt(major) > 2) || (parseInt(major) === 2 && parseInt(minor) > 9)
 }
 
 /**
