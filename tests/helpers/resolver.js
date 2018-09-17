@@ -1,7 +1,7 @@
 import config from '../../config/environment'
 import Resolver from '../../resolver'
 
-const resolver = Resolver.create({namespace: 'resolver'})
+const resolver = Resolver.create()
 
 resolver.namespace = {
   modulePrefix: config.modulePrefix,
