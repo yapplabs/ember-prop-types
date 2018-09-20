@@ -1,3 +1,19 @@
+# 8.0.0 (2018-09-20)
+
+Dependencies:
+* **Updated** core dependencies to be compatible with ember 3.3.
+* **Updated** third-party dependencies to be compatible with ember 3.3.
+
+Addon:
+* **Updated**  Ember core module import paths to match Ember.js new Modules API.
+* **Replaced**  Ember.Logger with the native console.
+
+Testing:
+* **Removed** `helpers/resolver.js`, `helpers/start-app.js`, `helpers/destroy-app.js` as they are not needed with Ember new testing API.
+* **Updated** `test-helper.js` to align with Ember's new testing API.
+* **Added** Ember 3.3 scenario to ember-try config.
+
+
 # 7.0.5 (2018-08-20)
 
 * **Fixed** Travis API key.
