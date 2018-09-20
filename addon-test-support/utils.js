@@ -1,5 +1,4 @@
-import Ember from 'ember'
-const {VERSION} = Ember
+import {VERSION} from '@ember/version'
 
 /**
  * Determine if we are on a version of Ember that includes Glimmer 2
@@ -7,7 +6,7 @@ const {VERSION} = Ember
  */
 function isGlimmer2 () {
   const [major, minor] = VERSION.split('.')
-  return parseInt(major) > 1 && parseInt(minor) > 9
+  return (parseInt(major) > 2) || (parseInt(major) === 2 && parseInt(minor) > 9)
 }
 
 /**

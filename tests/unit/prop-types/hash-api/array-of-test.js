@@ -1,13 +1,16 @@
 /**
  * Unit test for the PropTypes.arrayOf validator
  */
+import EmberObject from '@ember/object'
+
 import {expect} from 'chai'
-import Ember from 'ember'
-const {Logger} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 const stringTypeDef = {
@@ -84,7 +87,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when required', function () {
       beforeEach(function () {
         ctx.def = requiredDef
-        Foo = Ember.Object.extend(PropTypesMixin, {
+        Foo = EmberObject.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.string, {required: true})
           }
@@ -137,7 +140,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when not required', function () {
       beforeEach(function () {
         ctx.def = notRequiredDef
-        Foo = Ember.Object.extend(PropTypesMixin, {
+        Foo = EmberObject.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(PropTypes.string, {required: false})
           }
@@ -192,7 +195,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when required', function () {
       beforeEach(function () {
         ctx.def = requiredShapeDef
-        Foo = Ember.Object.extend(PropTypesMixin, {
+        Foo = EmberObject.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(
               PropTypes.shape({
@@ -255,7 +258,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
     describe('when not required', function () {
       beforeEach(function () {
         ctx.def = notRequiredShapeDef
-        Foo = Ember.Object.extend(PropTypesMixin, {
+        Foo = EmberObject.extend(PropTypesMixin, {
           propTypes: {
             bar: PropTypes.arrayOf(
               PropTypes.shape({
@@ -318,7 +321,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
 
   describe('when updatable', function () {
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
 
       ctx.def = {
         required: false,
@@ -326,7 +329,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
         updatable: true
       }
 
-      const Foo = Ember.Object.extend(PropTypesMixin, {
+      const Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.arrayOf(PropTypes.string, {updatable: true})
         }
@@ -341,14 +344,14 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
       })
 
       it('should not log warning', function () {
-        expect(Logger.warn.called).to.equal(false)
+        expect(console.warn.called).to.equal(false)
       })
     })
   })
 
   describe('when not updatable', function () {
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
 
       ctx.def = {
         required: false,
@@ -356,7 +359,7 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
         updatable: false
       }
 
-      const Foo = Ember.Object.extend(PropTypesMixin, {
+      const Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.arrayOf(PropTypes.string, {updatable: false})
         }
@@ -371,8 +374,8 @@ describe('Unit / validator / PropTypes.arrayOf', function () {
       })
 
       it('should log warning', function () {
-        expect(Logger.warn.called).to.equal(true)
-        expect(Logger.warn).to.have.been.calledWith(
+        expect(console.warn.called).to.equal(true)
+        expect(console.warn).to.have.been.calledWith(
           `[${ctx.instance.toString()}]: bar should not be updated`
         )
       })

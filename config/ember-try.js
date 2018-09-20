@@ -82,6 +82,18 @@ module.exports = {
       }
     },
     {
+      name: 'ember-3.3',
+      /*
+        `env` can be set per scenario, with environment variables to set for the command being run.
+        This will be merged with process.env
+     */
+      npm: {
+        devDependencies: {
+          'ember-source': '3.3.0'
+        }
+      }
+    },
+    {
       name: 'ember-canary',
       bower: {
         dependencies: {

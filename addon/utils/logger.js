@@ -1,8 +1,6 @@
 /**
  * Logging utility that includes a little information about the object doing the logging
  */
-import Ember from 'ember'
-const {Logger} = Ember
 
 export default {
   throwError (message) {
@@ -22,7 +20,7 @@ export default {
     if (throwError) {
       this.throwError(message)
     } else {
-      Logger.warn(message)
+      console.warn(message)
     }
   }
 }

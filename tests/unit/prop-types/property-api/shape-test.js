@@ -1,11 +1,14 @@
 /**
  * Unit test for the PropTypes.shape validator
  */
-import Ember from 'ember'
+import EmberObject from '@ember/object'
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 
-import {itValidatesTheProperty, spyOnValidateMethods} from 'dummy/tests/helpers/validator'
+import {
+  itValidatesTheProperty,
+  spyOnValidateMethods
+} from 'dummy/tests/helpers/validator'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types/mixins/prop-types'
 
 describe('Unit / validator / PropTypes.shape', function () {
@@ -34,7 +37,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape({
             baz: PropTypes.string.isRequired
@@ -139,7 +142,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape({
             baz: PropTypes.string
@@ -244,7 +247,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape({
             baz: PropTypes.string.isRequired
@@ -363,7 +366,7 @@ describe('Unit / validator / PropTypes.shape', function () {
         }
       }
 
-      Foo = Ember.Object.extend(PropTypesMixin, {
+      Foo = EmberObject.extend(PropTypesMixin, {
         propTypes: {
           bar: PropTypes.shape({
             baz: PropTypes.string
