@@ -4,7 +4,6 @@
 import EmberObject from '@ember/object'
 
 import {expect} from 'chai'
-import Ember from 'ember'
 import {
   after,
   before,
