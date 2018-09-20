@@ -6,10 +6,6 @@ import Component from '@ember/component'
 import EmberObject from '@ember/object'
 import Mixin from '@ember/object/mixin'
 import {expect} from 'chai'
-import Ember from 'ember'
-const {
-  Logger
-} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
@@ -20,7 +16,7 @@ import PropTypesMixin, {
 } from 'ember-prop-types/mixins/prop-types'
 import {createComponent} from 'ember-prop-types/test-support/utils'
 
-describe.skip('Unit / Mixins / prop-types', function () {
+describe('Unit / Mixins / prop-types', function () {
   let sandbox
 
   beforeEach(function () {
@@ -87,7 +83,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
     let MyObject
 
     beforeEach(function () {
-      sandbox.spy(Logger, 'warn')
+      sandbox.spy(console, 'warn')
       sandbox.spy(helpers, 'validateProperty')
       MyObject = EmberObject.extend(PropTypesMixin, {
         propTypes: {
@@ -167,7 +163,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
     let MyComponent
 
     beforeEach(function () {
-      sandbox.spy(Logger, 'warn')
+      sandbox.spy(console, 'warn')
       sandbox.spy(helpers, 'validateProperty')
       MyComponent = Component.extend(PropTypesMixin, {
         propTypes: {

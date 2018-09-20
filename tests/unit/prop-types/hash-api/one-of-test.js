@@ -4,8 +4,6 @@
 import EmberObject from '@ember/object'
 
 import {expect} from 'chai'
-import Ember from 'ember'
-const {Logger} = Ember
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 

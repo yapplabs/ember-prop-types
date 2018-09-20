@@ -3,8 +3,6 @@
  */
 import EmberObject from '@ember/object'
 
-import Ember from 'ember'
-const {Logger} = Ember
 import {afterEach, beforeEach, describe} from 'mocha'
 import sinon from 'sinon'
 

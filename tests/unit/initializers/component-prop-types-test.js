@@ -18,7 +18,7 @@ import {initialize} from 'ember-prop-types/initializers/component-prop-types'
 import PropTypesMixin, {settings} from 'ember-prop-types/mixins/prop-types'
 import {createComponent} from 'ember-prop-types/test-support/utils'
 
-describe.skip('Unit / Initializers / component-prop-types', function () {
+describe('Unit / Initializers / component-prop-types', function () {
   let container, application
 
   beforeEach(function () {
