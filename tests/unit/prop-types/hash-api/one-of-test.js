@@ -144,7 +144,7 @@ describe('Unit / validator / PropTypes.oneOf', function () {
 
   describe('when updatable', function () {
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
 
       ctx.def = {
         required: false,
@@ -167,14 +167,14 @@ describe('Unit / validator / PropTypes.oneOf', function () {
       })
 
       it('should not log warning', function () {
-        expect(Logger.warn.called).to.equal(false)
+        expect(console.warn.called).to.equal(false)
       })
     })
   })
 
   describe('when not updatable', function () {
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
 
       ctx.def = {
         required: false,
@@ -197,8 +197,8 @@ describe('Unit / validator / PropTypes.oneOf', function () {
       })
 
       it('should log warning', function () {
-        expect(Logger.warn.called).to.equal(true)
-        expect(Logger.warn).to.have.been.calledWith(
+        expect(console.warn.called).to.equal(true)
+        expect(console.warn).to.have.been.calledWith(
           `[${ctx.instance.toString()}]: bar should not be updated`
         )
       })

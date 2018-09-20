@@ -58,7 +58,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -67,7 +67,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -76,7 +76,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -85,7 +85,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -94,7 +94,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -103,7 +103,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -120,7 +120,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -129,7 +129,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -138,7 +138,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -147,7 +147,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -156,7 +156,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -165,7 +165,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -182,7 +182,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -191,7 +191,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -200,7 +200,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -209,7 +209,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -218,7 +218,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -227,7 +227,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -244,7 +244,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -253,7 +253,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -262,7 +262,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -271,7 +271,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -280,7 +280,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -289,7 +289,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -306,7 +306,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -315,7 +315,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -324,7 +324,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -333,7 +333,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -342,7 +342,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -351,7 +351,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -368,7 +368,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -377,7 +377,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -386,7 +386,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -395,7 +395,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -404,7 +404,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -413,7 +413,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -430,7 +430,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -439,7 +439,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -448,7 +448,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -457,7 +457,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -466,7 +466,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -475,7 +475,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -492,7 +492,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -501,7 +501,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -510,7 +510,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -519,7 +519,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -528,7 +528,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -537,7 +537,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -566,7 +566,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -575,7 +575,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -584,7 +584,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -593,7 +593,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -602,7 +602,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -611,7 +611,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -628,7 +628,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -637,7 +637,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -646,7 +646,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -655,7 +655,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -664,7 +664,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -673,7 +673,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -690,7 +690,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -699,7 +699,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -708,7 +708,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -717,7 +717,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -726,7 +726,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -735,7 +735,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -752,7 +752,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -761,7 +761,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -770,7 +770,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -779,7 +779,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -788,7 +788,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -797,7 +797,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -814,7 +814,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -823,7 +823,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -832,7 +832,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -841,7 +841,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -850,7 +850,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -859,7 +859,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -876,7 +876,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -885,7 +885,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -894,7 +894,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -903,7 +903,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -912,7 +912,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -921,7 +921,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -938,7 +938,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -947,7 +947,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -956,7 +956,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -965,7 +965,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -974,7 +974,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -983,7 +983,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1000,7 +1000,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1009,7 +1009,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1018,7 +1018,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1027,7 +1027,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1036,7 +1036,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1045,7 +1045,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1073,7 +1073,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1082,7 +1082,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1091,7 +1091,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1100,7 +1100,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1109,7 +1109,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1118,7 +1118,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1135,7 +1135,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1144,7 +1144,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1153,7 +1153,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1162,7 +1162,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1171,7 +1171,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1180,7 +1180,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1197,7 +1197,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1206,7 +1206,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1215,7 +1215,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1224,7 +1224,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1233,7 +1233,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1242,7 +1242,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1259,7 +1259,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1268,7 +1268,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1277,7 +1277,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1286,7 +1286,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1295,7 +1295,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1304,7 +1304,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1321,7 +1321,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1330,7 +1330,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1339,7 +1339,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1348,7 +1348,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1357,7 +1357,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1366,7 +1366,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1383,7 +1383,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1392,7 +1392,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1401,7 +1401,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1410,7 +1410,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1419,7 +1419,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1428,7 +1428,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1445,7 +1445,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1454,7 +1454,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1463,7 +1463,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1472,7 +1472,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1481,7 +1481,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1490,7 +1490,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 
@@ -1507,7 +1507,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with array value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', [])
         })
 
@@ -1516,7 +1516,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with boolean value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', false)
         })
 
@@ -1525,7 +1525,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with null value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', null)
         })
 
@@ -1534,7 +1534,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with number value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 2)
         })
 
@@ -1543,7 +1543,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with object value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', {})
         })
 
@@ -1552,7 +1552,7 @@ describe('Unit / validator / PropTypes.any()', function () {
 
       describe('when updated with string value', function () {
         beforeEach(function () {
-          Logger.warn.reset()
+          console.warn.reset()
           ctx.instance.set('bar', 'baz')
         })
 

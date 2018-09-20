@@ -114,7 +114,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
       })
 
       it('should log warning message', function () {
-        expect(Logger.warn).to.have.callCount(1)
+        expect(console.warn).to.have.callCount(1)
       })
     })
 
@@ -136,7 +136,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
       })
 
       it('should not log warning message', function () {
-        expect(Logger.warn).to.have.callCount(0)
+        expect(console.warn).to.have.callCount(0)
       })
     })
 
@@ -158,7 +158,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
       })
 
       it('should log warning message', function () {
-        expect(Logger.warn).to.have.callCount(1)
+        expect(console.warn).to.have.callCount(1)
       })
     })
   })
@@ -194,7 +194,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
       })
 
       it('should log warning message', function () {
-        expect(Logger.warn).to.have.callCount(1)
+        expect(console.warn).to.have.callCount(1)
       })
     })
 
@@ -216,7 +216,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
       })
 
       it('should not log warning message', function () {
-        expect(Logger.warn).to.have.callCount(0)
+        expect(console.warn).to.have.callCount(0)
       })
     })
 
@@ -238,7 +238,7 @@ describe.skip('Unit / Mixins / prop-types', function () {
       })
 
       it('should log warning message', function () {
-        expect(Logger.warn).to.have.callCount(1)
+        expect(console.warn).to.have.callCount(1)
       })
     })
   })

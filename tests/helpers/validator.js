@@ -26,7 +26,7 @@ export function itSupportsUpdatableOption (type, value1, value2) {
 
   describe('when updatable', function () {
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
 
       ctx.def = {
         required: false,
@@ -49,14 +49,14 @@ export function itSupportsUpdatableOption (type, value1, value2) {
       })
 
       it('should not log a warning', function () {
-        expect(Logger.warn.called).to.equal(false)
+        expect(console.warn.called).to.equal(false)
       })
     })
   })
 
   describe('when not updatable', function () {
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
 
       ctx.def = {
         required: false,
@@ -79,8 +79,8 @@ export function itSupportsUpdatableOption (type, value1, value2) {
       })
 
       it('should log a warning', function () {
-        expect(Logger.warn.called).to.equal(true)
-        expect(Logger.warn).to.have.been.calledWith(
+        expect(console.warn.called).to.equal(true)
+        expect(console.warn).to.have.been.calledWith(
           `[${ctx.instance.toString()}]: bar should not be updated`
         )
       })
@@ -98,7 +98,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
     })
 
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
       logger.throwError.reset()
     })
 
@@ -224,7 +224,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
     })
 
     beforeEach(function () {
-      Logger.warn.reset()
+      console.warn.reset()
       logger.throwError.reset()
     })
 
@@ -353,7 +353,7 @@ export function itValidatesOnUpdate (ctx, type, warningMessage) {
  * @param {Object} ctx.instance - the object instance that has the mixin
  * @param {String} ctx.propertyName - the object instance that has the mixin
  * @param {Boolean} throwErrors - whether or not errors should be thrown
- * @param {String[]} [warningMessages] - if present, expect Logger.warn to be called with them, else expect no warnings
+ * @param {String[]} [warningMessages] - if present, expect console.warn to be called with them, else expect no warnings
  */
 export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
   let def, instance, propertyName
@@ -387,19 +387,19 @@ export function itValidatesTheProperty (ctx, throwErrors, ...warningMessages) {
     }
 
     it('should not log warning', function () {
-      expect(Logger.warn).to.have.callCount(0)
+      expect(console.warn).to.have.callCount(0)
     })
   } else {
     if (warningMessages.length > 0) {
       it('should log warning(s)', function () {
-        expect(Logger.warn).to.have.callCount(warningMessages.length)
+        expect(console.warn).to.have.callCount(warningMessages.length)
         warningMessages.forEach((msg) => {
-          expect(Logger.warn).to.have.been.calledWithMatch(`[${instance.toString()}]: ${msg}`)
+          expect(console.warn).to.have.been.calledWithMatch(`[${instance.toString()}]: ${msg}`)
         })
       })
     } else {
       it('should not log warning', function () {
-        expect(Logger.warn).to.have.callCount(0)
+        expect(console.warn).to.have.callCount(0)
       })
     }
 
@@ -417,5 +417,5 @@ export function spyOnValidateMethods (sandbox) {
   sandbox.stub(logger, 'throwError')
   sandbox.spy(helpers, 'validatePropTypes')
   sandbox.spy(helpers, 'validateProperty')
-  sandbox.stub(Logger, 'warn')
+  sandbox.stub(console, 'warn')
 }
