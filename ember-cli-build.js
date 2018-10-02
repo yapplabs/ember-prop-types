@@ -12,7 +12,8 @@ module.exports = function (defaults) {
     'ember-prism': {
       components: [
         'handlebars',
-        'javascript'
+        'javascript',
+        'markup-templating'
       ],
       theme: 'okaidia'
     }
