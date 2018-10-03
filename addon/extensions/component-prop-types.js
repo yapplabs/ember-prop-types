@@ -14,7 +14,7 @@ import {logger} from '../utils/prop-types'
 Component.reopen(PropTypeMixin, {
   init () {
     if (settings.requireComponentPropTypes) {
-      const propTypes = this.get('propTypes')
+      const propTypes = this.propTypes
 
       if (!isArray(propTypes) || propTypes.length === 0) {
         logger.warn(
