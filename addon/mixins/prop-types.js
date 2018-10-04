@@ -112,7 +112,7 @@ export default Mixin.create({
 
     // Note defaults is a concatenated property so this is actually an array
     // of getDefaultProps() methods all the way up the inheritance chain
-    const defaults = this.get('getDefaultProps')
+    const defaults = this.getDefaultProps
 
     // Keep a record of any properties that came from a getDefaultProps call
     // - let child getDefaultProps functions take precedence over parents
