@@ -1,6 +1,6 @@
 {
   "name": "ember-prop-types",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "This addon provides React-like property management for components.",
   "directories": {
     "doc": "doc",
@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "bower": "^1.8.2",
+    "bower": "^1.8.4",
     "broccoli-asset-rev": "^2.7.0",
     "chai-jquery": "^2.0.0",
     "ember-cli": "~3.3.0",
@@ -50,15 +50,15 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
-    "ember-test-utils": "^8.1.2",
     "ember-hook": "1.4.2",
     "ember-load-initializers": "^1.1.0",
-    "ember-prism": "0.0.8",
+    "ember-prism": "0.3.0",
     "ember-resolver": "^4.0.0",
     "ember-sinon": "^0.7.0",
     "ember-source": "~3.3.0",
     "ember-spread": "^6.0.0",
-    "ember-try": "^1.0.0",
+    "ember-test-utils": "^10.0.1",
+    "ember-try": "^1.1.0",
     "loader.js": "^4.2.3",
     "sinon-chai": "^2.14.0"
   },

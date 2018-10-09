@@ -1,5 +1,3 @@
-const Reporter = require('ember-test-utils/reporter')
-
 module.exports = {
   disable_watching: true,
   framework: 'mocha',
@@ -10,6 +8,5 @@ module.exports = {
     'Firefox',
     'Chrome'
   ],
-  reporter: new Reporter(),
   test_page: 'tests/index.html?hidepassed'
 }
