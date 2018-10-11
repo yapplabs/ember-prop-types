@@ -1,3 +1,6 @@
+# 9.0.2 (2018-10-11)
+* Update PUBLISH_NODE_VERSION to 10.7.0
+
 # 9.0.1 (2018-10-11)
 * Update PUBLISH_NODE_VERSION to 10.7.0
 
